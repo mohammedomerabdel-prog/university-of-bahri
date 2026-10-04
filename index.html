@@ -115,10 +115,16 @@ header{
     box-shadow:0 4px 12px rgba(245,158,11,0.3);
 }
 
-.theme-toggle-btn{
+.header-btns{
     position:absolute;
     top:20px;
     left:20px;
+    display:flex;
+    gap:10px;
+    z-index:10;
+}
+
+.theme-toggle-btn, .admin-login-btn{
     background:rgba(255,255,255,0.15);
     border:1px solid rgba(255,255,255,0.3);
     color:#fff;
@@ -129,10 +135,9 @@ header{
     font-weight:bold;
     backdrop-filter:blur(5px);
     transition:0.2s;
-    z-index:10;
 }
 
-.theme-toggle-btn:hover{
+.theme-toggle-btn:hover, .admin-login-btn:hover{
     background:rgba(255,255,255,0.25);
 }
 
@@ -586,6 +591,31 @@ th{
     box-shadow:0 6px 20px rgba(245,158,11,0.4);
 }
 
+.uploaded-files-list{
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.uploaded-file-item{
+    background:rgba(255,255,255,0.1);
+    padding:12px 20px;
+    border-radius:12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.uploaded-file-item a{
+    color:var(--gold);
+    font-weight:bold;
+    text-decoration:none;
+}
+
 .links-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -749,6 +779,20 @@ footer{
     margin-bottom:15px;
 }
 
+.admin-input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:2px solid var(--border);
+    border-radius:10px;
+    font-size:14px;
+    outline:none;
+}
+
+.admin-input:focus{
+    border-color:var(--accent);
+}
+
 .creators-box{
     background:#f8fafc;
     border:1px solid var(--border);
@@ -809,8 +853,38 @@ footer{
     </div>
 </div>
 
+<!-- نافذة لوحة التحكم بالكلمة السرية -->
+<div class="modal" id="adminModal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeAdminModal">&times;</span>
+        <h3>🔐 لوحة إدارة المنصة</h3>
+        <p>أدخل كلمة السر الخاصة بالليدر أو الدكتور للوصول إلى أدوات التعديل.</p>
+
+        <div id="adminLoginForm">
+            <input type="password" id="adminPasswordInput" class="admin-input" placeholder="كلمة السر...">
+            <button class="btn-alert-confirm" id="loginAdminBtn" type="button">دخول 🔑</button>
+        </div>
+
+        <div id="adminControlsPanel" style="display:none; text-align:right; margin-top:15px;">
+            <hr style="margin:15px 0;">
+            <h4 style="margin-bottom:10px; color:var(--primary2);">📢 تعديل الشريط الإخباري:</h4>
+            <input type="text" id="newTickerInput" class="admin-input" placeholder="اكتب الخبر الجديد هنا...">
+            <button class="btn-alert-confirm" id="saveTickerBtn" type="button" style="margin-top:5px;">حفظ الخبر 💾</button>
+
+            <hr style="margin:20px 0;">
+            <h4 style="margin-bottom:10px; color:var(--primary2);">📁 إضافة رابط محاضرة أو ملف:</h4>
+            <input type="text" id="fileNameInput" class="admin-input" placeholder="اسم المحاضرة / المادة...">
+            <input type="url" id="fileUrlInput" class="admin-input" placeholder="رابط الملف (Google Drive / Telegram)...">
+            <button class="btn-alert-confirm" id="saveFileBtn" type="button" style="margin-top:5px; background:linear-gradient(135deg,#10b981,#059669);">رفع / إضافة الملف 📤</button>
+        </div>
+    </div>
+</div>
+
 <header>
-    <button class="theme-toggle-btn" id="themeToggleBtn" type="button">🌙 الوضع الليلي</button>
+    <div class="header-btns">
+        <button class="theme-toggle-btn" id="themeToggleBtn" type="button">🌙 الوضع الليلي</button>
+        <button class="admin-login-btn" id="openAdminBtn" type="button">🔐 دخول المشرفين</button>
+    </div>
 
     <div class="logo">الريان</div>
     <div class="university-title">جامعة بحري</div>
@@ -820,7 +894,7 @@ footer{
 
 <div class="ticker-container">
     <span class="ticker-title">عاجل 📢</span>
-    <div class="ticker-text">
+    <div class="ticker-text" id="mainTickerText">
         مرحباً بكم في منصة الريان - جامعة بحري لدفعة 023 / 024 - تابعوا جدول المحاضرات والملفات الدراسية أولاً بأول!
     </div>
 </div>
@@ -948,7 +1022,7 @@ footer{
     <div class="cards">
 
         <div class="card searchable-item">
-            <div class="icon icon-amber">🏛️</div>
+            <div class="icon icon-amber">🏛️️</div>
 
             <h3>عن الكلية</h3>
 
@@ -1099,6 +1173,9 @@ footer{
         <a class="library-btn" href="subjects.html">
             تصفح ملفات المواد
         </a>
+
+        <!-- قائمة المحاضرات المرفوعة حديثاً من خلال الليدر/الدكتور -->
+        <div class="uploaded-files-list" id="uploadedFilesContainer"></div>
 
     </div>
 
@@ -1305,6 +1382,86 @@ footer{
 <script>
 
 document.addEventListener("DOMContentLoaded", function(){
+
+    /* كلمة السر المحدثة للوحة المشرف */
+    const ADMIN_PASS = "023024";
+
+    /* استرجاع الخبر والملفات المحفوظة */
+    const savedTicker = localStorage.getItem("customTicker");
+    if(savedTicker) {
+        document.getElementById("mainTickerText").innerText = savedTicker;
+    }
+
+    function renderFiles() {
+        const filesContainer = document.getElementById("uploadedFilesContainer");
+        const savedFiles = JSON.parse(localStorage.getItem("uploadedFiles") || "[]");
+        filesContainer.innerHTML = "";
+
+        savedFiles.forEach(file => {
+            const item = document.createElement("div");
+            item.className = "uploaded-file-item";
+            item.innerHTML = `<span>📄 ${file.name}</span> <a href="${file.url}" target="_blank">تحميل 📥</a>`;
+            filesContainer.appendChild(item);
+        });
+    }
+    renderFiles();
+
+    /* التعامل مع نافذة المشرف */
+    const adminModal = document.getElementById("adminModal");
+    const openAdminBtn = document.getElementById("openAdminBtn");
+    const closeAdminModal = document.getElementById("closeAdminModal");
+    const loginAdminBtn = document.getElementById("loginAdminBtn");
+    const adminLoginForm = document.getElementById("adminLoginForm");
+    const adminControlsPanel = document.getElementById("adminControlsPanel");
+
+    openAdminBtn.addEventListener("click", function() {
+        adminModal.style.display = "flex";
+    });
+
+    closeAdminModal.addEventListener("click", function() {
+        adminModal.style.display = "none";
+    });
+
+    loginAdminBtn.addEventListener("click", function() {
+        const pass = document.getElementById("adminPasswordInput").value;
+        if(pass === ADMIN_PASS) {
+            adminLoginForm.style.display = "none";
+            adminControlsPanel.style.display = "block";
+            alert("تم تسجيل الدخول بنجاح! يمكنك الآن تعديل المنصة.");
+        } else {
+            alert("كلمة السر غير صحيحة!");
+        }
+    });
+
+    /* حفظ الخبر الجديد */
+    document.getElementById("saveTickerBtn").addEventListener("click", function() {
+        const text = document.getElementById("newTickerInput").value.trim();
+        if(text) {
+            localStorage.setItem("customTicker", text);
+            document.getElementById("mainTickerText").innerText = text;
+            alert("تم تحديث الخبر العاجل بنجاح!");
+            document.getElementById("newTickerInput").value = "";
+        }
+    });
+
+    /* إضافة ملف/محاضرة جديد */
+    document.getElementById("saveFileBtn").addEventListener("click", function() {
+        const name = document.getElementById("fileNameInput").value.trim();
+        const url = document.getElementById("fileUrlInput").value.trim();
+
+        if(name && url) {
+            const savedFiles = JSON.parse(localStorage.getItem("uploadedFiles") || "[]");
+            savedFiles.push({ name, url });
+            localStorage.setItem("uploadedFiles", JSON.stringify(savedFiles));
+
+            renderFiles();
+            alert("تم إضافة الملف بنجاح إلى قسم المكتبة!");
+            document.getElementById("fileNameInput").value = "";
+            document.getElementById("fileUrlInput").value = "";
+        } else {
+            alert("يرجى ملء جميع الحقول!");
+        }
+    });
 
     /* حساب عمر المنصة منذ 1 أكتوبر 2026 */
     function updatePlatformAge() {
