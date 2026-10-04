@@ -420,7 +420,7 @@ section{
 
 .stats{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:15px;
     margin-top:25px;
 }
@@ -929,12 +929,6 @@ footer{
             <span>طالب وطالبة</span>
         </div>
 
-        <!-- خانة عداد الزيارات المضافة حديثاً -->
-        <div class="stat">
-            <strong id="visitorCount">1250</strong>
-            <span>إجمالي زيارات المنصة</span>
-        </div>
-
         <div class="stat">
             <strong id="platformAge">0 يوم</strong>
             <span>عمر المنصة</span>
@@ -1311,24 +1305,6 @@ footer{
 <script>
 
 document.addEventListener("DOMContentLoaded", function(){
-
-    /* عداد زوار الموقع */
-    function initVisitorCounter() {
-        let visits = localStorage.getItem("platform_visits");
-        if (!visits) {
-            visits = 1250; // الرقم الابتدائي للزيارات
-        }
-        if (!sessionStorage.getItem("visited_session")) {
-            visits = parseInt(visits) + 1;
-            localStorage.setItem("platform_visits", visits);
-            sessionStorage.setItem("visited_session", "true");
-        }
-        const visitorEl = document.getElementById("visitorCount");
-        if (visitorEl) {
-            visitorEl.innerText = visits;
-        }
-    }
-    initVisitorCounter();
 
     /* حساب عمر المنصة منذ 1 أكتوبر 2026 */
     function updatePlatformAge() {
