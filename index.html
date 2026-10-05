@@ -321,6 +321,35 @@ section{
     font-size:15px;
 }
 
+.group-title{
+    background:var(--primary2);
+    color:white;
+    padding:12px 20px;
+    border-radius:12px;
+    margin-bottom:15px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.schedule-cell-subject{
+    font-weight:bold;
+    color:var(--primary2);
+    display:block;
+}
+
+.schedule-cell-prof{
+    font-size:13px;
+    color:var(--muted);
+    display:block;
+}
+
+.schedule-cell-hall{
+    font-size:12px;
+    color:var(--gold);
+    font-weight:bold;
+    display:block;
+}
+
 .countdown-box{
     background:linear-gradient(135deg,var(--primary),var(--primary2));
     color:white;
@@ -551,19 +580,20 @@ section{
     border:1px solid var(--border);
     box-shadow:var(--shadow);
     transition:background 0.3s ease;
+    margin-bottom:30px;
 }
 
 table{
     width:100%;
-    min-width:700px;
+    min-width:750px;
     border-collapse:collapse;
 }
 
 th,td{
-    padding:18px 15px;
+    padding:15px;
     text-align:center;
     border-bottom:1px solid var(--border);
-    font-size:15px;
+    font-size:14px;
 }
 
 th{
@@ -1022,7 +1052,7 @@ footer{
     <div class="cards">
 
         <div class="card searchable-item">
-            <div class="icon icon-amber">🏛️️</div>
+            <div class="icon icon-amber">🏛</div>
 
             <h3>عن الكلية</h3>
 
@@ -1091,69 +1121,156 @@ footer{
 <section id="schedule" class="searchable-section">
 
     <div class="section-title">
-        <h2>📅 جدول المحاضرات الأسبوعي</h2>
-        <p>المواعيد الرسمية للمحاضرات من السبت إلى الخميس</p>
+        <h2>📅 جدول المحاضرات الأسبوعي (الفصل الدراسي الأول 2026-2027)</h2>
+        <p>الدفعة 2023 و 2024 - كلية العلوم الإدارية</p>
+    </div>
+
+    <!-- المجموعة الأولى -->
+    <div class="group-title searchable-item">
+        📌 المجموعة الأولى (إدارة أعمال + إدارة التسويق + إدارة الموارد البشرية + إدارة عامة + السكرتارية التنفيذية)
     </div>
 
     <div class="table-box searchable-item">
-
         <table>
-
             <thead>
                 <tr>
                     <th>اليوم</th>
-                    <th>المحاضرة الأولى</th>
-                    <th>المحاضرة الثانية</th>
-                    <th>المحاضرة الثالثة</th>
+                    <th>8:00 - 10:00</th>
+                    <th>10:30 - 12:30</th>
+                    <th>1:00 - 3:00</th>
+                    <th>3:00 - 5:00</th>
                 </tr>
             </thead>
-
             <tbody>
                 <tr>
-                    <td>السبت</td>
+                    <td><strong>الثلاثاء</strong></td>
+                    <td>
+                        <span class="schedule-cell-subject">السلوك التنظيمي</span>
+                        <span class="schedule-cell-prof">د. محمد تاج الدين</span>
+                        <span class="schedule-cell-hall">قاعة G8</span>
+                    </td>
+                    <td>
+                        <span class="schedule-cell-subject">مهارات الحاسوب</span>
+                        <span class="schedule-cell-prof">أ. حفصة حسن</span>
+                        <span class="schedule-cell-hall">قاعة G8</span>
+                    </td>
+                    <td>
+                        <span class="schedule-cell-subject">الاقتصاد الجزئي</span>
+                        <span class="schedule-cell-prof">د. عاطف حسن</span>
+                        <span class="schedule-cell-hall">قاعة G8</span>
+                    </td>
+                    <td>
+                        <span class="schedule-cell-subject">الإحصاء في الأعمال (1)</span>
+                        <span class="schedule-cell-prof">د. أحمد العربي</span>
+                        <span class="schedule-cell-hall">قاعة G8</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>الأربعاء</strong></td>
+                    <td>—</td>
                     <td>—</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
-
                 <tr>
-                    <td>الأحد</td>
-                    <td>—</td>
-                    <td>—</td>
-                    <td>—</td>
-                </tr>
-
-                <tr>
-                    <td>الاثنين</td>
-                    <td>—</td>
-                    <td>—</td>
-                    <td>—</td>
-                </tr>
-
-                <tr>
-                    <td>الثلاثاء</td>
-                    <td>—</td>
-                    <td>—</td>
-                    <td>—</td>
-                </tr>
-
-                <tr>
-                    <td>الأربعاء</td>
-                    <td>—</td>
-                    <td>—</td>
-                    <td>—</td>
-                </tr>
-
-                <tr>
-                    <td>الخميس</td>
-                    <td>—</td>
-                    <td>—</td>
-                    <td>—</td>
+                    <td><strong>الخميس</strong></td>
+                    <td>
+                        <span class="schedule-cell-subject">المحاسبة المالية (1)</span>
+                        <span class="schedule-cell-prof">د. الضيف زكريا</span>
+                        <span class="schedule-cell-hall">قاعة G8</span>
+                    </td>
+                    <td>
+                        <span class="schedule-cell-subject">مهارات اللغة الإنجليزية (4)</span>
+                        <span class="schedule-cell-prof">د. معتصم إبراهيم</span>
+                        <span class="schedule-cell-hall">قاعة G8</span>
+                    </td>
+                    <td>
+                        <span class="schedule-cell-subject">القانون التجاري</span>
+                        <span class="schedule-cell-prof">أ. محمود حسن</span>
+                        <span class="schedule-cell-hall">قاعة G8</span>
+                    </td>
+                    <td>
+                        <span class="schedule-cell-subject">مبادئ العمليات المصرفية</span>
+                        <span class="schedule-cell-prof">أ. صدام نورين</span>
+                        <span class="schedule-cell-hall">قاعة G8</span>
+                    </td>
                 </tr>
             </tbody>
-
         </table>
+    </div>
 
+    <!-- المجموعة الثانية -->
+    <div class="group-title searchable-item">
+        📌 المجموعة الثانية (المحاسبة والتمويل + التكاليف والمحاسبة الإدارية + الدراسات المصرفية والمالية)
+    </div>
+
+    <div class="table-box searchable-item">
+        <table>
+            <thead>
+                <tr>
+                    <th>اليوم</th>
+                    <th>8:00 - 10:00</th>
+                    <th>10:30 - 12:30</th>
+                    <th>1:00 - 3:00</th>
+                    <th>3:00 - 5:00</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>الثلاثاء</strong></td>
+                    <td>
+                        <span class="schedule-cell-subject">مهارات الحاسوب</span>
+                        <span class="schedule-cell-prof">أ. حفصة حسن</span>
+                        <span class="schedule-cell-hall">القاعة الكبرى FH</span>
+                    </td>
+                    <td>
+                        <span class="schedule-cell-subject">السلوك التنظيمي</span>
+                        <span class="schedule-cell-prof">د. محمد تاج الدين</span>
+                        <span class="schedule-cell-hall">القاعة الكبرى FH</span>
+                    </td>
+                    <td>
+                        <span class="schedule-cell-subject">الإحصاء في الأعمال (1)</span>
+                        <span class="schedule-cell-prof">د. أحمد العربي</span>
+                        <span class="schedule-cell-hall">القاعة الكبرى FH</span>
+                    </td>
+                    <td>
+                        <span class="schedule-cell-subject">الاقتصاد الجزئي</span>
+                        <span class="schedule-cell-prof">د. عاطف حسن</span>
+                        <span class="schedule-cell-hall">القاعة الكبرى FH</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>الأربعاء</strong></td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td><strong>الخميس</strong></td>
+                    <td>
+                        <span class="schedule-cell-subject">مهارات اللغة الإنجليزية (4)</span>
+                        <span class="schedule-cell-prof">د. معتصم إبراهيم</span>
+                        <span class="schedule-cell-hall">القاعة الكبرى FH</span>
+                    </td>
+                    <td>
+                        <span class="schedule-cell-subject">المحاسبة المالية (1)</span>
+                        <span class="schedule-cell-prof">د. الضيف زكريا</span>
+                        <span class="schedule-cell-hall">القاعة الكبرى FH</span>
+                    </td>
+                    <td>
+                        <span class="schedule-cell-subject">مبادئ العمليات المصرفية</span>
+                        <span class="schedule-cell-prof">أ. صدام نورين</span>
+                        <span class="schedule-cell-hall">القاعة الكبرى FH</span>
+                    </td>
+                    <td>
+                        <span class="schedule-cell-subject">القانون التجاري</span>
+                        <span class="schedule-cell-prof">أ. محمود حسن</span>
+                        <span class="schedule-cell-hall">القاعة الكبرى FH</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 </section>
