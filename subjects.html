@@ -96,7 +96,35 @@ nav{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 3px 15px rgba
     cursor:pointer;
     font-weight:bold;
 }
+
+/* تصميم تبويبات الأقسام */
+.section-tabs {
+    display: flex;
+    background: #eef3f8;
+    padding: 6px;
+    border-bottom: 1px solid var(--border);
+}
+.tab-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--muted);
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+.tab-btn.active {
+    background: #fff;
+    color: var(--primary);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
 .modal-body{padding:20px;}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
 
 .lecture-item{display:flex;justify-content:space-between;align-items:center;padding:12px 10px;border-bottom:1px solid var(--border);transition:.2s;}
 .lecture-item:last-child{border-bottom:none;}
@@ -153,11 +181,10 @@ footer strong{color:var(--gold);}
 
     <div class="section-title">
         <h2>مقررات الفصل الدراسي</h2>
-        <p>اضغط على "عرض المحاضرات والملفات" لأي مادة لاستعراض المحاضرات التسع (1 - 9)</p>
+        <p>اختر المادة ثم تنقل بين القسم الأول والقسم الثاني لاستعراض المحاضرات والملفات الخاصة بجدول كل قسم</p>
     </div>
 
     <div class="subjects-grid">
-        
         <!-- 1. إحصاء 1 -->
         <div class="subject-card">
             <div class="subject-icon">📊</div>
@@ -200,7 +227,7 @@ footer strong{color:var(--gold);}
 
         <!-- 6. قانون تجاري -->
         <div class="subject-card">
-            <div class="subject-icon">⚖️️</div>
+            <div class="subject-icon">⚖</div>
             <h3>قانون تجاري</h3>
             <p>الأعمال التجارية والشركات والعقود.</p>
             <button class="sub-btn" onclick="openModal('lawModal')">عرض المحاضرات والملفات 📂</button>
@@ -221,7 +248,6 @@ footer strong{color:var(--gold);}
             <p>سلوك الأفراد والجماعات داخل المنظمات الإدارية.</p>
             <button class="sub-btn" onclick="openModal('orgModal')">عرض المحاضرات والملفات 📂</button>
         </div>
-
     </div>
 
 </main>
@@ -230,19 +256,27 @@ footer strong{color:var(--gold);}
 <div id="stat1Modal" class="modal-overlay">
     <div class="modal-box">
         <div class="modal-header">
-            <h3>📊 إحصاء 1 (المحاضرات التسع)</h3>
+            <h3>📊 إحصاء 1</h3>
             <button class="close-modal" onclick="closeModal('stat1Modal')">&times;</button>
         </div>
+        <div class="section-tabs">
+            <button class="tab-btn active" onclick="switchTab(this, 'stat1-sec1')">القسم الأول</button>
+            <button class="tab-btn" onclick="switchTab(this, 'stat1-sec2')">القسم الثاني</button>
+        </div>
         <div class="modal-body">
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الأولى</h4><span>مقدمة في الإحصاء وعرض البيانات</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثانية</h4><span>جداول التوزيع التكراري</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثالثة</h4><span>مقاييس النزعة المركزية (الوسط)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الرابعة</h4><span>الوسيط والمنوال</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الخامسة</h4><span>مقاييس التشتت والانحراف المعياري</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السادسة</h4><span>معاملات الاختلاف والتواء البيانات</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السابعة</h4><span>مبادئ الاحتمالات الأساسية</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثامنة</h4><span>قوانين الجمع والضرب في الاحتمالات</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة التاسعة</h4><span>المراجعة العامة والتطبيقات الإحصائية</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            <div id="stat1-sec1" class="tab-content active">
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الأولى</h4><span>مقدمة في الإحصاء وعرض البيانات</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثانية</h4><span>جداول التوزيع التكراري</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثالثة</h4><span>مقاييس النزعة المركزية (الوسط)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الرابعة</h4><span>الوسيط والمنوال</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            </div>
+            <div id="stat1-sec2" class="tab-content">
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الخامسة</h4><span>مقاييس التشتت والانحراف المعياري</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السادسة</h4><span>معاملات الاختلاف والتواء البيانات</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السابعة</h4><span>مبادئ الاحتمالات الأساسية</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثامنة</h4><span>قوانين الجمع والضرب في الاحتمالات</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة التاسعة</h4><span>المراجعة العامة والتطبيقات الإحصائية</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            </div>
         </div>
     </div>
 </div>
@@ -251,19 +285,27 @@ footer strong{color:var(--gold);}
 <div id="acc1Modal" class="modal-overlay">
     <div class="modal-box">
         <div class="modal-header">
-            <h3>💰 محاسبة مالية 1 (المحاضرات التسع)</h3>
+            <h3>💰 محاسبة مالية 1</h3>
             <button class="close-modal" onclick="closeModal('acc1Modal')">&times;</button>
         </div>
+        <div class="section-tabs">
+            <button class="tab-btn active" onclick="switchTab(this, 'acc1-sec1')">القسم الأول</button>
+            <button class="tab-btn" onclick="switchTab(this, 'acc1-sec2')">القسم الثاني</button>
+        </div>
         <div class="modal-body">
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الأولى</h4><span>مقدمة في علم المحاسبة والمعادلة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثانية</h4><span>الدفاتر المحاسبية (اليومية والأستاذ)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثالثة</h4><span>التسجيل في دفتر اليومية العامة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الرابعة</h4><span>ترحيل القيود إلى دفتر الأستاذ</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الخامسة</h4><span>إعداد ميزان المراجعة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السادسة</h4><span>التسويات الجردية والمستحقات</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السابعة</h4><span>إعداد القوائم المالية (قائمة الدخل)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثامنة</h4><span>قائمة المركز المالي والمراجعة العامة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة التاسعة</h4><span>المراجعة النهائية والتطبيقات العملية</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            <div id="acc1-sec1" class="tab-content active">
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الأولى</h4><span>مقدمة في علم المحاسبة والمعادلة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثانية</h4><span>الدفاتر المحاسبية (اليومية والأستاذ)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثالثة</h4><span>التسجيل في دفتر اليومية العامة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الرابعة</h4><span>ترحيل القيود إلى دفتر الأستاذ</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            </div>
+            <div id="acc1-sec2" class="tab-content">
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الخامسة</h4><span>إعداد ميزان المراجعة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السادسة</h4><span>التسويات الجردية والمستحقات</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السابعة</h4><span>إعداد القوائم المالية (قائمة الدخل)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثامنة</h4><span>قائمة المركز المالي والمراجعة العامة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة التاسعة</h4><span>المراجعة النهائية والتطبيقات العملية</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            </div>
         </div>
     </div>
 </div>
@@ -272,19 +314,27 @@ footer strong{color:var(--gold);}
 <div id="engModal" class="modal-overlay">
     <div class="modal-box">
         <div class="modal-header">
-            <h3>🗣 إنجليزي (المحاضرات التسع)</h3>
+            <h3>🗣 إنجليزي</h3>
             <button class="close-modal" onclick="closeModal('engModal')">&times;</button>
         </div>
+        <div class="section-tabs">
+            <button class="tab-btn active" onclick="switchTab(this, 'eng-sec1')">القسم الأول</button>
+            <button class="tab-btn" onclick="switchTab(this, 'eng-sec2')">القسم الثاني</button>
+        </div>
         <div class="modal-body">
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الأولى</h4><span>Business English Introduction</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثانية</h4><span>Company Structure Vocabulary</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثالثة</h4><span>Writing Professional Emails</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الرابعة</h4><span>Administrative Correspondence</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الخامسة</h4><span>Meeting Terminologies</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السادسة</h4><span>Banking & Finance Terms</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السابعة</h4><span>Marketing & Sales Vocabulary</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثامنة</h4><span>Reading Comprehension Practice</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة التاسعة</h4><span>Final Revision & Grammar</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            <div id="eng-sec1" class="tab-content active">
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الأولى</h4><span>Business English Introduction</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثانية</h4><span>Company Structure Vocabulary</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثالثة</h4><span>Writing Professional Emails</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الرابعة</h4><span>Administrative Correspondence</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            </div>
+            <div id="eng-sec2" class="tab-content">
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الخامسة</h4><span>Meeting Terminologies</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السادسة</h4><span>Banking & Finance Terms</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السابعة</h4><span>Marketing & Sales Vocabulary</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثامنة</h4><span>Reading Comprehension Practice</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة التاسعة</h4><span>Final Revision & Grammar</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            </div>
         </div>
     </div>
 </div>
@@ -293,19 +343,27 @@ footer strong{color:var(--gold);}
 <div id="compModal" class="modal-overlay">
     <div class="modal-box">
         <div class="modal-header">
-            <h3>💻 حاسوب (المحاضرات التسع)</h3>
+            <h3>💻 حاسوب</h3>
             <button class="close-modal" onclick="closeModal('compModal')">&times;</button>
         </div>
+        <div class="section-tabs">
+            <button class="tab-btn active" onclick="switchTab(this, 'comp-sec1')">القسم الأول</button>
+            <button class="tab-btn" onclick="switchTab(this, 'comp-sec2')">القسم الثاني</button>
+        </div>
         <div class="modal-body">
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الأولى</h4><span>مقدمة في أنظمة الحاسوب وتقنية المعلومات</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثانية</h4><span>مكونات الحاسوب (مادية وبرمجية)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثالثة</h4><span>أنظمة التشغيل وإدارة الملفات</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الرابعة</h4><span>برامج الأوفيس (جداول البيانات Excel)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الخامسة</h4><span>معالجة النصوص (Word) والعروض</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السادسة</h4><span>قواعد البيانات وأهميتها في الإدارة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السابعة</h4><span>شبكات الحاسوب والإنترنت</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثامنة</h4><span>أمن المعلومات وحماية البيانات</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة التاسعة</h4><span>المراجعة الشاملة لمقرر الحاسوب</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            <div id="comp-sec1" class="tab-content active">
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الأولى</h4><span>مقدمة في أنظمة الحاسوب وتقنية المعلومات</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثانية</h4><span>مكونات الحاسوب (مادية وبرمجية)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثالثة</h4><span>أنظمة التشغيل وإدارة الملفات</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الرابعة</h4><span>برامج الأوفيس (جداول البيانات Excel)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            </div>
+            <div id="comp-sec2" class="tab-content">
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الخامسة</h4><span>معالجة النصوص (Word) والعروض</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السادسة</h4><span>قواعد البيانات وأهميتها في الإدارة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السابعة</h4><span>شبكات الحاسوب والإنترنت</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثامنة</h4><span>أمن المعلومات وحماية البيانات</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة التاسعة</h4><span>المراجعة الشاملة لمقرر الحاسوب</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            </div>
         </div>
     </div>
 </div>
@@ -314,19 +372,27 @@ footer strong{color:var(--gold);}
 <div id="banksModal" class="modal-overlay">
     <div class="modal-box">
         <div class="modal-header">
-            <h3>🏦 مصارف (المحاضرات التسع)</h3>
+            <h3>🏦 مصارف</h3>
             <button class="close-modal" onclick="closeModal('banksModal')">&times;</button>
         </div>
+        <div class="section-tabs">
+            <button class="tab-btn active" onclick="switchTab(this, 'banks-sec1')">القسم الأول</button>
+            <button class="tab-btn" onclick="switchTab(this, 'banks-sec2')">القسم الثاني</button>
+        </div>
         <div class="modal-body">
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الأولى</h4><span>مفهوم الجهاز المصرفي وتطور البنوك</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثانية</h4><span>أنواع البنوك ووظائف البنك المركزي</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثالثة</h4><span>العمليات المصرفية وقبول الودائع</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الرابعة</h4><span>سياسات الائتمان ومنح القروض</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الخامسة</h4><span>خطابات الضمان والاعتمادات المستندية</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السادسة</h4><span>المقاصة المصرفية والتحويلات</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السابعة</h4><span>الصيرفة الإسلامية ومبادئها</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثامنة</h4><span>الخدمات المصرفية الإلكترونية الحديثة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة التاسعة</h4><span>المراجعة العامة للمقرر المصرفي</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            <div id="banks-sec1" class="tab-content active">
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الأولى</h4><span>مفهوم الجهاز المصرفي وتطور البنوك</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثانية</h4><span>أنواع البنوك ووظائف البنك المركزي</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثالثة</h4><span>العمليات المصرفية وقبول الودائع</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الرابعة</h4><span>سياسات الائتمان ومنح القروض</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            </div>
+            <div id="banks-sec2" class="tab-content">
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الخامسة</h4><span>خطابات الضمان والاعتمادات المستندية</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السادسة</h4><span>المقاصة المصرفية والتحويلات</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السابعة</h4><span>الصيرفة الإسلامية ومبادئها</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثامنة</h4><span>الخدمات المصرفية الإلكترونية الحديثة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة التاسعة</h4><span>المراجعة العامة للمقرر المصرفي</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            </div>
         </div>
     </div>
 </div>
@@ -335,19 +401,27 @@ footer strong{color:var(--gold);}
 <div id="lawModal" class="modal-overlay">
     <div class="modal-box">
         <div class="modal-header">
-            <h3>⚖️ قانون تجاري (المحاضرات التسع)</h3>
+            <h3>⚖️ قانون تجاري</h3>
             <button class="close-modal" onclick="closeModal('lawModal')">&times;</button>
         </div>
+        <div class="section-tabs">
+            <button class="tab-btn active" onclick="switchTab(this, 'law-sec1')">القسم الأول</button>
+            <button class="tab-btn" onclick="switchTab(this, 'law-sec2')">القسم الثاني</button>
+        </div>
         <div class="modal-body">
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الأولى</h4><span>مفهوم القانون التجاري ونطاق تطبيقه</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثانية</h4><span>الأعمال التجارية والتاجر</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثالثة</h4><span>الدفاتر التجارية والشركات التجارية</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الرابعة</h4><span>شركة الأشخاص (التضامن والتوصية)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الخامسة</h4><span>شركات الأموال (شركة المساهمة)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السادسة</h4><span>العقود التجارية الأساسية</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السابعة</h4><span>الأوراق التجارية (الكمبيالة والشيك)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثامنة</h4><span>الإفلاس والتسوية الواقية منه</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة التاسعة</h4><span>المراجعة الشاملة للقانون التجاري</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            <div id="law-sec1" class="tab-content active">
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الأولى</h4><span>مفهوم القانون التجاري ونطاق تطبيقه</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثانية</h4><span>الأعمال التجارية والتاجر</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثالثة</h4><span>الدفاتر التجارية والشركات التجارية</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الرابعة</h4><span>شركة الأشخاص (التضامن والتوصية)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            </div>
+            <div id="law-sec2" class="tab-content">
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الخامسة</h4><span>شركات الأموال (شركة المساهمة)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السادسة</h4><span>العقود التجارية الأساسية</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السابعة</h4><span>الأوراق التجارية (الكمبيالة والشيك)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثامنة</h4><span>الإفلاس والتسوية الواقية منه</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة التاسعة</h4><span>المراجعة الشاملة للقانون التجاري</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            </div>
         </div>
     </div>
 </div>
@@ -356,19 +430,27 @@ footer strong{color:var(--gold);}
 <div id="microModal" class="modal-overlay">
     <div class="modal-box">
         <div class="modal-header">
-            <h3>📈 اقتصاد جزئي (المحاضرات التسع)</h3>
+            <h3>📈 اقتصاد جزئي</h3>
             <button class="close-modal" onclick="closeModal('microModal')">&times;</button>
         </div>
+        <div class="section-tabs">
+            <button class="tab-btn active" onclick="switchTab(this, 'micro-sec1')">القسم الأول</button>
+            <button class="tab-btn" onclick="switchTab(this, 'micro-sec2')">القسم الثاني</button>
+        </div>
         <div class="modal-body">
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الأولى</h4><span>مفهوم علم الاقتصاد ومشكلة الندرة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثانية</h4><span>الطلب والعوامل المؤثرة فيه</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثالثة</h4><span>العرض وقانون العرض والطلب</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الرابعة</h4><span>التوازن السعري في السوق</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الخامسة</h4><span>مرونة الطلب والعرض</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السادسة</h4><span>نظرية سلوك المستهلك والمنفعة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السابعة</h4><span>تواليف الإنتاج والتكاليف قصيرة الأجل</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثامنة</h4><span>هياكل الأسواق (المنافسة والاحتكار)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة التاسعة</h4><span>مراجعة شاملة في الاقتصاد الجزئي</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            <div id="micro-sec1" class="tab-content active">
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الأولى</h4><span>مفهوم علم الاقتصاد ومشكلة الندرة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثانية</h4><span>الطلب والعوامل المؤثرة فيه</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثالثة</h4><span>العرض وقانون العرض والطلب</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الرابعة</h4><span>التوازن السعري في السوق</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            </div>
+            <div id="micro-sec2" class="tab-content">
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الخامسة</h4><span>مرونة الطلب والعرض</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السادسة</h4><span>نظرية سلوك المستهلك والمنفعة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السابعة</h4><span>تواليف الإنتاج والتكاليف قصيرة الأجل</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثامنة</h4><span>هياكل الأسواق (المنافسة والاحتكار)</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة التاسعة</h4><span>مراجعة شاملة في الاقتصاد الجزئي</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            </div>
         </div>
     </div>
 </div>
@@ -377,19 +459,27 @@ footer strong{color:var(--gold);}
 <div id="orgModal" class="modal-overlay">
     <div class="modal-box">
         <div class="modal-header">
-            <h3>👥 سلوك تنظيمي (المحاضرات التسع)</h3>
+            <h3>👥 سلوك تنظيمي</h3>
             <button class="close-modal" onclick="closeModal('orgModal')">&times;</button>
         </div>
+        <div class="section-tabs">
+            <button class="tab-btn active" onclick="switchTab(this, 'org-sec1')">القسم الأول</button>
+            <button class="tab-btn" onclick="switchTab(this, 'org-sec2')">القسم الثاني</button>
+        </div>
         <div class="modal-body">
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الأولى</h4><span>مفهوم السلوك التنظيمي وأهدافه</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثانية</h4><span>الإدراك والشخصية في بيئة العمل</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثالثة</h4><span>القيم واتجاهات العاملين</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الرابعة</h4><span>نظريات الحوافز والدافعية للعمل</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الخامسة</h4><span>ديناميكية الجماعات وفرق العمل</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السادسة</h4><span>القيادة الإدارية وأنماطها المختلفة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السابعة</h4><span>الصراع التنظيمي وكيفية إدارته</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثامنة</h4><span>ضغوط العمل وإدارتها بفعالية</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
-            <div class="lecture-item"><div class="lec-info"><h4>المحاضرة التاسعة</h4><span>التغيير والتطوير التنظيمي والمراجعة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            <div id="org-sec1" class="tab-content active">
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الأولى</h4><span>مفهوم السلوك التنظيمي وأهدافه</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثانية</h4><span>الإدراك والشخصية في بيئة العمل</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثالثة</h4><span>القيم واتجاهات العاملين</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الرابعة</h4><span>نظريات الحوافز والدافعية للعمل</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            </div>
+            <div id="org-sec2" class="tab-content">
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الخامسة</h4><span>ديناميكية الجماعات وفرق العمل</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السادسة</h4><span>القيادة الإدارية وأنماطها المختلفة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة السابعة</h4><span>الصراع التنظيمي وكيفية إدارته</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة الثامنة</h4><span>ضغوط العمل وإدارتها بفعالية</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+                <div class="lecture-item"><div class="lec-info"><h4>المحاضرة التاسعة</h4><span>التغيير والتطوير التنظيمي والمراجعة</span></div><a href="#" class="lec-action-btn disabled">قريباً ⏳</a></div>
+            </div>
         </div>
     </div>
 </div>
@@ -406,6 +496,20 @@ function openModal(modalId) {
 function closeModal(modalId) {
     document.getElementById(modalId).classList.remove('active');
 }
+
+// دالة التنقل بين تبويبات الأقسام
+function switchTab(buttonElement, targetTabId) {
+    var modalBox = buttonElement.closest('.modal-box');
+    var tabs = modalBox.querySelectorAll('.tab-btn');
+    var contents = modalBox.querySelectorAll('.tab-content');
+
+    tabs.forEach(function(tab) { tab.classList.remove('active'); });
+    contents.forEach(function(content) { content.classList.remove('active'); });
+
+    buttonElement.classList.add('active');
+    document.getElementById(targetTabId).classList.add('active');
+}
+
 // إغلاق النافذة عند الضغط خارجها
 window.onclick = function(event) {
     if (event.target.classList.contains('modal-overlay')) {
