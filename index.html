@@ -10,9 +10,11 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background:#f0f4f8;color:#1e293b;line-height:1.8;
-    transition: background 0.3s ease, color 0.3s ease;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+    background:#f0f4f8;
+    color:#1e293b;
+    line-height:1.8;
+    transition:background .3s ease,color .3s ease;
 }
 
 :root{
@@ -20,13 +22,14 @@ body{
     --primary2:#1e3a8a;
     --accent:#3b82f6;
     --gold:#f59e0b;
-    --white:#ffffff;
+    --white:#fff;
     --muted:#64748b;
     --border:#e2e8f0;
-    --shadow:0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.08);
+    --shadow:0 10px 25px -5px rgba(15,23,42,.08),
+             0 8px 10px -6px rgba(15,23,42,.08);
 }
 
-body.dark-mode {
+body.dark-mode{
     background:#0b0f19;
     color:#f1f5f9;
     --primary:#f8fafc;
@@ -34,39 +37,20 @@ body.dark-mode {
     --white:#111827;
     --muted:#94a3b8;
     --border:#1f2937;
-    --shadow:0 10px 25px -5px rgba(0,0,0,0.5);
+    --shadow:0 10px 25px -5px rgba(0,0,0,.5);
 }
 
-body.dark-mode nav{
-    background:rgba(17,24,39,0.95);
-}
-
-body.dark-mode .nav-container a{
-    color:#e2e8f0;
-}
-
+body.dark-mode nav{background:rgba(17,24,39,.95);}
+body.dark-mode .nav-container a{color:#e2e8f0;}
 body.dark-mode .nav-container a:hover,
 body.dark-mode .nav-container a.active{
     background:#0284c7;
-    color:#ffffff;
+    color:#fff;
 }
-
-body.dark-mode .stat strong{
-    color:#38bdf8;
-}
-
-body.dark-mode table th{
-    background:#1e293b;
-}
-
-body.dark-mode .creators-box{
-    background:#111827;
-}
-
-body.dark-mode .search-box-wrapper{
-    background:#111827;
-}
-
+body.dark-mode .stat strong{color:#38bdf8;}
+body.dark-mode table th{background:#1e293b;}
+body.dark-mode .creators-box{background:#111827;}
+body.dark-mode .search-box-wrapper{background:#111827;}
 body.dark-mode .search-input{
     background:#1f2937;
     color:#f8fafc;
@@ -75,7 +59,7 @@ body.dark-mode .search-input{
 
 header{
     background:linear-gradient(135deg,var(--primary) 0%,var(--primary2) 100%);
-    color:white;
+    color:#fff;
     padding:35px 20px;
     text-align:center;
     position:relative;
@@ -86,7 +70,7 @@ header{
     font-size:46px;
     font-weight:900;
     letter-spacing:1px;
-    text-shadow:0 2px 10px rgba(0,0,0,0.3);
+    text-shadow:0 2px 10px rgba(0,0,0,.3);
 }
 
 .university-title{
@@ -112,7 +96,7 @@ header{
     border-radius:30px;
     font-weight:bold;
     font-size:14px;
-    box-shadow:0 4px 12px rgba(245,158,11,0.3);
+    box-shadow:0 4px 12px rgba(245,158,11,.3);
 }
 
 .header-btns{
@@ -124,9 +108,10 @@ header{
     z-index:10;
 }
 
-.theme-toggle-btn, .admin-login-btn{
-    background:rgba(255,255,255,0.15);
-    border:1px solid rgba(255,255,255,0.3);
+.theme-toggle-btn,
+.admin-login-btn{
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.3);
     color:#fff;
     padding:8px 14px;
     border-radius:12px;
@@ -134,11 +119,12 @@ header{
     font-size:14px;
     font-weight:bold;
     backdrop-filter:blur(5px);
-    transition:0.2s;
+    transition:.2s;
 }
 
-.theme-toggle-btn:hover, .admin-login-btn:hover{
-    background:rgba(255,255,255,0.25);
+.theme-toggle-btn:hover,
+.admin-login-btn:hover{
+    background:rgba(255,255,255,.25);
 }
 
 .ticker-container{
@@ -178,8 +164,8 @@ header{
     background:var(--white);
     padding:15px 20px;
     border-bottom:1px solid var(--border);
-    box-shadow:0 4px 10px rgba(0,0,0,0.03);
-    transition:background 0.3s ease;
+    box-shadow:0 4px 10px rgba(0,0,0,.03);
+    transition:background .3s ease;
 }
 
 .search-box-container{
@@ -198,7 +184,7 @@ header{
     font-size:15px;
     font-family:inherit;
     outline:none;
-    transition:all 0.3s ease;
+    transition:all .3s ease;
     background:#f8fafc;
     color:var(--primary);
 }
@@ -206,7 +192,7 @@ header{
 .search-input:focus{
     border-color:var(--accent);
     background:var(--white);
-    box-shadow:0 0 0 4px rgba(59,130,246,0.15);
+    box-shadow:0 0 0 4px rgba(59,130,246,.15);
 }
 
 .search-icon-inside{
@@ -232,7 +218,7 @@ header{
 
 .clear-search-btn:hover{
     color:#ef4444;
-    background:rgba(239,68,68,0.1);
+    background:rgba(239,68,68,.1);
 }
 
 .no-results-msg{
@@ -253,14 +239,14 @@ header{
 }
 
 nav{
-    background:rgba(255,255,255,0.95);
+    background:rgba(255,255,255,.95);
     backdrop-filter:blur(10px);
     position:sticky;
     top:0;
     z-index:100;
-    box-shadow:0 4px 20px rgba(0,0,0,0.05);
+    box-shadow:0 4px 20px rgba(0,0,0,.05);
     border-bottom:1px solid var(--border);
-    transition:background 0.3s ease;
+    transition:background .3s ease;
 }
 
 .nav-container{
@@ -284,13 +270,13 @@ nav{
     white-space:nowrap;
     font-weight:600;
     font-size:14px;
-    transition:all 0.3s ease;
+    transition:all .3s ease;
 }
 
 .nav-container a:hover,
 .nav-container a.active{
     background:var(--primary2);
-    color:white;
+    color:#fff;
 }
 
 .container{
@@ -301,7 +287,7 @@ nav{
 
 section{
     margin-bottom:45px;
-    transition:opacity 0.3s ease;
+    transition:opacity .3s ease;
 }
 
 .section-title{
@@ -323,7 +309,7 @@ section{
 
 .group-title{
     background:var(--primary2);
-    color:white;
+    color:#fff;
     padding:12px 20px;
     border-radius:12px;
     margin-bottom:15px;
@@ -352,7 +338,7 @@ section{
 
 .countdown-box{
     background:linear-gradient(135deg,var(--primary),var(--primary2));
-    color:white;
+    color:#fff;
     border-radius:24px;
     padding:30px;
     text-align:center;
@@ -360,7 +346,7 @@ section{
     max-width:750px;
     margin-left:auto;
     margin-right:auto;
-    box-shadow:0 15px 35px rgba(15,23,42,0.15);
+    box-shadow:0 15px 35px rgba(15,23,42,.15);
 }
 
 .countdown-box h3{
@@ -378,8 +364,8 @@ section{
 }
 
 .time-card{
-    background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.15);
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
     padding:12px 18px;
     border-radius:14px;
     min-width:80px;
@@ -404,7 +390,7 @@ section{
     text-align:center;
     box-shadow:var(--shadow);
     border:1px solid var(--border);
-    transition:background 0.3s ease;
+    transition:background .3s ease;
 }
 
 .hero h2{
@@ -435,11 +421,11 @@ section{
     justify-content:center;
     text-decoration:none;
     background:linear-gradient(135deg,var(--primary),var(--primary2));
-    color:white;
+    color:#fff;
     padding:22px 15px;
     border-radius:18px;
     font-weight:bold;
-    transition:0.3s;
+    transition:.3s;
 }
 
 .quick-action:hover{
@@ -466,7 +452,7 @@ section{
     padding:20px 15px;
     text-align:center;
     box-shadow:var(--shadow);
-    transition:background 0.3s ease;
+    transition:background .3s ease;
 }
 
 .stat strong{
@@ -497,7 +483,7 @@ section{
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-    transition:0.3s;
+    transition:.3s;
 }
 
 .card:hover{
@@ -514,7 +500,7 @@ section{
     margin-left:auto;
     margin-right:auto;
     color:#fff;
-    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
 }
 
 .card .icon.icon-amber{
@@ -555,7 +541,7 @@ section{
     border-radius:12px;
     font-size:14px;
     font-weight:bold;
-    transition:0.2s;
+    transition:.2s;
     margin-top:8px;
 }
 
@@ -566,7 +552,7 @@ section{
 
 .btn-highlight{
     background:linear-gradient(135deg,#10b981,#059669)!important;
-    box-shadow:0 4px 15px rgba(16,185,129,0.4);
+    box-shadow:0 4px 15px rgba(16,185,129,.4);
 }
 
 .btn-highlight:hover{
@@ -579,7 +565,7 @@ section{
     border-radius:22px;
     border:1px solid var(--border);
     box-shadow:var(--shadow);
-    transition:background 0.3s ease;
+    transition:background .3s ease;
     margin-bottom:30px;
 }
 
@@ -603,7 +589,7 @@ th{
 
 .library{
     background:linear-gradient(135deg,var(--primary),var(--primary2));
-    color:white;
+    color:#fff;
     border-radius:24px;
     padding:45px 30px;
     text-align:center;
@@ -618,7 +604,7 @@ th{
     border-radius:14px;
     font-weight:800;
     margin-top:15px;
-    box-shadow:0 6px 20px rgba(245,158,11,0.4);
+    box-shadow:0 6px 20px rgba(245,158,11,.4);
 }
 
 .uploaded-files-list{
@@ -632,7 +618,7 @@ th{
 }
 
 .uploaded-file-item{
-    background:rgba(255,255,255,0.1);
+    background:rgba(255,255,255,.1);
     padding:12px 20px;
     border-radius:12px;
     display:flex;
@@ -659,7 +645,7 @@ th{
     padding:30px 25px;
     text-align:center;
     box-shadow:var(--shadow);
-    transition:background 0.3s ease;
+    transition:background .3s ease;
 }
 
 .link-card .big-icon{
@@ -681,12 +667,12 @@ th{
 
 footer{
     background:var(--primary);
-    color:white;
+    color:#fff;
     text-align:center;
     padding:45px 20px;
     margin-top:50px;
-    border-top:1px solid rgba(255,255,255,0.1);
-    transition:background 0.3s ease;
+    border-top:1px solid rgba(255,255,255,.1);
+    transition:background .3s ease;
 }
 
 .footer-buttons{
@@ -706,8 +692,8 @@ footer{
     font-weight:bold;
     font-size:15px;
     cursor:pointer;
-    transition:0.2s;
-    box-shadow:0 4px 15px rgba(245,158,11,0.3);
+    transition:.2s;
+    box-shadow:0 4px 15px rgba(245,158,11,.3);
 }
 
 .footer-btn:hover{
@@ -717,7 +703,7 @@ footer{
 
 .share-btn{
     background:var(--accent);
-    color:#ffffff;
+    color:#fff;
 }
 
 .share-btn:hover{
@@ -729,7 +715,7 @@ footer{
     bottom:25px;
     right:25px;
     background:var(--primary2);
-    color:white;
+    color:#fff;
     border:none;
     width:45px;
     height:45px;
@@ -739,9 +725,9 @@ footer{
     display:none;
     align-items:center;
     justify-content:center;
-    box-shadow:0 4px 15px rgba(0,0,0,0.3);
+    box-shadow:0 4px 15px rgba(0,0,0,.3);
     z-index:999;
-    transition:0.3s;
+    transition:.3s;
 }
 
 #backToTop:hover{
@@ -757,7 +743,7 @@ footer{
     top:0;
     width:100%;
     height:100%;
-    background:rgba(15,23,42,0.75);
+    background:rgba(15,23,42,.75);
     backdrop-filter:blur(6px);
     justify-content:center;
     align-items:center;
@@ -765,7 +751,7 @@ footer{
 }
 
 .modal-content{
-    background:white;
+    background:#fff;
     color:var(--primary);
     padding:35px 30px;
     border-radius:24px;
@@ -773,12 +759,12 @@ footer{
     width:100%;
     text-align:center;
     position:relative;
-    box-shadow:0 25px 50px -12px rgba(0,0,0,0.25);
-    animation:modalPop 0.3s ease;
+    box-shadow:0 25px 50px -12px rgba(0,0,0,.25);
+    animation:modalPop .3s ease;
 }
 
 @keyframes modalPop{
-    0%{transform:scale(0.9);opacity:0;}
+    0%{transform:scale(.9);opacity:0;}
     100%{transform:scale(1);opacity:1;}
 }
 
@@ -840,17 +826,17 @@ footer{
 
 .btn-alert-confirm{
     background:linear-gradient(135deg,#2563eb,#1d4ed8);
-    color:#ffffff;
+    color:#fff;
     border:none;
     padding:12px 28px;
     border-radius:12px;
     font-weight:bold;
     font-size:16px;
     cursor:pointer;
-    box-shadow:0 4px 15px rgba(37,99,235,0.4);
+    box-shadow:0 4px 15px rgba(37,99,235,.4);
     margin-top:15px;
     width:100%;
-    transition:0.2s;
+    transition:.2s;
 }
 
 .btn-alert-confirm:hover{
@@ -878,93 +864,240 @@ footer{
     <div class="modal-content">
         <div style="font-size:45px;margin-bottom:10px;">⚠</div>
         <h3>تنويه هام</h3>
-        <p>مرحباً بكم! نود إحاطتكم بأنه جارٍ العمل على تطوير وتحديث منصة الريان باستمرار لخدمتكم بشكل أفضل.</p>
-        <button class="btn-alert-confirm" id="confirmNoticeBtn" type="button">حسناً، الدخول للموقع 👍</button>
+        <p>
+            مرحباً بكم! نود إحاطتكم بأنه جارٍ العمل على تطوير وتحديث
+            منصة الريان باستمرار لخدمتكم بشكل أفضل.
+        </p>
+        <button class="btn-alert-confirm" id="confirmNoticeBtn" type="button">
+            حسناً، الدخول للموقع 👍
+        </button>
     </div>
 </div>
 
-<!-- نافذة لوحة التحكم بالكلمة السرية -->
 <div class="modal" id="adminModal">
+
     <div class="modal-content">
+
         <span class="close-modal" id="closeAdminModal">&times;</span>
+
         <h3>🔐 لوحة إدارة المنصة</h3>
-        <p>أدخل كلمة السر الخاصة بالليدر أو الدكتور للوصول إلى أدوات التعديل.</p>
+
+        <p>
+            أدخل كلمة السر الخاصة بالليدر أو الدكتور للوصول إلى أدوات التعديل.
+        </p>
 
         <div id="adminLoginForm">
-            <input type="password" id="adminPasswordInput" class="admin-input" placeholder="كلمة السر...">
-            <button class="btn-alert-confirm" id="loginAdminBtn" type="button">دخول 🔑</button>
+
+            <input
+                type="password"
+                id="adminPasswordInput"
+                class="admin-input"
+                placeholder="كلمة السر..."
+            >
+
+            <button class="btn-alert-confirm" id="loginAdminBtn" type="button">
+                دخول 🔑
+            </button>
+
         </div>
 
-        <div id="adminControlsPanel" style="display:none; text-align:right; margin-top:15px;">
+        <div id="adminControlsPanel"
+             style="display:none;text-align:right;margin-top:15px;">
+
             <hr style="margin:15px 0;">
-            <h4 style="margin-bottom:10px; color:var(--primary2);">📢 تعديل الشريط الإخباري:</h4>
-            <input type="text" id="newTickerInput" class="admin-input" placeholder="اكتب الخبر الجديد هنا...">
-            <button class="btn-alert-confirm" id="saveTickerBtn" type="button" style="margin-top:5px;">حفظ الخبر 💾</button>
+
+            <h4 style="margin-bottom:10px;color:var(--primary2);">
+                📢 تعديل الشريط الإخباري:
+            </h4>
+
+            <input
+                type="text"
+                id="newTickerInput"
+                class="admin-input"
+                placeholder="اكتب الخبر الجديد هنا..."
+            >
+
+            <button
+                class="btn-alert-confirm"
+                id="saveTickerBtn"
+                type="button"
+                style="margin-top:5px;">
+                حفظ الخبر 💾
+            </button>
 
             <hr style="margin:20px 0;">
-            <h4 style="margin-bottom:10px; color:var(--primary2);">📁 إضافة رابط محاضرة أو ملف:</h4>
-            <input type="text" id="fileNameInput" class="admin-input" placeholder="اسم المحاضرة / المادة...">
-            <input type="url" id="fileUrlInput" class="admin-input" placeholder="رابط الملف (Google Drive / Telegram)...">
-            <button class="btn-alert-confirm" id="saveFileBtn" type="button" style="margin-top:5px; background:linear-gradient(135deg,#10b981,#059669);">رفع / إضافة الملف 📤</button>
+
+            <h4 style="margin-bottom:10px;color:var(--primary2);">
+                📁 إضافة رابط محاضرة أو ملف:
+            </h4>
+
+            <input
+                type="text"
+                id="fileNameInput"
+                class="admin-input"
+                placeholder="اسم المحاضرة / المادة..."
+            >
+
+            <input
+                type="url"
+                id="fileUrlInput"
+                class="admin-input"
+                placeholder="رابط الملف (Google Drive / Telegram)..."
+            >
+
+            <button
+                class="btn-alert-confirm"
+                id="saveFileBtn"
+                type="button"
+                style="margin-top:5px;background:linear-gradient(135deg,#10b981,#059669);">
+                رفع / إضافة الملف 📤
+            </button>
+
         </div>
+
     </div>
+
 </div>
 
 <header>
+
     <div class="header-btns">
-        <button class="theme-toggle-btn" id="themeToggleBtn" type="button">🌙 الوضع الليلي</button>
-        <button class="admin-login-btn" id="openAdminBtn" type="button">🔐 دخول المشرفين</button>
+
+        <button class="theme-toggle-btn" id="themeToggleBtn" type="button">
+            🌙 الوضع الليلي
+        </button>
+
+        <button class="admin-login-btn" id="openAdminBtn" type="button">
+            🔐 دخول المشرفين
+        </button>
+
     </div>
 
     <div class="logo">الريان</div>
-    <div class="university-title">جامعة بحري</div>
-    <div class="subtitle">المنصة الطلابية | كلية العلوم الإدارية</div>
-    <div class="badge">دفعة 023 / 024</div>
+
+    <div class="university-title">
+        جامعة بحري
+    </div>
+
+    <div class="subtitle">
+        المنصة الطلابية | كلية العلوم الإدارية
+    </div>
+
+    <div class="badge">
+        دفعة 023 / 024
+    </div>
+
 </header>
 
 <div class="ticker-container">
-    <span class="ticker-title">عاجل 📢</span>
+
+    <span class="ticker-title">
+        عاجل 📢
+    </span>
+
     <div class="ticker-text" id="mainTickerText">
-        مرحباً بكم في منصة الريان - جامعة بحري لدفعة 023 / 024 - تابعوا جدول المحاضرات والملفات الدراسية أولاً بأول!
+        مرحباً بكم في منصة الريان - جامعة بحري لدفعة 023 / 024 -
+        تابعوا جدول المحاضرات والملفات الدراسية أولاً بأول!
     </div>
+
 </div>
 
 <div class="search-box-wrapper">
+
     <div class="search-box-container">
-        <span class="search-icon-inside">🔍</span>
-        <input type="text" id="siteSearchInput" class="search-input"
-        placeholder="ابحث عن مواد، اختبارات، نتيجة، جدول، أو روابط تواصل..."
-        autocomplete="off">
-        <button id="clearSearchBtn" class="clear-search-btn" title="مسح البحث">✕</button>
+
+        <span class="search-icon-inside">
+            🔍
+        </span>
+
+        <input
+            type="text"
+            id="siteSearchInput"
+            class="search-input"
+            placeholder="ابحث عن مواد، اختبارات، نتيجة، جدول، أو روابط تواصل..."
+            autocomplete="off"
+        >
+
+        <button
+            id="clearSearchBtn"
+            class="clear-search-btn"
+            title="مسح البحث">
+            ✕
+        </button>
+
     </div>
+
 </div>
 
 <nav>
+
     <div class="nav-container">
-        <a href="index.html" class="active">الرئيسية</a>
-        <a href="subjects.html">المواد</a>
-        <a href="about.html">عن الكلية</a>
-        <a href="results.html">النتيجة</a>
-        <a href="exams.html">الاختبارات</a>
-        <a href="study-tools.html">الوسائل التعليمية</a>
-        <a href="#schedule">الجدول</a>
-        <a href="#community">التواصل</a>
+
+        <a href="index.html" class="active">
+            الرئيسية
+        </a>
+
+        <a href="subjects.html">
+            المواد
+        </a>
+
+        <a href="about.html">
+            عن الكلية
+        </a>
+
+        <a href="results.html">
+            النتيجة
+        </a>
+
+        <a href="exams.html">
+            الاختبارات
+        </a>
+
+        <a href="study-tools.html">
+            الوسائل التعليمية
+        </a>
+
+        <a href="#schedule">
+            الجدول
+        </a>
+
+        <a href="#community">
+            التواصل
+        </a>
+
     </div>
+
 </nav>
 
 <main class="container">
 
 <div id="noResultsMsg" class="no-results-msg">
-    <div style="font-size:40px;margin-bottom:10px;">🔍❌</div>
-    <h4>عفواً، لم نجد أي نتائج تطابق بحثك!</h4>
-    <p>جرب البحث بكلمات أخرى مثل: "مواد"، "نتيجة"، "جدول"، "واتساب"، "ليدر".</p>
+
+    <div style="font-size:40px;margin-bottom:10px;">
+        🔍❌
+    </div>
+
+    <h4>
+        عفواً، لم نجد أي نتائج تطابق بحثك!
+    </h4>
+
+    <p>
+        جرب البحث بكلمات أخرى مثل:
+        "مواد"، "نتيجة"، "جدول"، "واتساب"، "ليدر".
+    </p>
+
 </div>
 
 <section class="searchable-section">
+
     <div class="countdown-box searchable-item">
-        <h3>⏳ العداد التنازلي لبداية الامتحانات (9 يناير 2027)</h3>
+
+        <h3>
+            ⏳ العداد التنازلي لبداية الامتحانات (9 يناير 2027)
+        </h3>
 
         <div class="countdown-timers">
+
             <div class="time-card">
                 <span id="days">00</span>
                 <label>يوم</label>
@@ -984,37 +1117,52 @@ footer{
                 <span id="seconds">00</span>
                 <label>ثانية</label>
             </div>
+
         </div>
+
     </div>
+
 </section>
 
 <section id="home" class="searchable-section">
 
     <div class="hero">
 
-        <h2>مرحباً بكم في منصة الريان 🎓</h2>
+        <h2>
+            مرحباً بكم في منصة الريان 🎓
+        </h2>
 
         <p>
-            منصة طلابية متكاملة بـ <strong>جامعة بحري</strong>
+            منصة طلابية متكاملة بـ
+            <strong>جامعة بحري</strong>
             تجمع المواد الدراسية، الملفات، الملخصات، والنتائج الخاصة بدفعة
             023 / 024 في مكان واحد.
         </p>
 
         <div class="quick-actions">
 
-            <a class="quick-action searchable-item" href="subjects.html">
+            <a class="quick-action searchable-item"
+               href="subjects.html">
+
                 <span>📚</span>
                 المواد الدراسية
+
             </a>
 
-            <a class="quick-action searchable-item" href="exams.html">
+            <a class="quick-action searchable-item"
+               href="exams.html">
+
                 <span>📝</span>
                 الاختبارات وبنك الأسئلة
+
             </a>
 
-            <a class="quick-action searchable-item" href="results.html">
+            <a class="quick-action searchable-item"
+               href="results.html">
+
                 <span>📊</span>
                 النتيجة الأكاديمية
+
             </a>
 
         </div>
@@ -1024,18 +1172,35 @@ footer{
     <div class="stats searchable-item">
 
         <div class="stat">
+
             <strong>8</strong>
-            <span>مواد دراسية</span>
+
+            <span>
+                مواد دراسية
+            </span>
+
         </div>
 
         <div class="stat">
+
             <strong>397</strong>
-            <span>طالب وطالبة</span>
+
+            <span>
+                طالب وطالبة
+            </span>
+
         </div>
 
         <div class="stat">
-            <strong id="platformAge">0 يوم</strong>
-            <span>عمر المنصة</span>
+
+            <strong id="platformAge">
+                0 يوم
+            </strong>
+
+            <span>
+                عمر المنصة
+            </span>
+
         </div>
 
     </div>
@@ -1045,16 +1210,28 @@ footer{
 <section class="searchable-section">
 
     <div class="section-title">
-        <h2>⚡ أقسام المنصة السريعة</h2>
-        <p>تصفح كافة خدمات المنصة بضغطة زر واحدة</p>
+
+        <h2>
+            ⚡ أقسام المنصة السريعة
+        </h2>
+
+        <p>
+            تصفح كافة خدمات المنصة بضغطة زر واحدة
+        </p>
+
     </div>
 
     <div class="cards">
 
         <div class="card searchable-item">
-            <div class="icon icon-amber">🏛</div>
 
-            <h3>عن الكلية</h3>
+            <div class="icon icon-amber">
+                🏛
+            </div>
+
+            <h3>
+                عن الكلية
+            </h3>
 
             <p>
                 تعرف على نبذة تفصيلية عن كلية العلوم الإدارية وأهدافها الأكاديمية.
@@ -1063,13 +1240,18 @@ footer{
             <a class="btn" href="about.html">
                 استعراض النبذة
             </a>
+
         </div>
 
-
         <div class="card searchable-item">
-            <div class="icon icon-purple">🧠</div>
 
-            <h3>اختبارات معرفة القدرات</h3>
+            <div class="icon icon-purple">
+                🧠
+            </div>
+
+            <h3>
+                اختبارات معرفة القدرات
+            </h3>
 
             <p>
                 اختبر معلوماتك وقدراتك الذهنية عبر تمرينات واختبارات تفاعلية مشوقة.
@@ -1078,13 +1260,18 @@ footer{
             <a class="btn" href="fun.html">
                 ابدأ الاختبار
             </a>
+
         </div>
 
-
         <div class="card searchable-item">
-            <div class="icon icon-teal">🛠️</div>
 
-            <h3>الوسائل التعليمية</h3>
+            <div class="icon icon-teal">
+                🛠️
+            </div>
+
+            <h3>
+                الوسائل التعليمية
+            </h3>
 
             <p>
                 أدوات ومصادر ومراجع تعليمية مساعدة لتحسين التحصيل الدراسي.
@@ -1093,14 +1280,18 @@ footer{
             <a class="btn" href="study-tools.html">
                 فتح الوسائل
             </a>
-        </div>
 
+        </div>
 
         <div class="card searchable-item">
 
-            <div class="icon icon-news">📰</div>
+            <div class="icon icon-news">
+                📰
+            </div>
 
-            <h3>السبق الصحفي</h3>
+            <h3>
+                السبق الصحفي
+            </h3>
 
             <p>
                 تابع الأخبار والتغطيات والموضوعات الصحفية المميزة
@@ -1117,170 +1308,450 @@ footer{
 
 </section>
 
+<!-- ========================= -->
+<!-- جدول المحاضرات -->
+<!-- ========================= -->
 
 <section id="schedule" class="searchable-section">
 
     <div class="section-title">
-        <h2>📅 جدول المحاضرات الأسبوعي (الفصل الدراسي الأول 2026-2027)</h2>
-        <p>الدفعة 2023 و 2024 - كلية العلوم الإدارية</p>
+
+        <h2>
+            📅 جدول المحاضرات الأسبوعي
+            (الفصل الدراسي الأول 2026-2027)
+        </h2>
+
+        <p>
+            السنة الثانية - الدفعة 2023 و 2024 - كلية العلوم الإدارية
+        </p>
+
     </div>
 
-    <!-- المجموعة الأولى -->
+    <!-- ================================================= -->
+    <!-- المجموعة الأولى - التصحيح من الجدول الرسمي -->
+    <!-- ================================================= -->
+
     <div class="group-title searchable-item">
-        📌 المجموعة الأولى (إدارة أعمال + إدارة التسويق + إدارة الموارد البشرية + إدارة عامة + السكرتارية التنفيذية)
+
+        📌 المجموعة الأولى
+        (المحاسبة والتمويل + التكاليف والمحاسبة الإدارية + الدراسات المصرفية والمالية)
+
     </div>
 
     <div class="table-box searchable-item">
+
         <table>
+
             <thead>
+
                 <tr>
-                    <th>اليوم</th>
-                    <th>8:00 - 10:00</th>
-                    <th>10:30 - 12:30</th>
-                    <th>1:00 - 3:00</th>
-                    <th>3:00 - 5:00</th>
+
+                    <th>
+                        اليوم
+                    </th>
+
+                    <th>
+                        8:00 - 10:00
+                    </th>
+
+                    <th>
+                        10:30 - 12:30
+                    </th>
+
+                    <th>
+                        1:00 - 3:00
+                    </th>
+
+                    <th>
+                        3:00 - 5:00
+                    </th>
+
                 </tr>
+
             </thead>
+
             <tbody>
+
                 <tr>
-                    <td><strong>الثلاثاء</strong></td>
+
                     <td>
-                        <span class="schedule-cell-subject">السلوك التنظيمي</span>
-                        <span class="schedule-cell-prof">د. محمد تاج الدين</span>
-                        <span class="schedule-cell-hall">قاعة G8</span>
+                        <strong>الثلاثاء</strong>
                     </td>
+
                     <td>
-                        <span class="schedule-cell-subject">مهارات الحاسوب</span>
-                        <span class="schedule-cell-prof">أ. حفصة حسن</span>
-                        <span class="schedule-cell-hall">قاعة G8</span>
+
+                        <span class="schedule-cell-subject">
+                            السلوك التنظيمي
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. محمد تاج الدين
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            قاعة G8
+                        </span>
+
                     </td>
+
                     <td>
-                        <span class="schedule-cell-subject">الاقتصاد الجزئي</span>
-                        <span class="schedule-cell-prof">د. عاطف حسن</span>
-                        <span class="schedule-cell-hall">قاعة G8</span>
+
+                        <span class="schedule-cell-subject">
+                            مهارات الحاسوب
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            أ. حفصة حسن
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            قاعة G8
+                        </span>
+
                     </td>
+
                     <td>
-                        <span class="schedule-cell-subject">الإحصاء في الأعمال (1)</span>
-                        <span class="schedule-cell-prof">د. أحمد العربي</span>
-                        <span class="schedule-cell-hall">قاعة G8</span>
+
+                        <span class="schedule-cell-subject">
+                            الاقتصاد الجزئي
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. عاطف حسن
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            قاعة G8
+                        </span>
+
                     </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            الإحصاء في الأعمال (1)
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. أحمد العربي
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            قاعة G8
+                        </span>
+
+                    </td>
+
                 </tr>
+
                 <tr>
-                    <td><strong>الأربعاء</strong></td>
+
+                    <td>
+                        <strong>الأربعاء</strong>
+                    </td>
+
                     <td>—</td>
                     <td>—</td>
                     <td>—</td>
                     <td>—</td>
+
                 </tr>
+
                 <tr>
-                    <td><strong>الخميس</strong></td>
+
                     <td>
-                        <span class="schedule-cell-subject">المحاسبة المالية (1)</span>
-                        <span class="schedule-cell-prof">د. الضيف زكريا</span>
-                        <span class="schedule-cell-hall">قاعة G8</span>
+                        <strong>الخميس</strong>
                     </td>
+
                     <td>
-                        <span class="schedule-cell-subject">مهارات اللغة الإنجليزية (4)</span>
-                        <span class="schedule-cell-prof">د. معتصم إبراهيم</span>
-                        <span class="schedule-cell-hall">قاعة G8</span>
+
+                        <span class="schedule-cell-subject">
+                            المحاسبة المالية (1)
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. الضيف زكريا
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            قاعة G8
+                        </span>
+
                     </td>
+
                     <td>
-                        <span class="schedule-cell-subject">القانون التجاري</span>
-                        <span class="schedule-cell-prof">أ. محمود حسن</span>
-                        <span class="schedule-cell-hall">قاعة G8</span>
+
+                        <span class="schedule-cell-subject">
+                            مهارات اللغة الإنجليزية (4)
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. معتصم إبراهيم
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            قاعة G8
+                        </span>
+
                     </td>
+
                     <td>
-                        <span class="schedule-cell-subject">مبادئ العمليات المصرفية</span>
-                        <span class="schedule-cell-prof">أ. صدام نورين</span>
-                        <span class="schedule-cell-hall">قاعة G8</span>
+
+                        <span class="schedule-cell-subject">
+                            القانون التجاري
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            أ. محمود حسن
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            قاعة G8
+                        </span>
+
                     </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            مبادئ العمليات المصرفية
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            أ. صدام نورين
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            قاعة G8
+                        </span>
+
+                    </td>
+
                 </tr>
+
             </tbody>
+
         </table>
+
     </div>
 
-    <!-- المجموعة الثانية -->
+    <!-- ================================================= -->
+    <!-- المجموعة الثانية - التصحيح من الجدول الرسمي -->
+    <!-- ================================================= -->
+
     <div class="group-title searchable-item">
-        📌 المجموعة الثانية (المحاسبة والتمويل + التكاليف والمحاسبة الإدارية + الدراسات المصرفية والمالية)
+
+        📌 المجموعة الثانية
+        (إدارة أعمال + إدارة التسويق + إدارة الموارد البشرية + إدارة عامة + السكرتارية التنفيذية)
+
     </div>
 
     <div class="table-box searchable-item">
+
         <table>
+
             <thead>
+
                 <tr>
-                    <th>اليوم</th>
-                    <th>8:00 - 10:00</th>
-                    <th>10:30 - 12:30</th>
-                    <th>1:00 - 3:00</th>
-                    <th>3:00 - 5:00</th>
+
+                    <th>
+                        اليوم
+                    </th>
+
+                    <th>
+                        8:00 - 10:00
+                    </th>
+
+                    <th>
+                        10:30 - 12:30
+                    </th>
+
+                    <th>
+                        1:00 - 3:00
+                    </th>
+
+                    <th>
+                        3:00 - 5:00
+                    </th>
+
                 </tr>
+
             </thead>
+
             <tbody>
+
                 <tr>
-                    <td><strong>الثلاثاء</strong></td>
+
                     <td>
-                        <span class="schedule-cell-subject">مهارات الحاسوب</span>
-                        <span class="schedule-cell-prof">أ. حفصة حسن</span>
-                        <span class="schedule-cell-hall">القاعة الكبرى FH</span>
+                        <strong>الثلاثاء</strong>
                     </td>
+
                     <td>
-                        <span class="schedule-cell-subject">السلوك التنظيمي</span>
-                        <span class="schedule-cell-prof">د. محمد تاج الدين</span>
-                        <span class="schedule-cell-hall">القاعة الكبرى FH</span>
+
+                        <span class="schedule-cell-subject">
+                            مهارات الحاسوب
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            أ. حفصة حسن
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            القاعة الكبرى FH
+                        </span>
+
                     </td>
+
                     <td>
-                        <span class="schedule-cell-subject">الإحصاء في الأعمال (1)</span>
-                        <span class="schedule-cell-prof">د. أحمد العربي</span>
-                        <span class="schedule-cell-hall">القاعة الكبرى FH</span>
+
+                        <span class="schedule-cell-subject">
+                            السلوك التنظيمي
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. محمد تاج الدين
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            القاعة الكبرى FH
+                        </span>
+
                     </td>
+
                     <td>
-                        <span class="schedule-cell-subject">الاقتصاد الجزئي</span>
-                        <span class="schedule-cell-prof">د. عاطف حسن</span>
-                        <span class="schedule-cell-hall">القاعة الكبرى FH</span>
+
+                        <span class="schedule-cell-subject">
+                            الإحصاء في الأعمال (1)
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. أحمد العربي
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            القاعة الكبرى FH
+                        </span>
+
                     </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            الاقتصاد الجزئي
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. عاطف حسن
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            القاعة الكبرى FH
+                        </span>
+
+                    </td>
+
                 </tr>
+
                 <tr>
-                    <td><strong>الأربعاء</strong></td>
+
+                    <td>
+                        <strong>الأربعاء</strong>
+                    </td>
+
                     <td>—</td>
                     <td>—</td>
                     <td>—</td>
                     <td>—</td>
+
                 </tr>
+
                 <tr>
-                    <td><strong>الخميس</strong></td>
+
                     <td>
-                        <span class="schedule-cell-subject">مهارات اللغة الإنجليزية (4)</span>
-                        <span class="schedule-cell-prof">د. معتصم إبراهيم</span>
-                        <span class="schedule-cell-hall">القاعة الكبرى FH</span>
+                        <strong>الخميس</strong>
                     </td>
+
                     <td>
-                        <span class="schedule-cell-subject">المحاسبة المالية (1)</span>
-                        <span class="schedule-cell-prof">د. الضيف زكريا</span>
-                        <span class="schedule-cell-hall">القاعة الكبرى FH</span>
+
+                        <span class="schedule-cell-subject">
+                            مهارات اللغة الإنجليزية (4)
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. معتصم إبراهيم
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            القاعة الكبرى FH
+                        </span>
+
                     </td>
+
                     <td>
-                        <span class="schedule-cell-subject">مبادئ العمليات المصرفية</span>
-                        <span class="schedule-cell-prof">أ. صدام نورين</span>
-                        <span class="schedule-cell-hall">القاعة الكبرى FH</span>
+
+                        <span class="schedule-cell-subject">
+                            المحاسبة المالية (1)
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. الضيف زكريا
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            القاعة الكبرى FH
+                        </span>
+
                     </td>
+
                     <td>
-                        <span class="schedule-cell-subject">القانون التجاري</span>
-                        <span class="schedule-cell-prof">أ. محمود حسن</span>
-                        <span class="schedule-cell-hall">القاعة الكبرى FH</span>
+
+                        <span class="schedule-cell-subject">
+                            مبادئ العمليات المصرفية
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            أ. صدام نورين
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            القاعة الكبرى FH
+                        </span>
+
                     </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            القانون التجاري
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            أ. محمود حسن
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            القاعة الكبرى FH
+                        </span>
+
+                    </td>
+
                 </tr>
+
             </tbody>
+
         </table>
+
     </div>
 
 </section>
-
 
 <section id="library" class="searchable-section">
 
     <div class="library searchable-item">
 
-        <h2>📁 مكتبة الملفات والمراجع</h2>
+        <h2>
+            📁 مكتبة الملفات والمراجع
+        </h2>
 
         <p>
             جميع الملفات والمحاضرات والملخصات الخاصة بمواد الدفعة
@@ -1291,126 +1762,171 @@ footer{
             تصفح ملفات المواد
         </a>
 
-        <!-- قائمة المحاضرات المرفوعة حديثاً من خلال الليدر/الدكتور -->
-        <div class="uploaded-files-list" id="uploadedFilesContainer"></div>
+        <div
+            class="uploaded-files-list"
+            id="uploadedFilesContainer">
+        </div>
 
     </div>
 
 </section>
 
-
 <section id="community" class="searchable-section">
 
     <div class="section-title">
-        <h2>🔗 روابط التواصل والاتصال</h2>
-        <p>قنوات التواصل الرسمية الخاصة بالدفعة والكلية</p>
+
+        <h2>
+            🔗 روابط التواصل والاتصال
+        </h2>
+
+        <p>
+            قنوات التواصل الرسمية الخاصة بالدفعة والكلية
+        </p>
+
     </div>
 
     <div class="links-grid">
 
         <div class="link-card searchable-item">
 
-            <div class="big-icon">💬</div>
+            <div class="big-icon">
+                💬
+            </div>
 
-            <h3>مجموعة الواتساب</h3>
+            <h3>
+                مجموعة الواتساب
+            </h3>
 
             <p>
                 مجموعة الدفعة الرسمية للاستفسارات والأخبار السريعة.
             </p>
 
-            <a class="btn"
-            href="https://chat.whatsapp.com/FmtkIp9Y0YMBGaBZfgo0ZW"
-            target="_blank">
+            <a
+                class="btn"
+                href="https://chat.whatsapp.com/FmtkIp9Y0YMBGaBZfgo0ZW"
+                target="_blank">
+
                 انضم للمجموعة
+
             </a>
 
         </div>
 
-
         <div class="link-card searchable-item">
 
-            <div class="big-icon">👥</div>
+            <div class="big-icon">
+                👥
+            </div>
 
-            <h3>صفحة الفيسبوك</h3>
+            <h3>
+                صفحة الفيسبوك
+            </h3>
 
             <p>
                 تابعنا على صفحتنا الرسمية على الفيسبوك لأحدث مستجدات الدفعة.
             </p>
 
-            <a class="btn"
-            href="https://www.facebook.com/share/1M81DYnAxV/"
-            target="_blank">
+            <a
+                class="btn"
+                href="https://www.facebook.com/share/1M81DYnAxV/"
+                target="_blank">
+
                 زوروا صفحتنا
+
             </a>
 
         </div>
 
-
         <div class="link-card searchable-item">
 
-            <div class="big-icon">📢</div>
+            <div class="big-icon">
+                📢
+            </div>
 
-            <h3>أخبار الجامعة</h3>
+            <h3>
+                أخبار الجامعة
+            </h3>
 
             <p>
                 تابع آخر الأخبار والتعاميم الرسمية الصادرة من إدارة الجامعة.
             </p>
 
-            <a class="btn"
-            href="https://www.facebook.com/share/19i7UZ4Cne/"
-            target="_blank">
+            <a
+                class="btn"
+                href="https://www.facebook.com/share/19i7UZ4Cne/"
+                target="_blank">
+
                 صفحة الأخبار
+
             </a>
 
         </div>
 
+        <div
+            class="link-card searchable-item"
+            style="border:2px solid #3b82f6;">
 
-        <div class="link-card searchable-item"
-        style="border:2px solid #3b82f6;">
+            <div class="big-icon">
+                📞
+            </div>
 
-            <div class="big-icon">📞</div>
-
-            <h3>أرقام القيادة</h3>
+            <h3>
+                أرقام القيادة
+            </h3>
 
             <p>
                 <strong>ليدر الدفعة:</strong><br>
                 249116314682
             </p>
 
-            <a class="btn btn-highlight"
-            href="https://wa.me/249116314682"
-            target="_blank">
+            <a
+                class="btn btn-highlight"
+                href="https://wa.me/249116314682"
+                target="_blank">
+
                 💬 مراسلة ليدر الدفعة
+
             </a>
 
             <p style="margin-top:15px;">
+
                 <strong>مسجل الدفعة:</strong><br>
                 249111744435
+
             </p>
 
-            <a class="btn btn-highlight"
-            href="https://wa.me/249111744435"
-            target="_blank">
+            <a
+                class="btn btn-highlight"
+                href="https://wa.me/249111744435"
+                target="_blank">
+
                 💬 مراسلة مسجل الدفعة
+
             </a>
 
         </div>
 
-
         <div class="link-card searchable-item">
 
-            <div class="big-icon">💡</div>
+            <div class="big-icon">
+                💡
+            </div>
 
-            <h3>الآراء والاقتراحات</h3>
+            <h3>
+                الآراء والاقتراحات
+            </h3>
 
             <p>
                 شاركنا برأيك لتطوير المنصة وتحسينها مباشرة عبر رقمي الخاص.
             </p>
 
-            <a class="btn"
-            href="https://wa.me/249995040725?text=مرحباً، لدي اقتراح بخصوص منصة الريان:"
-            target="_blank">
+            <a
+                class="btn"
+                href="https://wa.me/249995040725?text=مرحباً، لدي اقتراح بخصوص منصة الريان:"
+                target="_blank">
+
                 أرسل اقتراحك
+
             </a>
 
         </div>
@@ -1421,31 +1937,39 @@ footer{
 
 </main>
 
-
 <footer>
 
     <div class="footer-buttons">
 
-        <button class="footer-btn"
-        id="aboutUsBtn"
-        type="button">
+        <button
+            class="footer-btn"
+            id="aboutUsBtn"
+            type="button">
+
             من نحن 👥
+
         </button>
 
-        <button class="footer-btn share-btn"
-        id="shareSiteBtn"
-        type="button">
+        <button
+            class="footer-btn share-btn"
+            id="shareSiteBtn"
+            type="button">
+
             🔗 مشاركة المنصة
+
         </button>
 
     </div>
 
     <p>
+
         جميع الحقوق محفوظة لـ
+
         <strong>
             منصة الريان - جامعة بحري - كلية العلوم الإدارية
             (دفعة 023 / 024)
         </strong>
+
     </p>
 
     <p style="margin-top:6px;">
@@ -1454,22 +1978,29 @@ footer{
 
 </footer>
 
+<button
+    id="backToTop"
+    title="العودة للأعلى">
 
-<button id="backToTop" title="العودة للأعلى">
     ⬆
-</button>
 
+</button>
 
 <div class="modal" id="aboutModal">
 
     <div class="modal-content">
 
-        <span class="close-modal"
-        id="closeModalBtn">
+        <span
+            class="close-modal"
+            id="closeModalBtn">
+
             &times;
+
         </span>
 
-        <h3>من نحن 🎓</h3>
+        <h3>
+            من نحن 🎓
+        </h3>
 
         <p>
             منصة الريان هي منصة طلابية تعليمية متكاملة
@@ -1495,295 +2026,786 @@ footer{
 
 </div>
 
-
 <script>
 
 document.addEventListener("DOMContentLoaded", function(){
 
-    /* كلمة السر المحدثة للوحة المشرف */
     const ADMIN_PASS = "023024";
 
-    /* استرجاع الخبر والملفات المحفوظة */
+    /* ================================
+       الخبر والملفات
+    ================================= */
+
     const savedTicker = localStorage.getItem("customTicker");
-    if(savedTicker) {
-        document.getElementById("mainTickerText").innerText = savedTicker;
+
+    if(savedTicker){
+
+        document.getElementById("mainTickerText").innerText =
+            savedTicker;
+
     }
 
-    function renderFiles() {
-        const filesContainer = document.getElementById("uploadedFilesContainer");
-        const savedFiles = JSON.parse(localStorage.getItem("uploadedFiles") || "[]");
+    function renderFiles(){
+
+        const filesContainer =
+            document.getElementById("uploadedFilesContainer");
+
+        const savedFiles =
+            JSON.parse(
+                localStorage.getItem("uploadedFiles") || "[]"
+            );
+
         filesContainer.innerHTML = "";
 
-        savedFiles.forEach(file => {
-            const item = document.createElement("div");
-            item.className = "uploaded-file-item";
-            item.innerHTML = `<span>📄 ${file.name}</span> <a href="${file.url}" target="_blank">تحميل 📥</a>`;
+        savedFiles.forEach(function(file){
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "uploaded-file-item";
+
+            item.innerHTML =
+                `<span>📄 ${file.name}</span>
+                 <a href="${file.url}" target="_blank">
+                 تحميل 📥
+                 </a>`;
+
             filesContainer.appendChild(item);
+
         });
+
     }
+
     renderFiles();
 
-    /* التعامل مع نافذة المشرف */
-    const adminModal = document.getElementById("adminModal");
-    const openAdminBtn = document.getElementById("openAdminBtn");
-    const closeAdminModal = document.getElementById("closeAdminModal");
-    const loginAdminBtn = document.getElementById("loginAdminBtn");
-    const adminLoginForm = document.getElementById("adminLoginForm");
-    const adminControlsPanel = document.getElementById("adminControlsPanel");
+    /* ================================
+       لوحة المشرف
+    ================================= */
 
-    openAdminBtn.addEventListener("click", function() {
+    const adminModal =
+        document.getElementById("adminModal");
+
+    const openAdminBtn =
+        document.getElementById("openAdminBtn");
+
+    const closeAdminModal =
+        document.getElementById("closeAdminModal");
+
+    const loginAdminBtn =
+        document.getElementById("loginAdminBtn");
+
+    const adminLoginForm =
+        document.getElementById("adminLoginForm");
+
+    const adminControlsPanel =
+        document.getElementById("adminControlsPanel");
+
+    openAdminBtn.addEventListener("click",function(){
+
         adminModal.style.display = "flex";
+
     });
 
-    closeAdminModal.addEventListener("click", function() {
+    closeAdminModal.addEventListener("click",function(){
+
         adminModal.style.display = "none";
+
     });
 
-    loginAdminBtn.addEventListener("click", function() {
-        const pass = document.getElementById("adminPasswordInput").value;
-        if(pass === ADMIN_PASS) {
+    loginAdminBtn.addEventListener("click",function(){
+
+        const pass =
+            document.getElementById(
+                "adminPasswordInput"
+            ).value;
+
+        if(pass === ADMIN_PASS){
+
             adminLoginForm.style.display = "none";
+
             adminControlsPanel.style.display = "block";
-            alert("تم تسجيل الدخول بنجاح! يمكنك الآن تعديل المنصة.");
-        } else {
+
+            alert(
+                "تم تسجيل الدخول بنجاح! يمكنك الآن تعديل المنصة."
+            );
+
+        }else{
+
             alert("كلمة السر غير صحيحة!");
+
         }
+
     });
 
-    /* حفظ الخبر الجديد */
-    document.getElementById("saveTickerBtn").addEventListener("click", function() {
-        const text = document.getElementById("newTickerInput").value.trim();
-        if(text) {
-            localStorage.setItem("customTicker", text);
-            document.getElementById("mainTickerText").innerText = text;
-            alert("تم تحديث الخبر العاجل بنجاح!");
-            document.getElementById("newTickerInput").value = "";
-        }
-    });
+    /* ================================
+       حفظ الخبر
+    ================================= */
 
-    /* إضافة ملف/محاضرة جديد */
-    document.getElementById("saveFileBtn").addEventListener("click", function() {
-        const name = document.getElementById("fileNameInput").value.trim();
-        const url = document.getElementById("fileUrlInput").value.trim();
+    document
+        .getElementById("saveTickerBtn")
+        .addEventListener("click",function(){
 
-        if(name && url) {
-            const savedFiles = JSON.parse(localStorage.getItem("uploadedFiles") || "[]");
-            savedFiles.push({ name, url });
-            localStorage.setItem("uploadedFiles", JSON.stringify(savedFiles));
+            const text =
+                document
+                    .getElementById("newTickerInput")
+                    .value
+                    .trim();
 
-            renderFiles();
-            alert("تم إضافة الملف بنجاح إلى قسم المكتبة!");
-            document.getElementById("fileNameInput").value = "";
-            document.getElementById("fileUrlInput").value = "";
-        } else {
-            alert("يرجى ملء جميع الحقول!");
-        }
-    });
+            if(text){
 
-    /* حساب عمر المنصة منذ 1 أكتوبر 2026 */
-    function updatePlatformAge() {
-        const launchDate = new Date("October 1, 2026 00:00:00").getTime();
-        const now = new Date().getTime();
-        const diff = now - launchDate;
+                localStorage.setItem(
+                    "customTicker",
+                    text
+                );
 
-        const ageEl = document.getElementById("platformAge");
-        if(ageEl) {
-            if(diff < 0) {
-                ageEl.innerText = "قريباً";
-            } else {
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                if(days === 0) {
-                    ageEl.innerText = "اليوم الأول";
-                } else {
-                    ageEl.innerText = days + " يوم";
-                }
+                document
+                    .getElementById("mainTickerText")
+                    .innerText = text;
+
+                alert(
+                    "تم تحديث الخبر العاجل بنجاح!"
+                );
+
+                document
+                    .getElementById("newTickerInput")
+                    .value = "";
+
             }
+
+        });
+
+    /* ================================
+       إضافة ملف أو محاضرة
+    ================================= */
+
+    document
+        .getElementById("saveFileBtn")
+        .addEventListener("click",function(){
+
+            const name =
+                document
+                    .getElementById("fileNameInput")
+                    .value
+                    .trim();
+
+            const url =
+                document
+                    .getElementById("fileUrlInput")
+                    .value
+                    .trim();
+
+            if(name && url){
+
+                const savedFiles =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "uploadedFiles"
+                        ) || "[]"
+                    );
+
+                savedFiles.push({
+                    name:name,
+                    url:url
+                });
+
+                localStorage.setItem(
+                    "uploadedFiles",
+                    JSON.stringify(savedFiles)
+                );
+
+                renderFiles();
+
+                alert(
+                    "تم إضافة الملف بنجاح إلى قسم المكتبة!"
+                );
+
+                document
+                    .getElementById("fileNameInput")
+                    .value = "";
+
+                document
+                    .getElementById("fileUrlInput")
+                    .value = "";
+
+            }else{
+
+                alert(
+                    "يرجى ملء جميع الحقول!"
+                );
+
+            }
+
+        });
+
+    /* ================================
+       عمر المنصة
+    ================================= */
+
+    function updatePlatformAge(){
+
+        const launchDate =
+            new Date(
+                "October 1, 2026 00:00:00"
+            ).getTime();
+
+        const now =
+            new Date().getTime();
+
+        const diff =
+            now - launchDate;
+
+        const ageEl =
+            document.getElementById(
+                "platformAge"
+            );
+
+        if(ageEl){
+
+            if(diff < 0){
+
+                ageEl.innerText =
+                    "قريباً";
+
+            }else{
+
+                const days =
+                    Math.floor(
+                        diff /
+                        (1000 * 60 * 60 * 24)
+                    );
+
+                if(days === 0){
+
+                    ageEl.innerText =
+                        "اليوم الأول";
+
+                }else{
+
+                    ageEl.innerText =
+                        days + " يوم";
+
+                }
+
+            }
+
         }
+
     }
+
     updatePlatformAge();
 
-    /* إغلاق نافذة التنبيه */
-    const noticeModal = document.getElementById('noticeModal');
-    const confirmNoticeBtn = document.getElementById('confirmNoticeBtn');
+    /* ================================
+       نافذة التنبيه
+    ================================= */
+
+    const noticeModal =
+        document.getElementById(
+            "noticeModal"
+        );
+
+    const confirmNoticeBtn =
+        document.getElementById(
+            "confirmNoticeBtn"
+        );
 
     if(confirmNoticeBtn && noticeModal){
-        confirmNoticeBtn.addEventListener('click',function(){
-            noticeModal.style.display='none';
-        });
+
+        confirmNoticeBtn.addEventListener(
+            "click",
+            function(){
+
+                noticeModal.style.display =
+                    "none";
+
+            }
+        );
+
     }
 
-    /* الوضع الليلي والصباحي */
-    const themeBtn = document.getElementById('themeToggleBtn');
+    /* ================================
+       الوضع الليلي
+    ================================= */
+
+    const themeBtn =
+        document.getElementById(
+            "themeToggleBtn"
+        );
 
     if(themeBtn){
-        const currentTheme = localStorage.getItem('theme');
 
-        if(currentTheme === 'dark'){
-            document.body.classList.add('dark-mode');
-            themeBtn.innerText = '☀️ الوضع الصباحي';
+        const currentTheme =
+            localStorage.getItem("theme");
+
+        if(currentTheme === "dark"){
+
+            document.body.classList.add(
+                "dark-mode"
+            );
+
+            themeBtn.innerText =
+                "☀️ الوضع الصباحي";
+
         }
 
-        themeBtn.addEventListener('click',function(){
-            document.body.classList.toggle('dark-mode');
+        themeBtn.addEventListener(
+            "click",
+            function(){
 
-            if(document.body.classList.contains('dark-mode')){
-                localStorage.setItem('theme','dark');
-                themeBtn.innerText = '☀️ الوضع الصباحي';
-            }else{
-                localStorage.setItem('theme','light');
-                themeBtn.innerText = '🌙 الوضع الليلي';
+                document.body.classList.toggle(
+                    "dark-mode"
+                );
+
+                if(
+                    document.body.classList.contains(
+                        "dark-mode"
+                    )
+                ){
+
+                    localStorage.setItem(
+                        "theme",
+                        "dark"
+                    );
+
+                    themeBtn.innerText =
+                        "☀️ الوضع الصباحي";
+
+                }else{
+
+                    localStorage.setItem(
+                        "theme",
+                        "light"
+                    );
+
+                    themeBtn.innerText =
+                        "🌙 الوضع الليلي";
+
+                }
+
             }
-        });
+        );
+
     }
 
-    /* محرك البحث */
-    const searchInput = document.getElementById('siteSearchInput');
-    const clearBtn = document.getElementById('clearSearchBtn');
-    const noResults = document.getElementById('noResultsMsg');
+    /* ================================
+       محرك البحث
+    ================================= */
+
+    const searchInput =
+        document.getElementById(
+            "siteSearchInput"
+        );
+
+    const clearBtn =
+        document.getElementById(
+            "clearSearchBtn"
+        );
+
+    const noResults =
+        document.getElementById(
+            "noResultsMsg"
+        );
 
     if(searchInput){
-        searchInput.addEventListener('input',function(){
-            const query = this.value.trim().toLowerCase();
 
-            if(query.length > 0){
-                clearBtn.style.display='block';
-            }else{
-                clearBtn.style.display='none';
-            }
+        searchInput.addEventListener(
+            "input",
+            function(){
 
-            let totalMatches=0;
-            const sections = document.querySelectorAll('.searchable-section');
+                const query =
+                    this.value
+                        .trim()
+                        .toLowerCase();
 
-            sections.forEach(function(section){
-                const items = section.querySelectorAll('.searchable-item');
-                let visibleItemsInSection=0;
+                if(query.length > 0){
 
-                items.forEach(function(item){
-                    const text = item.textContent.toLowerCase();
+                    clearBtn.style.display =
+                        "block";
 
-                    if(query === '' || text.includes(query)){
-                        item.style.display='';
-                        visibleItemsInSection++;
-                        totalMatches++;
-                    }else{
-                        item.style.display='none';
-                    }
-                });
-
-                if(query === '' || visibleItemsInSection > 0){
-                    section.style.display='';
                 }else{
-                    section.style.display='none';
+
+                    clearBtn.style.display =
+                        "none";
+
                 }
-            });
 
-            if(totalMatches === 0 && query !== ''){
-                noResults.style.display='block';
-            }else{
-                noResults.style.display='none';
+                let totalMatches = 0;
+
+                const sections =
+                    document.querySelectorAll(
+                        ".searchable-section"
+                    );
+
+                sections.forEach(
+                    function(section){
+
+                        const items =
+                            section.querySelectorAll(
+                                ".searchable-item"
+                            );
+
+                        let visibleItemsInSection =
+                            0;
+
+                        items.forEach(
+                            function(item){
+
+                                const text =
+                                    item.textContent
+                                        .toLowerCase();
+
+                                if(
+                                    query === "" ||
+                                    text.includes(query)
+                                ){
+
+                                    item.style.display =
+                                        "";
+
+                                    visibleItemsInSection++;
+                                    totalMatches++;
+
+                                }else{
+
+                                    item.style.display =
+                                        "none";
+
+                                }
+
+                            }
+                        );
+
+                        if(
+                            query === "" ||
+                            visibleItemsInSection > 0
+                        ){
+
+                            section.style.display =
+                                "";
+
+                        }else{
+
+                            section.style.display =
+                                "none";
+
+                        }
+
+                    }
+                );
+
+                if(
+                    totalMatches === 0 &&
+                    query !== ""
+                ){
+
+                    noResults.style.display =
+                        "block";
+
+                }else{
+
+                    noResults.style.display =
+                        "none";
+
+                }
+
             }
-        });
+        );
 
-        clearBtn.addEventListener('click',function(){
-            searchInput.value='';
-            searchInput.dispatchEvent(new Event('input'));
-            searchInput.focus();
-        });
+        clearBtn.addEventListener(
+            "click",
+            function(){
+
+                searchInput.value = "";
+
+                searchInput.dispatchEvent(
+                    new Event("input")
+                );
+
+                searchInput.focus();
+
+            }
+        );
+
     }
 
-    /* نافذة من نحن */
-    const aboutBtn = document.getElementById('aboutUsBtn');
-    const aboutModal = document.getElementById('aboutModal');
-    const closeModal = document.getElementById('closeModalBtn');
+    /* ================================
+       نافذة من نحن
+    ================================= */
 
-    if(aboutBtn && aboutModal && closeModal){
-        aboutBtn.addEventListener('click',function(){
-            aboutModal.style.display='flex';
-        });
+    const aboutBtn =
+        document.getElementById(
+            "aboutUsBtn"
+        );
 
-        closeModal.addEventListener('click',function(){
-            aboutModal.style.display='none';
-        });
+    const aboutModal =
+        document.getElementById(
+            "aboutModal"
+        );
 
-        window.addEventListener('click',function(e){
-            if(e.target === aboutModal){
-                aboutModal.style.display='none';
+    const closeModal =
+        document.getElementById(
+            "closeModalBtn"
+        );
+
+    if(
+        aboutBtn &&
+        aboutModal &&
+        closeModal
+    ){
+
+        aboutBtn.addEventListener(
+            "click",
+            function(){
+
+                aboutModal.style.display =
+                    "flex";
+
             }
-        });
+        );
+
+        closeModal.addEventListener(
+            "click",
+            function(){
+
+                aboutModal.style.display =
+                    "none";
+
+            }
+        );
+
+        window.addEventListener(
+            "click",
+            function(e){
+
+                if(e.target === aboutModal){
+
+                    aboutModal.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
     }
 
-    /* مشاركة المنصة */
-    const shareBtn = document.getElementById('shareSiteBtn');
+    /* ================================
+       مشاركة المنصة
+    ================================= */
+
+    const shareBtn =
+        document.getElementById(
+            "shareSiteBtn"
+        );
 
     if(shareBtn){
-        shareBtn.addEventListener('click',function(){
-            const shareData = {
-                title: 'منصة الريان الطلابية - جامعة بحري',
-                text: 'منصة الريان التعليمية لطلاب دفعة 023 / 024 - كلية العلوم الإدارية بجامعة بحري',
-                url: window.location.href
-            };
 
-            if(navigator.share){
-                navigator.share(shareData).catch(function(){});
-            }else{
-                navigator.clipboard.writeText(window.location.href)
-                .then(function(){
-                    alert('تم نسخ رابط المنصة بنجاح!');
-                })
-                .catch(function(){
-                    alert('الرابط: ' + window.location.href);
-                });
+        shareBtn.addEventListener(
+            "click",
+            function(){
+
+                const shareData = {
+
+                    title:
+                        "منصة الريان الطلابية - جامعة بحري",
+
+                    text:
+                        "منصة الريان التعليمية لطلاب دفعة 023 / 024 - كلية العلوم الإدارية بجامعة بحري",
+
+                    url:
+                        window.location.href
+
+                };
+
+                if(navigator.share){
+
+                    navigator
+                        .share(shareData)
+                        .catch(function(){});
+
+                }else{
+
+                    navigator
+                        .clipboard
+                        .writeText(
+                            window.location.href
+                        )
+                        .then(function(){
+
+                            alert(
+                                "تم نسخ رابط المنصة بنجاح!"
+                            );
+
+                        })
+                        .catch(function(){
+
+                            alert(
+                                "الرابط: " +
+                                window.location.href
+                            );
+
+                        });
+
+                }
+
             }
-        });
+        );
+
     }
 
-    /* العداد التنازلي */
-    const examDate = new Date("January 9, 2027 00:00:00").getTime();
+    /* ================================
+       العداد التنازلي
+    ================================= */
+
+    const examDate =
+        new Date(
+            "January 9, 2027 00:00:00"
+        ).getTime();
 
     function updateCountdown(){
-        const now = new Date().getTime();
-        const distance = examDate - now;
+
+        const now =
+            new Date().getTime();
+
+        const distance =
+            examDate - now;
 
         if(distance < 0){
-            document.getElementById("days").innerText="00";
-            document.getElementById("hours").innerText="00";
-            document.getElementById("minutes").innerText="00";
-            document.getElementById("seconds").innerText="00";
+
+            document.getElementById(
+                "days"
+            ).innerText = "00";
+
+            document.getElementById(
+                "hours"
+            ).innerText = "00";
+
+            document.getElementById(
+                "minutes"
+            ).innerText = "00";
+
+            document.getElementById(
+                "seconds"
+            ).innerText = "00";
+
             return;
+
         }
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const days =
+            Math.floor(
+                distance /
+                (1000 * 60 * 60 * 24)
+            );
 
-        document.getElementById("days").innerText = days < 10 ? "0" + days : days;
-        document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
-        document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
-        document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+        const hours =
+            Math.floor(
+                (
+                    distance %
+                    (1000 * 60 * 60 * 24)
+                ) /
+                (1000 * 60 * 60)
+            );
+
+        const minutes =
+            Math.floor(
+                (
+                    distance %
+                    (1000 * 60 * 60)
+                ) /
+                (1000 * 60)
+            );
+
+        const seconds =
+            Math.floor(
+                (
+                    distance %
+                    (1000 * 60)
+                ) /
+                1000
+            );
+
+        document.getElementById(
+            "days"
+        ).innerText =
+            days < 10
+                ? "0" + days
+                : days;
+
+        document.getElementById(
+            "hours"
+        ).innerText =
+            hours < 10
+                ? "0" + hours
+                : hours;
+
+        document.getElementById(
+            "minutes"
+        ).innerText =
+            minutes < 10
+                ? "0" + minutes
+                : minutes;
+
+        document.getElementById(
+            "seconds"
+        ).innerText =
+            seconds < 10
+                ? "0" + seconds
+                : seconds;
+
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000);
 
-    /* زر العودة للأعلى */
-    const backToTopBtn = document.getElementById('backToTop');
+    setInterval(
+        updateCountdown,
+        1000
+    );
+
+    /* ================================
+       زر العودة للأعلى
+    ================================= */
+
+    const backToTopBtn =
+        document.getElementById(
+            "backToTop"
+        );
 
     if(backToTopBtn){
-        window.addEventListener('scroll',function(){
-            if(window.scrollY > 300){
-                backToTopBtn.style.display='flex';
-            }else{
-                backToTopBtn.style.display='none';
-            }
-        });
 
-        backToTopBtn.addEventListener('click',function(){
-            window.scrollTo({
-                top:0,
-                behavior:'smooth'
-            });
-        });
+        window.addEventListener(
+            "scroll",
+            function(){
+
+                if(window.scrollY > 300){
+
+                    backToTopBtn.style.display =
+                        "flex";
+
+                }else{
+
+                    backToTopBtn.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
+        backToTopBtn.addEventListener(
+            "click",
+            function(){
+
+                window.scrollTo({
+
+                    top:0,
+                    behavior:"smooth"
+
+                });
+
+            }
+        );
+
     }
 
 });
