@@ -161,31 +161,32 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.7);
             z-index: 1000;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
         }
 
         .modal-content {
             background: white;
-            width: min(800px, 100%);
-            max-height: 85vh;
+            width: min(850px, 100%);
+            max-height: 90vh;
             border-radius: 18px;
             padding: 25px;
             overflow-y: auto;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         .close-btn {
             position: absolute;
             top: 15px;
             left: 20px;
-            font-size: 24px;
+            font-size: 26px;
             cursor: pointer;
             color: #888;
+            font-weight: bold;
         }
 
         .close-btn:hover {
@@ -219,36 +220,50 @@
         .exam-item p {
             font-size: 13px;
             color: #64748b;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .toggle-btn {
             background: #082b52;
             color: white;
             border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 12px;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 13px;
             cursor: pointer;
         }
 
-        .questions-list {
+        /* تنسيق عرض أوراق الامتحان كصور */
+        .images-gallery {
             display: none;
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px dashed #cbd5e1;
-            direction: ltr;
-            text-align: left;
-            font-family: monospace, sans-serif;
         }
 
-        .q-card {
+        .page-card {
             background: white;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid #e2e8f0;
-            margin-bottom: 10px;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .page-card span {
+            display: block;
             font-size: 13px;
+            font-weight: bold;
+            color: #082b52;
+            margin-bottom: 8px;
+        }
+
+        .page-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #eee;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
 
         footer {
@@ -316,8 +331,8 @@
                     <p>أستاذ المادة: د. عاطف حسن</p>
                 </div>
                 <div class="btn-group">
-                    <button class="btn" onclick="openModal('السلوك التنظيمي - امتحانات سابقة', 'لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.')">📄 امتحانات سابقة</button>
-                    <button class="btn btn-quiz" onclick="openModal('السلوك التنظيمي - اختبارات', 'لا توجد اختبارات مضافة حالياً لهذه المادة.')">📝 اختبارات</button>
+                    <button class="btn" onclick="openModal('السلوك التنظيمي - امتحانات سابقة', '<p style=\'text-align:center; color:#64748b;\'>لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.</p>')">📄 امتحانات سابقة</button>
+                    <button class="btn btn-quiz" onclick="openModal('السلوك التنظيمي - اختبارات', '<p style=\'text-align:center; color:#64748b;\'>لا توجد اختبارات مضافة حالياً لهذه المادة.</p>')">📝 اختبارات</button>
                 </div>
             </div>
 
@@ -331,7 +346,7 @@
                 </div>
                 <div class="btn-group">
                     <button class="btn" onclick="openComputerExams()">📄 امتحانات سابقة (1)</button>
-                    <button class="btn btn-quiz" onclick="openModal('مهارات الحاسوب - اختبارات', 'لا توجد اختبارات مضافة حالياً لهذه المادة.')">📝 اختبارات</button>
+                    <button class="btn btn-quiz" onclick="openModal('مهارات الحاسوب - اختبارات', '<p style=\'text-align:center; color:#64748b;\'>لا توجد اختبارات مضافة حالياً لهذه المادة.</p>')">📝 اختبارات</button>
                 </div>
             </div>
 
@@ -344,8 +359,8 @@
                     <p>أستاذ المادة: د. أحمد العر</p>
                 </div>
                 <div class="btn-group">
-                    <button class="btn" onclick="openModal('الاقتصاد الجزئي - امتحانات سابقة', 'لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.')">📄 امتحانات سابقة</button>
-                    <button class="btn btn-quiz" onclick="openModal('الاقتصاد الجزئي - اختبارات', 'لا توجد اختبارات مضافة حالياً لهذه المادة.')">📝 اختبارات</button>
+                    <button class="btn" onclick="openModal('الاقتصاد الجزئي - امتحانات سابقة', '<p style=\'text-align:center; color:#64748b;\'>لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.</p>')">📄 امتحانات سابقة</button>
+                    <button class="btn btn-quiz" onclick="openModal('الاقتصاد الجزئي - اختبارات', '<p style=\'text-align:center; color:#64748b;\'>لا توجد اختبارات مضافة حالياً لهذه المادة.</p>')">📝 اختبارات</button>
                 </div>
             </div>
 
@@ -358,8 +373,8 @@
                     <p>أستاذ المادة: د. محمد تاج الدين</p>
                 </div>
                 <div class="btn-group">
-                    <button class="btn" onclick="openModal('الإحصاء في الأعمال 1 - امتحانات سابقة', 'لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.')">📄 امتحانات سابقة</button>
-                    <button class="btn btn-quiz" onclick="openModal('الإحصاء في الأعمال 1 - اختبارات', 'لا توجد اختبارات مضافة حالياً لهذه المادة.')">📝 اختبارات</button>
+                    <button class="btn" onclick="openModal('الإحصاء في الأعمال 1 - امتحانات سابقة', '<p style=\'text-align:center; color:#64748b;\'>لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.</p>')">📄 امتحانات سابقة</button>
+                    <button class="btn btn-quiz" onclick="openModal('الإحصاء في الأعمال 1 - اختبارات', '<p style=\'text-align:center; color:#64748b;\'>لا توجد اختبارات مضافة حالياً لهذه المادة.</p>')">📝 اختبارات</button>
                 </div>
             </div>
 
@@ -372,8 +387,8 @@
                     <p>أستاذ المادة: أ. صدام نورين</p>
                 </div>
                 <div class="btn-group">
-                    <button class="btn" onclick="openModal('المحاسبة المالية 1 - امتحانات سابقة', 'لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.')">📄 امتحانات سابقة</button>
-                    <button class="btn btn-quiz" onclick="openModal('المحاسبة المالية 1 - اختبارات', 'لا توجد اختبارات مضافة حالياً لهذه المادة.')">📝 اختبارات</button>
+                    <button class="btn" onclick="openModal('المحاسبة المالية 1 - امتحانات سابقة', '<p style=\'text-align:center; color:#64748b;\'>لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.</p>')">📄 امتحانات سابقة</button>
+                    <button class="btn btn-quiz" onclick="openModal('المحاسبة المالية 1 - اختبارات', '<p style=\'text-align:center; color:#64748b;\'>لا توجد اختبارات مضافة حالياً لهذه المادة.</p>')">📝 اختبارات</button>
                 </div>
             </div>
 
@@ -386,8 +401,8 @@
                     <p>أستاذ المادة: أ. محمود حسن</p>
                 </div>
                 <div class="btn-group">
-                    <button class="btn" onclick="openModal('مهارات اللغة الإنجليزية - امتحانات سابقة', 'لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.')">📄 امتحانات سابقة</button>
-                    <button class="btn btn-quiz" onclick="openModal('مهارات اللغة الإنجليزية - اختبارات', 'لا توجد اختبارات مضافة حالياً لهذه المادة.')">📝 اختبارات</button>
+                    <button class="btn" onclick="openModal('مهارات اللغة الإنجليزية - امتحانات سابقة', '<p style=\'text-align:center; color:#64748b;\'>لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.</p>')">📄 امتحانات سابقة</button>
+                    <button class="btn btn-quiz" onclick="openModal('مهارات اللغة الإنجليزية - اختبارات', '<p style=\'text-align:center; color:#64748b;\'>لا توجد اختبارات مضافة حالياً لهذه المادة.</p>')">📝 اختبارات</button>
                 </div>
             </div>
 
@@ -400,8 +415,8 @@
                     <p>أستاذ المادة: د. معتصم إبراهيم</p>
                 </div>
                 <div class="btn-group">
-                    <button class="btn" onclick="openModal('القانون التجاري - امتحانات سابقة', 'لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.')">📄 امتحانات سابقة</button>
-                    <button class="btn btn-quiz" onclick="openModal('القانون التجاري - اختبارات', 'لا توجد اختبارات مضافة حالياً لهذه المادة.')">📝 اختبارات</button>
+                    <button class="btn" onclick="openModal('القانون التجاري - امتحانات سابقة', '<p style=\'text-align:center; color:#64748b;\'>لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.</p>')">📄 امتحانات سابقة</button>
+                    <button class="btn btn-quiz" onclick="openModal('القانون التجاري - اختبارات', '<p style=\'text-align:center; color:#64748b;\'>لا توجد اختبارات مضافة حالياً لهذه المادة.</p>')">📝 اختبارات</button>
                 </div>
             </div>
 
@@ -414,8 +429,8 @@
                     <p>أستاذ المادة: د. الضيف زكريا</p>
                 </div>
                 <div class="btn-group">
-                    <button class="btn" onclick="openModal('مبادئ العمل المصرفي - امتحانات سابقة', 'لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.')">📄 امتحانات سابقة</button>
-                    <button class="btn btn-quiz" onclick="openModal('مبادئ العمل المصرفي - اختبارات', 'لا توجد اختبارات مضافة حالياً لهذه المادة.')">📝 اختبارات</button>
+                    <button class="btn" onclick="openModal('مبادئ العمل المصرفي - امتحانات سابقة', '<p style=\'text-align:center; color:#64748b;\'>لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.</p>')">📄 امتحانات سابقة</button>
+                    <button class="btn btn-quiz" onclick="openModal('مبادئ العمل المصرفي - اختبارات', '<p style=\'text-align:center; color:#64748b;\'>لا توجد اختبارات مضافة حالياً لهذه المادة.</p>')">📝 اختبارات</button>
                 </div>
             </div>
 
@@ -423,7 +438,7 @@
 
     </main>
 
-    <!-- النافذة المنبثقة عرض الأسئلة والامتحانات -->
+    <!-- النافذة المنبثقة عرض صور الامتحان -->
     <div id="examModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -451,7 +466,6 @@
             document.getElementById('examModal').style.display = 'none';
         }
 
-        // إغلاق النافذة عند الضغط خارجها
         window.onclick = function(event) {
             var modal = document.getElementById('examModal');
             if (event.target == modal) {
@@ -459,7 +473,7 @@
             }
         }
 
-        function toggleQuestions(id) {
+        function toggleImages(id) {
             var el = document.getElementById(id);
             if (el.style.display === "block") {
                 el.style.display = "none";
@@ -468,65 +482,39 @@
             }
         }
 
-        // عرض امتحانات مهارات الحاسوب المتاحة
+        // عرض أوراق امتحان الحاسوب كصور
         function openComputerExams() {
             var html = `
                 <div class="exam-item">
-                    <h4>الامتحان الأساسي للفصل الدراسي الأول (2024-2025)</h4>
-                    <p>التاريخ: 5/4/2026 | زمن الامتحان: ساعتان | عدد الأسئلة: 50 سؤال اختيار من متعدد</p>
-                    <button class="toggle-btn" onclick="toggleQuestions('comp-exam-1')">👁️ عرض/إخفاء الأسئلة داخل الموقع</button>
+                    <h4>الامتحان الأساسي - مهارات الحاسوب (2024-2025)</h4>
+                    <p>التاريخ: 5/4/2026 | زمن الامتحان: ساعتان | عدد الصفحات: 6 صفحات</p>
+                    <button class="toggle-btn" onclick="toggleImages('comp-images-1')">🖼️ عرض / إخفاء أوراق الامتحان (صور)</button>
                     
-                    <div id="comp-exam-1" class="questions-list">
-                        <div class="q-card"><b>1. How to remove borders applied in Cells?</b><br>(A) Select None on Border tab of Format cells<br>(B) Open the list on Border tool in Format Cell toolbar then choose first tool (none)<br>(C) Both of above<br>(D) None of above</div>
-                        <div class="q-card"><b>2. The basic operations performed by a computer are:</b><br>(A) Arithmetic operation (B) Logical operation (C) Storage and relative (D) All the above</div>
-                        <div class="q-card"><b>3. The two major types of computer chips are:</b><br>(A) External memory chip (B) Primary memory chip (C) Microprocessor chip (D) Both b and c</div>
-                        <div class="q-card"><b>4. Microprocessors as switching devices are for which generation computers:</b><br>(A) First Generation (B) Second Generation (C) Third Generation (D) Fourth Generation</div>
-                        <div class="q-card"><b>5. What is MS Excel?</b><br>(A) Spreadsheet (B) Database Management (C) Presentation (D) Workbook</div>
-                        <div class="q-card"><b>6. ASCII and EBCDIC are the popular character coding systems. What does EBCDIC stand for?</b><br>(A) Extended Binary Coded Decimal Interchange Code<br>(B) Extended Bit Code Decimal Interchange Code<br>(C) Extended Bit Case Decimal Interchange Code<br>(D) Extended Binary Case Decimal Interchange Code</div>
-                        <div class="q-card"><b>7. The brain of any computer system is:</b><br>(A) ALU (B) Memory (C) CPU (D) Control unit</div>
-                        <div class="q-card"><b>8. Storage capacity of magnetic disk depends on:</b><br>(A) tracks per inch of surface (B) bits per inch of tracks (C) disk pack in disk surface (D) All of above</div>
-                        <div class="q-card"><b>9. The two kinds of main memory are:</b><br>(A) Primary and secondary (B) Random and sequential (C) ROM and RAM (D) All of above</div>
-                        <div class="q-card"><b>10. A storage area used to store data to compensate for the difference in speed at which the different units can handle data is:</b><br>(A) Memory (B) Buffer (C) Accumulator (D) Address</div>
-                        <div class="q-card"><b>11. This key uniquely identifies each record:</b><br>(A) key record (B) Composite key (C) foreign key (D) primary key</div>
-                        <div class="q-card"><b>12. Integrated Circuits (ICs) are related to which generation of computers?</b><br>(A) First generation (B) Second generation (C) Third generation (D) Fourth generation</div>
-                        <div class="q-card"><b>13. CD-ROM is a:</b><br>(A) Semiconductor memory (B) Memory register (C) Magnetic memory (D) None of above</div>
-                        <div class="q-card"><b>14. A hybrid computer:</b><br>(A) Resembles digital computer (B) Resembles analogue computer (C) Resembles both a digital and analogue computer (D) None of the above</div>
-                        <div class="q-card"><b>15. Which type of computers uses the 8-bit code called EBCDIC?</b><br>(A) Minicomputers (B) Microcomputers (C) Mainframe computers (D) Super computer</div>
-                        <div class="q-card"><b>16. The ALU of a computer responds to the commands coming from:</b><br>(A) Primary memory (B) Control section (C) External memory (D) Cache memory</div>
-                        <div class="q-card"><b>17. Chief component of first-generation computer was:</b><br>(A) Transistors (B) Vacuum Tubes and Valves (C) Integrated Circuits (D) None of above</div>
-                        <div class="q-card"><b>18. To produce high quality graphics (hardcopy) in color, you would want to use a/n:</b><br>(A) RGB monitor (B) Plotter (C) Ink-jet printer (D) Laser printer</div>
-                        <div class="q-card"><b>19. What are the stages in the compilation process?</b><br>(A) Feasibility study, system design and testing (B) Implementation and documentation (C) Lexical Analysis, syntax analysis, and code generation (D) None of the above</div>
-                        <div class="q-card"><b>20. In a database table, the category of information is called:</b><br>(A) record (B) tuple (C) field (D) None of the above</div>
-                        <div class="q-card"><b>21. The main electronic component used in first generation computers was:</b><br>(A) Transistors (B) Vacuum Tubes and Valves (C) Integrated Circuits (D) None of above</div>
-                        <div class="q-card"><b>22. Name of the file extension for MS Access?</b><br>(A) Access database.accdb (B) Access project.adp (C) Access project.mdw (D) All of Above</div>
-                        <div class="q-card"><b>23. One millisecond is:</b><br>(A) 1 second (B) 10th of a seconds (C) 1000th of a seconds (D) 10000th of a seconds</div>
-                        <div class="q-card"><b>24. The output quality of a printer is measured by:</b><br>(A) Dot per sq. inch (B) Dot per inch (C) Dots printed per unit time (D) All of the above</div>
-                        <div class="q-card"><b>25. Which of the following was a special purpose computer?</b><br>(A) ABC (B) ENIAC (C) EDVAC (D) All of the above</div>
-                        <div class="q-card"><b>26. What PowerPoint feature will you use to apply motion effects to different objects of a slide?</b><br>(A) Animation Scheme (B) Slide Transition (C) Slide Design (D) None of the above</div>
-                        <div class="q-card"><b>27. Which of the following storage devices can store maximum amount of data?</b><br>(A) Floppy Disk (B) Hard Disk (C) Compact Disk (D) Magneto Optic Disk</div>
-                        <div class="q-card"><b>28. Which computer was considered the first electronic computer until 1973 when court invalidated the patent?</b><br>(A) ENIAC (B) MARK I (C) Z3 (D) ABC</div>
-                        <div class="q-card"><b>29. A physical connection between the microprocessor memory and other parts of the microcomputer is known as:</b><br>(A) Path (B) Address bus (C) Route (D) All of the above</div>
-                        <div class="q-card"><b>30. High density double sided floppy disks could store ___ of data:</b><br>(A) 1.40 MB (B) 1.44 GB (C) 1.40 GB (D) 1.44 MB</div>
-                        <div class="q-card"><b>31. File extension of word document is:</b><br>(A) .xls (B) .doc (C) .word (D) .jpeg</div>
-                        <div class="q-card"><b>32. Which of the following is not an input device?</b><br>(A) OCR (B) Optical scanners (C) Voice recognition device (D) COM (Computer Output to Microfilm)</div>
-                        <div class="q-card"><b>33. Following is used for creating presentations:</b><br>(A) MS Word (B) MS Access (C) MS Excel (D) Power Point</div>
-                        <div class="q-card"><b>34. In most of the IBM PCs, the CPU, the device drivers, memory, expansion slots and active components are mounted on a single board. What is the name of the board?</b><br>(A) Motherboard (B) Daughterboard (C) Bredboard (D) Fatherboard</div>
-                        <div class="q-card"><b>35. Which of the following is not valid version of MS Office?</b><br>(A) Office XP (B) Office Vista (C) Office 2007 (D) None of above</div>
-                        <div class="q-card"><b>36. Magnetic disks are the most popular medium for:</b><br>(A) Direct access (B) Sequential access (C) Both of above (D) None of above</div>
-                        <div class="q-card"><b>37. A character that is raised and smaller above the baseline is known as:</b><br>(A) Outlined (B) Raised (C) Superscript (D) Subscript</div>
-                        <div class="q-card"><b>38. ___ option from clipboard is used to move data from one place to another in a document.</b><br>(A) Copy & Paste (B) Cut & Paste (C) Bold (D) Justify</div>
-                        <div class="q-card"><b>39. A modern electronic computer is a machine that is meant for:</b><br>(A) Doing quick mathematical calculations (B) Input, storage, manipulation and outputting of data (C) Electronic data processing (D) Performing repetitive tasks accurately</div>
-                        <div class="q-card"><b>40. When was vacuum tube invented?</b><br>(A) 1900 (B) 1906 (C) 1910 (D) 1880</div>
-                        <div class="q-card"><b>41. Which of the following produces the best quality graphics reproduction?</b><br>(A) Laser printer (B) Ink jet printer (C) Plotter (D) Dot matrix printer</div>
-                        <div class="q-card"><b>42. Computers with 80286 microprocessor is:</b><br>(A) XT computer (B) AT comptuers (C) PS/2 computer (D) None of above</div>
-                        <div class="q-card"><b>43. An application suitable for sequential processing is:</b><br>(A) Processing of grades (B) Payroll processing (C) Both a and b (D) All of above</div>
-                        <div class="q-card"><b>44. Which of the following is not processing?</b><br>(A) arranging (B) manipulating (C) calculating (D) gathering</div>
-                        <div class="q-card"><b>45. The digital computer was developed primarily in:</b><br>(A) USSR (B) Japan (C) USA (D) UK</div>
-                        <div class="q-card"><b>46. Software in computer:</b><br>(A) Enhances the capabilities of the hardware machine (B) Increase the speed of central processing unit (C) Both of above (D) None of above</div>
-                        <div class="q-card"><b>47. From which menu you can insert Header and Footer?</b><br>(A) Insert Menu (B) View Menu (C) Format menu (D) Tools Menu</div>
-                        <div class="q-card"><b>48. Before a disk drive can access any sector record, a computer program has to provide the record's disk address. What information does this address specify?</b><br>(A) Track number (B) Sector number (C) Surface number (D) All of above</div>
-                        <div class="q-card"><b>49. The arranging of data in a logical sequence is called:</b><br>(A) Sorting (B) Classifying (C) Reproducing (D) Summarizing</div>
-                        <div class="q-card"><b>50. What is the responsibility of the logical unit in the CPU of a computer?</b><br>(A) To produce result (B) To compare numbers (C) To control flow of information (D) To do math's works</div>
+                    <div id="comp-images-1" class="images-gallery">
+                        <div class="page-card">
+                            <span>الصفحة 1 من 6</span>
+                            <img src="computer-p1.jpg" alt="صفحة 1" alt="الامتحان الأساسي - صفحة 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/700x950?text=Computer+Skills+Exam+-+Page+1';">
+                        </div>
+                        <div class="page-card">
+                            <span>الصفحة 2 من 6</span>
+                            <img src="computer-p2.jpg" alt="صفحة 2" alt="الامتحان الأساسي - صفحة 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/700x950?text=Computer+Skills+Exam+-+Page+2';">
+                        </div>
+                        <div class="page-card">
+                            <span>الصفحة 3 من 6</span>
+                            <img src="computer-p3.jpg" alt="صفحة 3" alt="الامتحان الأساسي - صفحة 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/700x950?text=Computer+Skills+Exam+-+Page+3';">
+                        </div>
+                        <div class="page-card">
+                            <span>الصفحة 4 من 6</span>
+                            <img src="computer-p4.jpg" alt="صفحة 4" alt="الامتحان الأساسي - صفحة 4" onerror="this.onerror=null; this.src='https://via.placeholder.com/700x950?text=Computer+Skills+Exam+-+Page+4';">
+                        </div>
+                        <div class="page-card">
+                            <span>الصفحة 5 من 6</span>
+                            <img src="computer-p5.jpg" alt="صفحة 5" alt="الامتحان الأساسي - صفحة 5" onerror="this.onerror=null; this.src='https://via.placeholder.com/700x950?text=Computer+Skills+Exam+-+Page+5';">
+                        </div>
+                        <div class="page-card">
+                            <span>الصفحة 6 من 6</span>
+                            <img src="computer-p6.jpg" alt="صفحة 6" alt="الامتحان الأساسي - صفحة 6" onerror="this.onerror=null; this.src='https://via.placeholder.com/700x950?text=Computer+Skills+Exam+-+Page+6';">
+                        </div>
                     </div>
                 </div>
             `;
