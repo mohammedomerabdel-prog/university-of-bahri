@@ -127,11 +127,10 @@
             text-align: center;
             background: #082b52;
             color: white;
-            border: none;
+            text-decoration: none;
             padding: 9px 8px;
             border-radius: 9px;
             font-size: 12px;
-            cursor: pointer;
             transition: 0.3s;
         }
 
@@ -143,7 +142,7 @@
             opacity: 0.85;
         }
 
-        .empty-msg {
+        .empty {
             background: #eaf4ff;
             border: 1px solid #c9e2fb;
             border-radius: 15px;
@@ -151,119 +150,6 @@
             margin-bottom: 30px;
             text-align: center;
             color: #1768ad;
-        }
-
-        /* Modal / النافذة المنبثقة */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
-        }
-
-        .modal-content {
-            background: white;
-            width: min(850px, 100%);
-            max-height: 90vh;
-            border-radius: 18px;
-            padding: 25px;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            font-size: 26px;
-            cursor: pointer;
-            color: #888;
-            font-weight: bold;
-        }
-
-        .close-btn:hover {
-            color: #000;
-        }
-
-        .modal-header {
-            border-bottom: 2px solid #e5ebf2;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
-
-        .modal-header h2 {
-            font-size: 20px;
-            color: #082b52;
-        }
-
-        .exam-item {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-
-        .exam-item h4 {
-            color: #1261ad;
-            margin-bottom: 5px;
-        }
-
-        .exam-item p {
-            font-size: 13px;
-            color: #64748b;
-            margin-bottom: 12px;
-        }
-
-        .toggle-btn {
-            background: #082b52;
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-size: 13px;
-            cursor: pointer;
-        }
-
-        /* تنسيق عرض أوراق الامتحان كصور */
-        .images-gallery {
-            display: none;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px dashed #cbd5e1;
-        }
-
-        .page-card {
-            background: white;
-            padding: 12px;
-            border-radius: 10px;
-            border: 1px solid #cbd5e1;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .page-card span {
-            display: block;
-            font-size: 13px;
-            font-weight: bold;
-            color: #082b52;
-            margin-bottom: 8px;
-        }
-
-        .page-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 6px;
-            border: 1px solid #eee;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
 
         footer {
@@ -316,8 +202,8 @@
             <p>نماذج الامتحانات والاختبارات الخاصة بمواد السنة الثانية - الفصل الأول</p>
         </div>
 
-        <div class="empty-msg">
-            📌 اضغط على "امتحانات سابقة" أو "اختبارات" لعرض المادة العلمية المتاحة لكل مادة.
+        <div class="empty">
+            📌 سيتم إضافة ملفات الامتحانات والاختبارات فور توفرها ورفعها.
         </div>
 
         <section class="exams">
@@ -331,22 +217,22 @@
                     <p>أستاذ المادة: د. عاطف حسن</p>
                 </div>
                 <div class="btn-group">
-                    <button class="btn" onclick="openModal('السلوك التنظيمي - امتحانات سابقة', '<p style=\'text-align:center; color:#64748b;\'>لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.</p>')">📄 امتحانات سابقة</button>
-                    <button class="btn btn-quiz" onclick="openModal('السلوك التنظيمي - اختبارات', '<p style=\'text-align:center; color:#64748b;\'>لا توجد اختبارات مضافة حالياً لهذه المادة.</p>')">📝 اختبارات</button>
+                    <a class="btn" href="#" onclick="alert('سيتم رفع الامتحانات السابقة للمادة قريباً'); return false;">📄 امتحانات سابقة</a>
+                    <a class="btn btn-quiz" href="#" onclick="alert('سيتم رفع الاختبارات للمادة قريباً'); return false;">📝 اختبارات</a>
                 </div>
             </div>
 
-            <!-- مادة 2: مهارات الحاسوب -->
+            <!-- مادة 2 -->
             <div class="exam">
                 <div>
                     <div class="exam-icon">💻</div>
                     <h3>مهارات الحاسوب</h3>
-                    <div class="en-title">Computer Skills (CMCR2103)</div>
+                    <div class="en-title">Computer Skills</div>
                     <p>أستاذ المادة: أ. حفصة حسن</p>
                 </div>
                 <div class="btn-group">
-                    <button class="btn" onclick="openComputerExams()">📄 امتحانات سابقة (1)</button>
-                    <button class="btn btn-quiz" onclick="openModal('مهارات الحاسوب - اختبارات', '<p style=\'text-align:center; color:#64748b;\'>لا توجد اختبارات مضافة حالياً لهذه المادة.</p>')">📝 اختبارات</button>
+                    <a class="btn" href="#" onclick="alert('سيتم رفع الامتحانات السابقة للمادة قريباً'); return false;">📄 امتحانات سابقة</a>
+                    <a class="btn btn-quiz" href="#" onclick="alert('سيتم رفع الاختبارات للمادة قريباً'); return false;">📝 اختبارات</a>
                 </div>
             </div>
 
@@ -359,8 +245,8 @@
                     <p>أستاذ المادة: د. أحمد العر</p>
                 </div>
                 <div class="btn-group">
-                    <button class="btn" onclick="openModal('الاقتصاد الجزئي - امتحانات سابقة', '<p style=\'text-align:center; color:#64748b;\'>لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.</p>')">📄 امتحانات سابقة</button>
-                    <button class="btn btn-quiz" onclick="openModal('الاقتصاد الجزئي - اختبارات', '<p style=\'text-align:center; color:#64748b;\'>لا توجد اختبارات مضافة حالياً لهذه المادة.</p>')">📝 اختبارات</button>
+                    <a class="btn" href="#" onclick="alert('سيتم رفع الامتحانات السابقة للمادة قريباً'); return false;">📄 امتحانات سابقة</a>
+                    <a class="btn btn-quiz" href="#" onclick="alert('سيتم رفع الاختبارات للمادة قريباً'); return false;">📝 اختبارات</a>
                 </div>
             </div>
 
@@ -373,8 +259,8 @@
                     <p>أستاذ المادة: د. محمد تاج الدين</p>
                 </div>
                 <div class="btn-group">
-                    <button class="btn" onclick="openModal('الإحصاء في الأعمال 1 - امتحانات سابقة', '<p style=\'text-align:center; color:#64748b;\'>لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.</p>')">📄 امتحانات سابقة</button>
-                    <button class="btn btn-quiz" onclick="openModal('الإحصاء في الأعمال 1 - اختبارات', '<p style=\'text-align:center; color:#64748b;\'>لا توجد اختبارات مضافة حالياً لهذه المادة.</p>')">📝 اختبارات</button>
+                    <a class="btn" href="#" onclick="alert('سيتم رفع الامتحانات السابقة للمادة قريباً'); return false;">📄 امتحانات سابقة</a>
+                    <a class="btn btn-quiz" href="#" onclick="alert('سيتم رفع الاختبارات للمادة قريباً'); return false;">📝 اختبارات</a>
                 </div>
             </div>
 
@@ -387,8 +273,8 @@
                     <p>أستاذ المادة: أ. صدام نورين</p>
                 </div>
                 <div class="btn-group">
-                    <button class="btn" onclick="openModal('المحاسبة المالية 1 - امتحانات سابقة', '<p style=\'text-align:center; color:#64748b;\'>لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.</p>')">📄 امتحانات سابقة</button>
-                    <button class="btn btn-quiz" onclick="openModal('المحاسبة المالية 1 - اختبارات', '<p style=\'text-align:center; color:#64748b;\'>لا توجد اختبارات مضافة حالياً لهذه المادة.</p>')">📝 اختبارات</button>
+                    <a class="btn" href="#" onclick="alert('سيتم رفع الامتحانات السابقة للمادة قريباً'); return false;">📄 امتحانات سابقة</a>
+                    <a class="btn btn-quiz" href="#" onclick="alert('سيتم رفع الاختبارات للمادة قريباً'); return false;">📝 اختبارات</a>
                 </div>
             </div>
 
@@ -401,8 +287,8 @@
                     <p>أستاذ المادة: أ. محمود حسن</p>
                 </div>
                 <div class="btn-group">
-                    <button class="btn" onclick="openModal('مهارات اللغة الإنجليزية - امتحانات سابقة', '<p style=\'text-align:center; color:#64748b;\'>لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.</p>')">📄 امتحانات سابقة</button>
-                    <button class="btn btn-quiz" onclick="openModal('مهارات اللغة الإنجليزية - اختبارات', '<p style=\'text-align:center; color:#64748b;\'>لا توجد اختبارات مضافة حالياً لهذه المادة.</p>')">📝 اختبارات</button>
+                    <a class="btn" href="#" onclick="alert('سيتم رفع الامتحانات السابقة للمادة قريباً'); return false;">📄 امتحانات سابقة</a>
+                    <a class="btn btn-quiz" href="#" onclick="alert('سيتم رفع الاختبارات للمادة قريباً'); return false;">📝 اختبارات</a>
                 </div>
             </div>
 
@@ -415,8 +301,8 @@
                     <p>أستاذ المادة: د. معتصم إبراهيم</p>
                 </div>
                 <div class="btn-group">
-                    <button class="btn" onclick="openModal('القانون التجاري - امتحانات سابقة', '<p style=\'text-align:center; color:#64748b;\'>لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.</p>')">📄 امتحانات سابقة</button>
-                    <button class="btn btn-quiz" onclick="openModal('القانون التجاري - اختبارات', '<p style=\'text-align:center; color:#64748b;\'>لا توجد اختبارات مضافة حالياً لهذه المادة.</p>')">📝 اختبارات</button>
+                    <a class="btn" href="#" onclick="alert('سيتم رفع الامتحانات السابقة للمادة قريباً'); return false;">📄 امتحانات سابقة</a>
+                    <a class="btn btn-quiz" href="#" onclick="alert('سيتم رفع الاختبارات للمادة قريباً'); return false;">📝 اختبارات</a>
                 </div>
             </div>
 
@@ -429,8 +315,8 @@
                     <p>أستاذ المادة: د. الضيف زكريا</p>
                 </div>
                 <div class="btn-group">
-                    <button class="btn" onclick="openModal('مبادئ العمل المصرفي - امتحانات سابقة', '<p style=\'text-align:center; color:#64748b;\'>لا توجد امتحانات سابقة مضافة حالياً لهذه المادة.</p>')">📄 امتحانات سابقة</button>
-                    <button class="btn btn-quiz" onclick="openModal('مبادئ العمل المصرفي - اختبارات', '<p style=\'text-align:center; color:#64748b;\'>لا توجد اختبارات مضافة حالياً لهذه المادة.</p>')">📝 اختبارات</button>
+                    <a class="btn" href="#" onclick="alert('سيتم رفع الامتحانات السابقة للمادة قريباً'); return false;">📄 امتحانات سابقة</a>
+                    <a class="btn btn-quiz" href="#" onclick="alert('سيتم رفع الاختبارات للمادة قريباً'); return false;">📝 اختبارات</a>
                 </div>
             </div>
 
@@ -438,89 +324,9 @@
 
     </main>
 
-    <!-- النافذة المنبثقة عرض صور الامتحان -->
-    <div id="examModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div class="modal-header">
-                <h2 id="modalTitle">عنوان المادة</h2>
-            </div>
-            <div id="modalBody">
-                <!-- المضمون يتم استبداله بواسطة JavaScript -->
-            </div>
-        </div>
-    </div>
-
     <footer>
         دفعة 023 • كلية العلوم الإدارية • جامعة بحري
     </footer>
-
-    <script>
-        function openModal(title, contentHtml) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalBody').innerHTML = contentHtml;
-            document.getElementById('examModal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('examModal').style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            var modal = document.getElementById('examModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-
-        function toggleImages(id) {
-            var el = document.getElementById(id);
-            if (el.style.display === "block") {
-                el.style.display = "none";
-            } else {
-                el.style.display = "block";
-            }
-        }
-
-        // عرض أوراق امتحان الحاسوب كصور
-        function openComputerExams() {
-            var html = `
-                <div class="exam-item">
-                    <h4>الامتحان الأساسي - مهارات الحاسوب (2024-2025)</h4>
-                    <p>التاريخ: 5/4/2026 | زمن الامتحان: ساعتان | عدد الصفحات: 6 صفحات</p>
-                    <button class="toggle-btn" onclick="toggleImages('comp-images-1')">🖼️ عرض / إخفاء أوراق الامتحان (صور)</button>
-                    
-                    <div id="comp-images-1" class="images-gallery">
-                        <div class="page-card">
-                            <span>الصفحة 1 من 6</span>
-                            <img src="computer-p1.jpg" alt="صفحة 1" alt="الامتحان الأساسي - صفحة 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/700x950?text=Computer+Skills+Exam+-+Page+1';">
-                        </div>
-                        <div class="page-card">
-                            <span>الصفحة 2 من 6</span>
-                            <img src="computer-p2.jpg" alt="صفحة 2" alt="الامتحان الأساسي - صفحة 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/700x950?text=Computer+Skills+Exam+-+Page+2';">
-                        </div>
-                        <div class="page-card">
-                            <span>الصفحة 3 من 6</span>
-                            <img src="computer-p3.jpg" alt="صفحة 3" alt="الامتحان الأساسي - صفحة 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/700x950?text=Computer+Skills+Exam+-+Page+3';">
-                        </div>
-                        <div class="page-card">
-                            <span>الصفحة 4 من 6</span>
-                            <img src="computer-p4.jpg" alt="صفحة 4" alt="الامتحان الأساسي - صفحة 4" onerror="this.onerror=null; this.src='https://via.placeholder.com/700x950?text=Computer+Skills+Exam+-+Page+4';">
-                        </div>
-                        <div class="page-card">
-                            <span>الصفحة 5 من 6</span>
-                            <img src="computer-p5.jpg" alt="صفحة 5" alt="الامتحان الأساسي - صفحة 5" onerror="this.onerror=null; this.src='https://via.placeholder.com/700x950?text=Computer+Skills+Exam+-+Page+5';">
-                        </div>
-                        <div class="page-card">
-                            <span>الصفحة 6 من 6</span>
-                            <img src="computer-p6.jpg" alt="صفحة 6" alt="الامتحان الأساسي - صفحة 6" onerror="this.onerror=null; this.src='https://via.placeholder.com/700x950?text=Computer+Skills+Exam+-+Page+6';">
-                        </div>
-                    </div>
-                </div>
-            `;
-            openModal('مهارات الحاسوب - امتحانات سابقة', html);
-        }
-    </script>
 
 </body>
 
