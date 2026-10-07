@@ -2,439 +2,331 @@
 <html lang="ar" dir="rtl">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بنك الأسئلة والامتحانات | دفعة 023</title>
 
-<meta charset="UTF-8">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f5f8fc;
+            color: #17375e;
+            line-height: 1.7;
+        }
 
-<title>الامتحانات السابقة | دفعة 023</title>
+        .container {
+            width: min(1100px, 92%);
+            margin: auto;
+        }
 
-<style>
+        header {
+            background: linear-gradient(135deg, #06264a, #1261ad);
+            color: white;
+            padding: 20px 0;
+        }
 
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
 
-body{
-font-family:Tahoma,Arial,sans-serif;
-background:#f5f8fc;
-color:#17375e;
-line-height:1.7;
-}
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: bold;
+        }
 
-.container{
-width:min(1100px,92%);
-margin:auto;
-}
+        .logo img {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            padding: 3px;
+        }
 
-header{
-background:linear-gradient(135deg,#06264a,#1261ad);
-color:white;
-padding:20px 0;
-}
+        .back {
+            background: white;
+            color: #082b52;
+            padding: 8px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+        }
 
-.header-content{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:15px;
-}
+        .title {
+            text-align: center;
+            margin: 35px 0 25px;
+        }
 
-.logo{
-display:flex;
-align-items:center;
-gap:12px;
-font-weight:bold;
-}
+        .title h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
 
-.logo img{
-width:50px;
-height:50px;
-background:white;
-border-radius:50%;
-padding:3px;
-}
+        .title p {
+            color: #6b7b90;
+        }
 
-.back{
-background:white;
-color:#082b52;
-padding:8px 15px;
-border-radius:8px;
-text-decoration:none;
-font-size:13px;
-}
+        .exams {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 40px;
+        }
 
-.title{
-text-align:center;
-margin:35px 0 25px;
-}
+        .exam {
+            background: white;
+            border: 1px solid #e5ebf2;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 5px 20px #0b31500d;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-.title h1{
-font-size:32px;
-margin-bottom:8px;
-}
+        .exam-icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
 
-.title p{
-color:#6b7b90;
-}
+        .exam h3 {
+            margin-bottom: 4px;
+        }
 
-.exams{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px;
-margin-bottom:40px;
-}
+        .exam .en-title {
+            color: #1261ad;
+            font-size: 13px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
 
-.exam{
-background:white;
-border:1px solid #e5ebf2;
-border-radius:18px;
-padding:25px;
-box-shadow:0 5px 20px #0b31500d;
-}
+        .exam p {
+            color: #6b7b90;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
 
-.exam-icon{
-font-size:35px;
-margin-bottom:10px;
-}
+        .btn-group {
+            display: flex;
+            gap: 8px;
+        }
 
-.exam h3{
-margin-bottom:7px;
-}
+        .btn {
+            flex: 1;
+            text-align: center;
+            background: #082b52;
+            color: white;
+            text-decoration: none;
+            padding: 9px 8px;
+            border-radius: 9px;
+            font-size: 12px;
+            transition: 0.3s;
+        }
 
-.exam p{
-color:#6b7b90;
-font-size:14px;
-margin-bottom:18px;
-}
+        .btn-quiz {
+            background: #1261ad;
+        }
 
-.btn{
-display:inline-block;
-background:#082b52;
-color:white;
-text-decoration:none;
-padding:9px 17px;
-border-radius:9px;
-font-size:13px;
-}
+        .btn:hover {
+            opacity: 0.85;
+        }
 
-.btn:hover{
-background:#1261ad;
-}
+        .empty {
+            background: #eaf4ff;
+            border: 1px solid #c9e2fb;
+            border-radius: 15px;
+            padding: 18px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #1768ad;
+        }
 
-.empty{
-background:#eaf4ff;
-border:1px solid #c9e2fb;
-border-radius:15px;
-padding:18px;
-margin-bottom:30px;
-text-align:center;
-color:#1768ad;
-}
+        footer {
+            background: #061f3d;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
 
-footer{
-background:#061f3d;
-color:white;
-text-align:center;
-padding:25px;
-}
+        @media(max-width: 750px) {
+            .exams {
+                grid-template-columns: 1fr;
+            }
 
-@media(max-width:750px){
+            .header-content {
+                flex-direction: column;
+            }
 
-.exams{
-grid-template-columns:1fr;
-}
+            .title h1 {
+                font-size: 26px;
+            }
 
-.header-content{
-flex-direction:column;
-}
-
-.title h1{
-font-size:26px;
-}
-
-}
-
-</style>
-
+            .btn-group {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-
-<header>
-
-<div class="container header-content">
-
-<div class="logo">
-
-<img src="logo.jpg" alt="شعار جامعة بحري">
-
-<div>
-الامتحانات السابقة
-<br>
-<small>كلية العلوم الإدارية • دفعة 023</small>
-</div>
-
-</div>
-
-<a class="back" href="index.html">
-← العودة للرئيسية
-</a>
-
-</div>
-
-</header>
-
-
-<main class="container">
-
-
-<div class="title">
-
-<h1>
-📝 الامتحانات السابقة
-</h1>
-
-<p>
-نماذج الامتحانات الخاصة بمواد دفعة 023
-</p>
-
-</div>
-
-
-<div class="empty">
-
-📌 سيتم إضافة ملفات الامتحانات السابقة هنا
-بمجرد رفعها.
-
-</div>
-
-
-<section class="exams">
-
-
-<div class="exam">
-
-<div class="exam-icon">
-📄
-</div>
-
-<h3>
-دراسات جامعية
-</h3>
-
-<p>
-نماذج الامتحانات السابقة لمادة دراسات جامعية.
-</p>
-
-<a class="btn"
-href="#"
-onclick="alert('سيتم إضافة ملف الامتحان هنا عند رفعه'); return false;">
-فتح الامتحان
-</a>
-
-</div>
-
-
-<div class="exam">
-
-<div class="exam-icon">
-📄
-</div>
-
-<h3>
-مادة 2
-</h3>
-
-<p>
-نماذج الامتحانات السابقة.
-</p>
-
-<a class="btn"
-href="#"
-onclick="alert('سيتم إضافة ملف الامتحان هنا عند رفعه'); return false;">
-فتح الامتحان
-</a>
-
-</div>
-
-
-<div class="exam">
-
-<div class="exam-icon">
-📄
-</div>
-
-<h3>
-مادة 3
-</h3>
-
-<p>
-نماذج الامتحانات السابقة.
-</p>
-
-<a class="btn"
-href="#"
-onclick="alert('سيتم إضافة ملف الامتحان هنا عند رفعه'); return false;">
-فتح الامتحان
-</a>
-
-</div>
-
-
-<div class="exam">
-
-<div class="exam-icon">
-📄
-</div>
-
-<h3>
-مادة 4
-</h3>
-
-<p>
-نماذج الامتحانات السابقة.
-</p>
-
-<a class="btn"
-href="#"
-onclick="alert('سيتم إضافة ملف الامتحان هنا عند رفعه'); return false;">
-فتح الامتحان
-</a>
-
-</div>
-
-
-<div class="exam">
-
-<div class="exam-icon">
-📄
-</div>
-
-<h3>
-مادة 5
-</h3>
-
-<p>
-نماذج الامتحانات السابقة.
-</p>
-
-<a class="btn"
-href="#"
-onclick="alert('سيتم إضافة ملف الامتحان هنا عند رفعه'); return false;">
-فتح الامتحان
-</a>
-
-</div>
-
-
-<div class="exam">
-
-<div class="exam-icon">
-📄
-</div>
-
-<h3>
-مادة 6
-</h3>
-
-<p>
-نماذج الامتحانات السابقة.
-</p>
-
-<a class="btn"
-href="#"
-onclick="alert('سيتم إضافة ملف الامتحان هنا عند رفعه'); return false;">
-فتح الامتحان
-</a>
-
-</div>
-
-
-<div class="exam">
-
-<div class="exam-icon">
-📄
-</div>
-
-<h3>
-مادة 7
-</h3>
-
-<p>
-نماذج الامتحانات السابقة.
-</p>
-
-<a class="btn"
-href="#"
-onclick="alert('سيتم إضافة ملف الامتحان هنا عند رفعه'); return false;">
-فتح الامتحان
-</a>
-
-</div>
-
-
-<div class="exam">
-
-<div class="exam-icon">
-📄
-</div>
-
-<h3>
-مادة 8
-</h3>
-
-<p>
-نماذج الامتحانات السابقة.
-</p>
-
-<a class="btn"
-href="#"
-onclick="alert('سيتم إضافة ملف الامتحان هنا عند رفعه'); return false;">
-فتح الامتحان
-</a>
-
-</div>
-
-
-<div class="exam">
-
-<div class="exam-icon">
-📄
-</div>
-
-<h3>
-مادة 9
-</h3>
-
-<p>
-نماذج الامتحانات السابقة.
-</p>
-
-<a class="btn"
-href="#"
-onclick="alert('سيتم إضافة ملف الامتحان هنا عند رفعه'); return false;">
-فتح الامتحان
-</a>
-
-</div>
-
-
-</section>
-
-</main>
-
-
-<footer>
-
-دفعة 023 • كلية العلوم الإدارية • جامعة بحري
-
-</footer>
-
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="logo.jpg" alt="شعار جامعة بحري">
+                <div>
+                    بنك الأسئلة والامتحانات
+                    <br>
+                    <small>كلية العلوم الإدارية • دفعة 023</small>
+                </div>
+            </div>
+            <a class="back" href="index.html">← العودة للرئيسية</a>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <div class="title">
+            <h1>📝 بنك الأسئلة والامتحانات</h1>
+            <p>نماذج الامتحانات والاختبارات الخاصة بمواد السنة الثانية - الفصل الأول</p>
+        </div>
+
+        <div class="empty">
+            📌 سيتم إضافة ملفات الامتحانات والاختبارات فور توفرها ورفعها.
+        </div>
+
+        <section class="exams">
+
+            <!-- مادة 1 -->
+            <div class="exam">
+                <div>
+                    <div class="exam-icon">📚</div>
+                    <h3>السلوك التنظيمي</h3>
+                    <div class="en-title">Organizational Behaviour</div>
+                    <p>أستاذ المادة: د. عاطف حسن</p>
+                </div>
+                <div class="btn-group">
+                    <a class="btn" href="#" onclick="alert('سيتم رفع الامتحانات السابقة للمادة قريباً'); return false;">📄 امتحانات سابقة</a>
+                    <a class="btn btn-quiz" href="#" onclick="alert('سيتم رفع الاختبارات للمادة قريباً'); return false;">📝 اختبارات</a>
+                </div>
+            </div>
+
+            <!-- مادة 2 -->
+            <div class="exam">
+                <div>
+                    <div class="exam-icon">💻</div>
+                    <h3>مهارات الحاسوب</h3>
+                    <div class="en-title">Computer Skills</div>
+                    <p>أستاذ المادة: أ. حفصة حسن</p>
+                </div>
+                <div class="btn-group">
+                    <a class="btn" href="#" onclick="alert('سيتم رفع الامتحانات السابقة للمادة قريباً'); return false;">📄 امتحانات سابقة</a>
+                    <a class="btn btn-quiz" href="#" onclick="alert('سيتم رفع الاختبارات للمادة قريباً'); return false;">📝 اختبارات</a>
+                </div>
+            </div>
+
+            <!-- مادة 3 -->
+            <div class="exam">
+                <div>
+                    <div class="exam-icon">📊</div>
+                    <h3>الاقتصاد الجزئي</h3>
+                    <div class="en-title">Micro Economics</div>
+                    <p>أستاذ المادة: د. أحمد العر</p>
+                </div>
+                <div class="btn-group">
+                    <a class="btn" href="#" onclick="alert('سيتم رفع الامتحانات السابقة للمادة قريباً'); return false;">📄 امتحانات سابقة</a>
+                    <a class="btn btn-quiz" href="#" onclick="alert('سيتم رفع الاختبارات للمادة قريباً'); return false;">📝 اختبارات</a>
+                </div>
+            </div>
+
+            <!-- مادة 4 -->
+            <div class="exam">
+                <div>
+                    <div class="exam-icon">📈</div>
+                    <h3>الإحصاء في الأعمال 1</h3>
+                    <div class="en-title">Business Statistics I</div>
+                    <p>أستاذ المادة: د. محمد تاج الدين</p>
+                </div>
+                <div class="btn-group">
+                    <a class="btn" href="#" onclick="alert('سيتم رفع الامتحانات السابقة للمادة قريباً'); return false;">📄 امتحانات سابقة</a>
+                    <a class="btn btn-quiz" href="#" onclick="alert('سيتم رفع الاختبارات للمادة قريباً'); return false;">📝 اختبارات</a>
+                </div>
+            </div>
+
+            <!-- مادة 5 -->
+            <div class="exam">
+                <div>
+                    <div class="exam-icon">📑</div>
+                    <h3>المحاسبة المالية 1</h3>
+                    <div class="en-title">Financial Accounting I</div>
+                    <p>أستاذ المادة: أ. صدام نورين</p>
+                </div>
+                <div class="btn-group">
+                    <a class="btn" href="#" onclick="alert('سيتم رفع الامتحانات السابقة للمادة قريباً'); return false;">📄 امتحانات سابقة</a>
+                    <a class="btn btn-quiz" href="#" onclick="alert('سيتم رفع الاختبارات للمادة قريباً'); return false;">📝 اختبارات</a>
+                </div>
+            </div>
+
+            <!-- مادة 6 -->
+            <div class="exam">
+                <div>
+                    <div class="exam-icon">🌐</div>
+                    <h3>مهارات اللغة الإنجليزية 4</h3>
+                    <div class="en-title">English Language Skills IV</div>
+                    <p>أستاذ المادة: أ. محمود حسن</p>
+                </div>
+                <div class="btn-group">
+                    <a class="btn" href="#" onclick="alert('سيتم رفع الامتحانات السابقة للمادة قريباً'); return false;">📄 امتحانات سابقة</a>
+                    <a class="btn btn-quiz" href="#" onclick="alert('سيتم رفع الاختبارات للمادة قريباً'); return false;">📝 اختبارات</a>
+                </div>
+            </div>
+
+            <!-- مادة 7 -->
+            <div class="exam">
+                <div>
+                    <div class="exam-icon">⚖️</div>
+                    <h3>القانون التجاري</h3>
+                    <div class="en-title">Commercial Law</div>
+                    <p>أستاذ المادة: د. معتصم إبراهيم</p>
+                </div>
+                <div class="btn-group">
+                    <a class="btn" href="#" onclick="alert('سيتم رفع الامتحانات السابقة للمادة قريباً'); return false;">📄 امتحانات سابقة</a>
+                    <a class="btn btn-quiz" href="#" onclick="alert('سيتم رفع الاختبارات للمادة قريباً'); return false;">📝 اختبارات</a>
+                </div>
+            </div>
+
+            <!-- مادة 8 -->
+            <div class="exam">
+                <div>
+                    <div class="exam-icon">🏦</div>
+                    <h3>مبادئ العمل المصرفي</h3>
+                    <div class="en-title">Principles of Banking</div>
+                    <p>أستاذ المادة: د. الضيف زكريا</p>
+                </div>
+                <div class="btn-group">
+                    <a class="btn" href="#" onclick="alert('سيتم رفع الامتحانات السابقة للمادة قريباً'); return false;">📄 امتحانات سابقة</a>
+                    <a class="btn btn-quiz" href="#" onclick="alert('سيتم رفع الاختبارات للمادة قريباً'); return false;">📝 اختبارات</a>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        دفعة 023 • كلية العلوم الإدارية • جامعة بحري
+    </footer>
 
 </body>
 
