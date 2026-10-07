@@ -56,11 +56,6 @@ body.dark-mode .search-input{
     color:#f8fafc;
     border-color:#374151;
 }
-body.dark-mode select, body.dark-mode input[type="text"] {
-    background:#1f2937;
-    color:#f8fafc;
-    border-color:#374151;
-}
 
 header{
     background:linear-gradient(135deg,var(--primary) 0%,var(--primary2) 100%);
@@ -548,18 +543,11 @@ section{
     font-weight:bold;
     transition:.2s;
     margin-top:8px;
-    border:none;
-    cursor:pointer;
 }
 
 .btn:hover{
     background:var(--primary);
     transform:translateY(-1px);
-}
-
-.btn:disabled{
-    background:#9ca3af;
-    cursor:not-allowed;
 }
 
 .btn-highlight{
@@ -598,61 +586,6 @@ th{
     background:var(--primary);
     color:#fff;
 }
-
-/* ================================
-   أنماط نظام الحضور والنتائج
-================================= */
-.attendance-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 22px;
-    padding: 30px;
-    box-shadow: var(--shadow);
-}
-.attendance-tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 25px;
-    border-bottom: 2px solid var(--border);
-}
-.att-tab-btn {
-    padding: 10px 20px;
-    border: none;
-    background: none;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    color: var(--muted);
-    border-bottom: 3px solid transparent;
-}
-.att-tab-btn.active {
-    color: var(--primary2);
-    border-bottom: 3px solid var(--primary2);
-}
-.att-tab-content { display: none; }
-.att-tab-content.active { display: block; }
-
-.form-group { margin-bottom: 18px; text-align: right; }
-.form-group label { font-weight: bold; display: block; margin-bottom: 8px; color: var(--primary); }
-.form-group select, .form-group input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    font-size: 15px;
-    outline: none;
-}
-.alert-box {
-    padding: 14px;
-    border-radius: 10px;
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-.alert-warning { background-color: #fef3c7; color: #92400e; }
-.alert-success { background-color: #d1fae5; color: #065f46; }
-.badge-pass { background: #d1fae5; color: #065f46; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: bold; }
-.badge-sup { background: #fee2e2; color: #991b1b; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: bold; }
 
 .library{
     background:linear-gradient(135deg,var(--primary),var(--primary2));
@@ -1103,10 +1036,6 @@ footer{
             الرئيسية
         </a>
 
-        <a href="#attendance">
-            تسجيل الحضور
-        </a>
-
         <a href="subjects.html">
             المواد
         </a>
@@ -1153,7 +1082,7 @@ footer{
 
     <p>
         جرب البحث بكلمات أخرى مثل:
-        "حضور"، "مواد"، "نتيجة"، "جدول"، "واتساب"، "ليدر".
+        "مواد"، "نتيجة"، "جدول"، "واتساب"، "ليدر".
     </p>
 
 </div>
@@ -1273,83 +1202,6 @@ footer{
 
         </div>
 
-    </div>
-
-</section>
-
-<!-- ========================= -->
-<!-- قسم نظام الحضور الإلكتروني المدمج -->
-<!-- ========================= -->
-
-<section id="attendance" class="searchable-section">
-
-    <div class="section-title">
-        <h2>📋 نظام الحضور والنتائج الإلكتروني</h2>
-        <p>سجل حضورك اليومي أو استعرض الكشوفات الأكاديمية الخاصة بالدكاترة</p>
-    </div>
-
-    <div class="attendance-card searchable-item">
-        <div class="attendance-tabs">
-            <button class="att-tab-btn active" onclick="switchAttTab('student-tab')">تسجيل حضور طالب</button>
-            <button class="att-tab-btn" onclick="switchAttTab('doctor-tab')">لوحة تحكم الدكتور</button>
-        </div>
-
-        <!-- تبويب الطالب -->
-        <div id="student-tab" class="att-tab-content active">
-            <div id="day-status-alert" class="alert-box">جاري التحقق من الموعد...</div>
-            
-            <div class="form-group">
-                <label>اختر التخصص:</label>
-                <select id="dept-select" onchange="loadStudentsForAttendance()">
-                    <option value="">-- اختر التخصص --</option>
-                    <option value="accounting_and_finance">المحاسبة والتمويل</option>
-                    <option value="cost_and_management_accounting">محاسبة التكاليف والإدارية</option>
-                    <option value="banking_and_financial_studies">الدراسات المصرفية والمالية</option>
-                    <option value="business_administration">إدارة الأعمال</option>
-                    <option value="marketing_management">إدارة التسويق</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>اختر اسمك:</label>
-                <select id="student-select" disabled>
-                    <option value="">-- اختر التخصص أولاً --</option>
-                </select>
-            </div>
-
-            <button id="submit-btn" class="btn btn-highlight" onclick="registerAttendance()" disabled style="width:100%;">تسجيل الحضور اليومي ✍️</button>
-            <div id="attendance-response" style="margin-top: 15px;"></div>
-        </div>
-
-        <!-- تبويب الدكتور -->
-        <div id="doctor-tab" class="att-tab-content">
-            <div class="form-group">
-                <label>اختر التخصص لعرض الكشوفات والإحصائيات:</label>
-                <select id="doc-dept-select" onchange="generateReport()">
-                    <option value="accounting_and_finance">المحاسبة والتمويل</option>
-                    <option value="cost_and_management_accounting">محاسبة التكاليف والإدارية</option>
-                    <option value="banking_and_financial_studies">الدراسات المصرفية والمالية</option>
-                    <option value="business_administration">إدارة الأعمال</option>
-                    <option value="marketing_management">إدارة التسويق</option>
-                </select>
-            </div>
-
-            <div class="table-box" style="margin-top:15px;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>اسم الطالب / الطالبة</th>
-                            <th>الحالة الأكاديمية</th>
-                            <th>أيام الحضور المسجلة</th>
-                        </tr>
-                    </thead>
-                    <tbody id="report-table-body">
-                        <tr><td colspan="4" style="text-align: center;">اختر التخصص لعرض البيانات</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
 
 </section>
@@ -2173,126 +2025,11 @@ footer{
 
 </div>
 
-<!-- ========================= -->
-<!-- منطق البرمجة (JavaScript) -->
-<!-- ========================= -->
 <script>
-
-let studentsData = {};
-const today = new Date();
-const dayOfWeek = today.getDay(); // 2 = الثلاثاء, 4 = الخميس
-const dateKey = today.toISOString().split('T')[0];
-const isAllowedDay = (dayOfWeek === 2 || dayOfWeek === 4);
-
-function checkDayConstraint() {
-    const alertBox = document.getElementById('day-status-alert');
-    if (!alertBox) return;
-    if (isAllowedDay) {
-        alertBox.className = "alert-box alert-success";
-        alertBox.innerText = `التسجيل متاح اليوم (${dateKey}) - يرجى اختيار اسمك والتأكيد مرة واحدة.`;
-    } else {
-        alertBox.className = "alert-box alert-warning";
-        alertBox.innerText = `التسجيل مغلق اليوم. المواعيد المتاحة هي يومي الثلاثاء والخميس فقط.`;
-    }
-}
-
-function switchAttTab(tabId) {
-    document.querySelectorAll('.att-tab-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.att-tab-btn').forEach(el => el.classList.remove('active'));
-    
-    document.getElementById(tabId).classList.add('active');
-    if(event && event.target) event.target.classList.add('active');
-    if (tabId === 'doctor-tab') generateReport();
-}
-
-function loadStudentsForAttendance() {
-    const dept = document.getElementById('dept-select').value;
-    const studentSelect = document.getElementById('student-select');
-    const submitBtn = document.getElementById('submit-btn');
-
-    studentSelect.innerHTML = '<option value="">-- اختر الاسم --</option>';
-    if (!dept || !studentsData[dept]) {
-        studentSelect.disabled = true;
-        submitBtn.disabled = true;
-        return;
-    }
-
-    const allStudents = [...(studentsData[dept].pass || []), ...(studentsData[dept].supplementary || [])];
-    allStudents.forEach(st => {
-        const opt = document.createElement('option');
-        opt.value = st.id;
-        opt.innerText = `${st.name_ar} (${st.name_en})`;
-        studentSelect.appendChild(opt);
-    });
-
-    studentSelect.disabled = false;
-    submitBtn.disabled = !isAllowedDay;
-}
-
-function registerAttendance() {
-    const studentId = document.getElementById('student-select').value;
-    const resp = document.getElementById('attendance-response');
-
-    if (!studentId) {
-        alert("الرجاء اختيار الاسم أولاً");
-        return;
-    }
-
-    const hasAttendedToday = localStorage.getItem(`att_${studentId}_${dateKey}`);
-    if (hasAttendedToday) {
-        resp.innerHTML = `<div class="alert-box alert-warning">لقد قمت بتسجيل الحضور لهذا اليوم من قبل!</div>`;
-        return;
-    }
-
-    localStorage.setItem(`att_${studentId}_${dateKey}`, 'present');
-    let totalLogs = JSON.parse(localStorage.getItem(`history_${studentId}`) || "[]");
-    if (!totalLogs.includes(dateKey)) totalLogs.push(dateKey);
-    localStorage.setItem(`history_${studentId}`, JSON.stringify(totalLogs));
-
-    resp.innerHTML = `<div class="alert-box alert-success">تم تسجيل حضورك بنجاح لليوم: ${dateKey}</div>`;
-    document.getElementById('submit-btn').disabled = true;
-}
-
-function generateReport() {
-    const dept = document.getElementById('doc-dept-select').value;
-    const tbody = document.getElementById('report-table-body');
-    tbody.innerHTML = '';
-
-    if (!studentsData[dept]) {
-        tbody.innerHTML = '<tr><td colspan="4" style="text-align: center;">لا توجد بيانات متاحة لهذا التخصص</td></tr>';
-        return;
-    }
-
-    let index = 1;
-    const renderRows = (list, isPass) => {
-        list.forEach(st => {
-            const history = JSON.parse(localStorage.getItem(`history_${st.id}`) || "[]");
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>${index++}</td>
-                <td>${st.name_ar}<br><small style="color:var(--muted);">${st.name_en}</small></td>
-                <td>${isPass ? '<span class="badge-pass">ناجح</span>' : `<span class="badge-sup">ملحق (${st.status || 'مطلوب'})</span>`}</td>
-                <td><b>${history.length}</b> يوم/أيام (${history.join(', ') || 'لا يوجد'})</td>
-            `;
-            tbody.appendChild(tr);
-        });
-    };
-
-    if (studentsData[dept].pass) renderRows(studentsData[dept].pass, true);
-    if (studentsData[dept].supplementary) renderRows(studentsData[dept].supplementary, false);
-}
 
 document.addEventListener("DOMContentLoaded", function(){
 
     const ADMIN_PASS = "023024";
-
-    checkDayConstraint();
-    
-    // جلب ملف البيانات الخارجي
-    fetch('students.json')
-        .then(response => response.json())
-        .then(data => { studentsData = data; })
-        .catch(err => console.error("Error loading students.json:", err));
 
     /* ================================
        الخبر والملفات
@@ -2301,25 +2038,42 @@ document.addEventListener("DOMContentLoaded", function(){
     const savedTicker = localStorage.getItem("customTicker");
 
     if(savedTicker){
-        document.getElementById("mainTickerText").innerText = savedTicker;
+
+        document.getElementById("mainTickerText").innerText =
+            savedTicker;
+
     }
 
     function renderFiles(){
-        const filesContainer = document.getElementById("uploadedFilesContainer");
-        const savedFiles = JSON.parse(localStorage.getItem("uploadedFiles") || "[]");
+
+        const filesContainer =
+            document.getElementById("uploadedFilesContainer");
+
+        const savedFiles =
+            JSON.parse(
+                localStorage.getItem("uploadedFiles") || "[]"
+            );
 
         filesContainer.innerHTML = "";
 
         savedFiles.forEach(function(file){
-            const item = document.createElement("div");
-            item.className = "uploaded-file-item";
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "uploaded-file-item";
+
             item.innerHTML =
                 `<span>📄 ${file.name}</span>
                  <a href="${file.url}" target="_blank">
                  تحميل 📥
                  </a>`;
+
             filesContainer.appendChild(item);
+
         });
+
     }
 
     renderFiles();
@@ -2328,91 +2082,214 @@ document.addEventListener("DOMContentLoaded", function(){
        لوحة المشرف
     ================================= */
 
-    const adminModal = document.getElementById("adminModal");
-    const openAdminBtn = document.getElementById("openAdminBtn");
-    const closeAdminModal = document.getElementById("closeAdminModal");
-    const loginAdminBtn = document.getElementById("loginAdminBtn");
-    const adminLoginForm = document.getElementById("adminLoginForm");
-    const adminControlsPanel = document.getElementById("adminControlsPanel");
+    const adminModal =
+        document.getElementById("adminModal");
+
+    const openAdminBtn =
+        document.getElementById("openAdminBtn");
+
+    const closeAdminModal =
+        document.getElementById("closeAdminModal");
+
+    const loginAdminBtn =
+        document.getElementById("loginAdminBtn");
+
+    const adminLoginForm =
+        document.getElementById("adminLoginForm");
+
+    const adminControlsPanel =
+        document.getElementById("adminControlsPanel");
 
     openAdminBtn.addEventListener("click",function(){
+
         adminModal.style.display = "flex";
+
     });
 
     closeAdminModal.addEventListener("click",function(){
+
         adminModal.style.display = "none";
+
     });
 
     loginAdminBtn.addEventListener("click",function(){
-        const pass = document.getElementById("adminPasswordInput").value;
+
+        const pass =
+            document.getElementById(
+                "adminPasswordInput"
+            ).value;
 
         if(pass === ADMIN_PASS){
+
             adminLoginForm.style.display = "none";
+
             adminControlsPanel.style.display = "block";
-            alert("تم تسجيل الدخول بنجاح! يمكنك الآن تعديل المنصة.");
+
+            alert(
+                "تم تسجيل الدخول بنجاح! يمكنك الآن تعديل المنصة."
+            );
+
         }else{
+
             alert("كلمة السر غير صحيحة!");
+
         }
+
     });
 
     /* ================================
        حفظ الخبر
     ================================= */
 
-    document.getElementById("saveTickerBtn").addEventListener("click",function(){
-        const text = document.getElementById("newTickerInput").value.trim();
+    document
+        .getElementById("saveTickerBtn")
+        .addEventListener("click",function(){
 
-        if(text){
-            localStorage.setItem("customTicker", text);
-            document.getElementById("mainTickerText").innerText = text;
-            alert("تم تحديث الخبر العاجل بنجاح!");
-            document.getElementById("newTickerInput").value = "";
-        }
-    });
+            const text =
+                document
+                    .getElementById("newTickerInput")
+                    .value
+                    .trim();
+
+            if(text){
+
+                localStorage.setItem(
+                    "customTicker",
+                    text
+                );
+
+                document
+                    .getElementById("mainTickerText")
+                    .innerText = text;
+
+                alert(
+                    "تم تحديث الخبر العاجل بنجاح!"
+                );
+
+                document
+                    .getElementById("newTickerInput")
+                    .value = "";
+
+            }
+
+        });
 
     /* ================================
        إضافة ملف أو محاضرة
     ================================= */
 
-    document.getElementById("saveFileBtn").addEventListener("click",function(){
-        const name = document.getElementById("fileNameInput").value.trim();
-        const url = document.getElementById("fileUrlInput").value.trim();
+    document
+        .getElementById("saveFileBtn")
+        .addEventListener("click",function(){
 
-        if(name && url){
-            const savedFiles = JSON.parse(localStorage.getItem("uploadedFiles") || "[]");
-            savedFiles.push({ name: name, url: url });
-            localStorage.setItem("uploadedFiles", JSON.stringify(savedFiles));
-            renderFiles();
-            alert("تم إضافة الملف بنجاح إلى قسم المكتبة!");
-            document.getElementById("fileNameInput").value = "";
-            document.getElementById("fileUrlInput").value = "";
-        }else{
-            alert("يرجى ملء جميع الحقول!");
-        }
-    });
+            const name =
+                document
+                    .getElementById("fileNameInput")
+                    .value
+                    .trim();
+
+            const url =
+                document
+                    .getElementById("fileUrlInput")
+                    .value
+                    .trim();
+
+            if(name && url){
+
+                const savedFiles =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "uploadedFiles"
+                        ) || "[]"
+                    );
+
+                savedFiles.push({
+                    name:name,
+                    url:url
+                });
+
+                localStorage.setItem(
+                    "uploadedFiles",
+                    JSON.stringify(savedFiles)
+                );
+
+                renderFiles();
+
+                alert(
+                    "تم إضافة الملف بنجاح إلى قسم المكتبة!"
+                );
+
+                document
+                    .getElementById("fileNameInput")
+                    .value = "";
+
+                document
+                    .getElementById("fileUrlInput")
+                    .value = "";
+
+            }else{
+
+                alert(
+                    "يرجى ملء جميع الحقول!"
+                );
+
+            }
+
+        });
 
     /* ================================
        عمر المنصة
     ================================= */
 
     function updatePlatformAge(){
-        const launchDate = new Date("October 1, 2026 00:00:00").getTime();
-        const now = new Date().getTime();
-        const diff = now - launchDate;
-        const ageEl = document.getElementById("platformAge");
+
+        const launchDate =
+            new Date(
+                "October 1, 2026 00:00:00"
+            ).getTime();
+
+        const now =
+            new Date().getTime();
+
+        const diff =
+            now - launchDate;
+
+        const ageEl =
+            document.getElementById(
+                "platformAge"
+            );
 
         if(ageEl){
+
             if(diff < 0){
-                ageEl.innerText = "قريباً";
+
+                ageEl.innerText =
+                    "قريباً";
+
             }else{
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+                const days =
+                    Math.floor(
+                        diff /
+                        (1000 * 60 * 60 * 24)
+                    );
+
                 if(days === 0){
-                    ageEl.innerText = "اليوم الأول";
+
+                    ageEl.innerText =
+                        "اليوم الأول";
+
                 }else{
-                    ageEl.innerText = days + " يوم";
+
+                    ageEl.innerText =
+                        days + " يوم";
+
                 }
+
             }
+
         }
+
     }
 
     updatePlatformAge();
@@ -2421,200 +2298,513 @@ document.addEventListener("DOMContentLoaded", function(){
        نافذة التنبيه
     ================================= */
 
-    const noticeModal = document.getElementById("noticeModal");
-    const confirmNoticeBtn = document.getElementById("confirmNoticeBtn");
+    const noticeModal =
+        document.getElementById(
+            "noticeModal"
+        );
+
+    const confirmNoticeBtn =
+        document.getElementById(
+            "confirmNoticeBtn"
+        );
 
     if(confirmNoticeBtn && noticeModal){
-        confirmNoticeBtn.addEventListener("click", function(){
-            noticeModal.style.display = "none";
-        });
+
+        confirmNoticeBtn.addEventListener(
+            "click",
+            function(){
+
+                noticeModal.style.display =
+                    "none";
+
+            }
+        );
+
     }
 
     /* ================================
        الوضع الليلي
     ================================= */
 
-    const themeBtn = document.getElementById("themeToggleBtn");
+    const themeBtn =
+        document.getElementById(
+            "themeToggleBtn"
+        );
 
     if(themeBtn){
-        const currentTheme = localStorage.getItem("theme");
+
+        const currentTheme =
+            localStorage.getItem("theme");
 
         if(currentTheme === "dark"){
-            document.body.classList.add("dark-mode");
-            themeBtn.innerText = "☀️ الوضع الصباحي";
+
+            document.body.classList.add(
+                "dark-mode"
+            );
+
+            themeBtn.innerText =
+                "☀️ الوضع الصباحي";
+
         }
 
-        themeBtn.addEventListener("click", function(){
-            document.body.classList.toggle("dark-mode");
+        themeBtn.addEventListener(
+            "click",
+            function(){
 
-            if(document.body.classList.contains("dark-mode")){
-                localStorage.setItem("theme", "dark");
-                themeBtn.innerText = "☀️ الوضع الصباحي";
-            }else{
-                localStorage.setItem("theme", "light");
-                themeBtn.innerText = "🌙 الوضع الليلي";
+                document.body.classList.toggle(
+                    "dark-mode"
+                );
+
+                if(
+                    document.body.classList.contains(
+                        "dark-mode"
+                    )
+                ){
+
+                    localStorage.setItem(
+                        "theme",
+                        "dark"
+                    );
+
+                    themeBtn.innerText =
+                        "☀️ الوضع الصباحي";
+
+                }else{
+
+                    localStorage.setItem(
+                        "theme",
+                        "light"
+                    );
+
+                    themeBtn.innerText =
+                        "🌙 الوضع الليلي";
+
+                }
+
             }
-        });
+        );
+
     }
 
     /* ================================
        محرك البحث
     ================================= */
 
-    const searchInput = document.getElementById("siteSearchInput");
-    const clearBtn = document.getElementById("clearSearchBtn");
-    const noResults = document.getElementById("noResultsMsg");
+    const searchInput =
+        document.getElementById(
+            "siteSearchInput"
+        );
+
+    const clearBtn =
+        document.getElementById(
+            "clearSearchBtn"
+        );
+
+    const noResults =
+        document.getElementById(
+            "noResultsMsg"
+        );
 
     if(searchInput){
-        searchInput.addEventListener("input", function(){
-            const query = this.value.trim().toLowerCase();
 
-            if(query.length > 0){
-                clearBtn.style.display = "block";
-            }else{
-                clearBtn.style.display = "none";
-            }
+        searchInput.addEventListener(
+            "input",
+            function(){
 
-            let totalMatches = 0;
-            const sections = document.querySelectorAll(".searchable-section");
+                const query =
+                    this.value
+                        .trim()
+                        .toLowerCase();
 
-            sections.forEach(function(section){
-                const items = section.querySelectorAll(".searchable-item");
-                let visibleItemsInSection = 0;
+                if(query.length > 0){
 
-                items.forEach(function(item){
-                    const text = item.textContent.toLowerCase();
+                    clearBtn.style.display =
+                        "block";
 
-                    if(query === "" || text.includes(query)){
-                        item.style.display = "";
-                        visibleItemsInSection++;
-                        totalMatches++;
-                    }else{
-                        item.style.display = "none";
-                    }
-                });
-
-                if(query === "" || visibleItemsInSection > 0){
-                    section.style.display = "";
                 }else{
-                    section.style.display = "none";
+
+                    clearBtn.style.display =
+                        "none";
+
                 }
-            });
 
-            if(totalMatches === 0 && query !== ""){
-                noResults.style.display = "block";
-            }else{
-                noResults.style.display = "none";
+                let totalMatches = 0;
+
+                const sections =
+                    document.querySelectorAll(
+                        ".searchable-section"
+                    );
+
+                sections.forEach(
+                    function(section){
+
+                        const items =
+                            section.querySelectorAll(
+                                ".searchable-item"
+                            );
+
+                        let visibleItemsInSection =
+                            0;
+
+                        items.forEach(
+                            function(item){
+
+                                const text =
+                                    item.textContent
+                                        .toLowerCase();
+
+                                if(
+                                    query === "" ||
+                                    text.includes(query)
+                                ){
+
+                                    item.style.display =
+                                        "";
+
+                                    visibleItemsInSection++;
+                                    totalMatches++;
+
+                                }else{
+
+                                    item.style.display =
+                                        "none";
+
+                                }
+
+                            }
+                        );
+
+                        if(
+                            query === "" ||
+                            visibleItemsInSection > 0
+                        ){
+
+                            section.style.display =
+                                "";
+
+                        }else{
+
+                            section.style.display =
+                                "none";
+
+                        }
+
+                    }
+                );
+
+                if(
+                    totalMatches === 0 &&
+                    query !== ""
+                ){
+
+                    noResults.style.display =
+                        "block";
+
+                }else{
+
+                    noResults.style.display =
+                        "none";
+
+                }
+
             }
-        });
+        );
 
-        clearBtn.addEventListener("click", function(){
-            searchInput.value = "";
-            searchInput.dispatchEvent(new Event("input"));
-            searchInput.focus();
-        });
+        clearBtn.addEventListener(
+            "click",
+            function(){
+
+                searchInput.value = "";
+
+                searchInput.dispatchEvent(
+                    new Event("input")
+                );
+
+                searchInput.focus();
+
+            }
+        );
+
     }
 
     /* ================================
        نافذة من نحن
     ================================= */
 
-    const aboutBtn = document.getElementById("aboutUsBtn");
-    const aboutModal = document.getElementById("aboutModal");
-    const closeModal = document.getElementById("closeModalBtn");
+    const aboutBtn =
+        document.getElementById(
+            "aboutUsBtn"
+        );
 
-    if(aboutBtn && aboutModal && closeModal){
-        aboutBtn.addEventListener("click", function(){
-            aboutModal.style.display = "flex";
-        });
+    const aboutModal =
+        document.getElementById(
+            "aboutModal"
+        );
 
-        closeModal.addEventListener("click", function(){
-            aboutModal.style.display = "none";
-        });
+    const closeModal =
+        document.getElementById(
+            "closeModalBtn"
+        );
 
-        window.addEventListener("click", function(e){
-            if(e.target === aboutModal){
-                aboutModal.style.display = "none";
+    if(
+        aboutBtn &&
+        aboutModal &&
+        closeModal
+    ){
+
+        aboutBtn.addEventListener(
+            "click",
+            function(){
+
+                aboutModal.style.display =
+                    "flex";
+
             }
-        });
+        );
+
+        closeModal.addEventListener(
+            "click",
+            function(){
+
+                aboutModal.style.display =
+                    "none";
+
+            }
+        );
+
+        window.addEventListener(
+            "click",
+            function(e){
+
+                if(e.target === aboutModal){
+
+                    aboutModal.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
     }
 
     /* ================================
        مشاركة المنصة
     ================================= */
 
-    const shareBtn = document.getElementById("shareSiteBtn");
+    const shareBtn =
+        document.getElementById(
+            "shareSiteBtn"
+        );
 
     if(shareBtn){
-        shareBtn.addEventListener("click", function(){
-            const shareData = {
-                title: "منصة الريان الطلابية - جامعة بحري",
-                text: "منصة الريان التعليمية لطلاب دفعة 023 / 024 - كلية العلوم الإدارية بجامعة بحري",
-                url: window.location.href
-            };
 
-            if(navigator.share){
-                navigator.share(shareData).catch(function(){});
-            }else{
-                navigator.clipboard.writeText(window.location.href).then(function(){
-                    alert("تم نسخ رابط المنصة بنجاح!");
-                }).catch(function(){
-                    alert("الرابط: " + window.location.href);
-                });
+        shareBtn.addEventListener(
+            "click",
+            function(){
+
+                const shareData = {
+
+                    title:
+                        "منصة الريان الطلابية - جامعة بحري",
+
+                    text:
+                        "منصة الريان التعليمية لطلاب دفعة 023 / 024 - كلية العلوم الإدارية بجامعة بحري",
+
+                    url:
+                        window.location.href
+
+                };
+
+                if(navigator.share){
+
+                    navigator
+                        .share(shareData)
+                        .catch(function(){});
+
+                }else{
+
+                    navigator
+                        .clipboard
+                        .writeText(
+                            window.location.href
+                        )
+                        .then(function(){
+
+                            alert(
+                                "تم نسخ رابط المنصة بنجاح!"
+                            );
+
+                        })
+                        .catch(function(){
+
+                            alert(
+                                "الرابط: " +
+                                window.location.href
+                            );
+
+                        });
+
+                }
+
             }
-        });
+        );
+
     }
 
     /* ================================
        العداد التنازلي
     ================================= */
 
-    const examDate = new Date("January 9, 2027 00:00:00").getTime();
+    const examDate =
+        new Date(
+            "January 9, 2027 00:00:00"
+        ).getTime();
 
     function updateCountdown(){
-        const now = new Date().getTime();
-        const distance = examDate - now;
+
+        const now =
+            new Date().getTime();
+
+        const distance =
+            examDate - now;
 
         if(distance < 0){
-            document.getElementById("days").innerText = "00";
-            document.getElementById("hours").innerText = "00";
-            document.getElementById("minutes").innerText = "00";
-            document.getElementById("seconds").innerText = "00";
+
+            document.getElementById(
+                "days"
+            ).innerText = "00";
+
+            document.getElementById(
+                "hours"
+            ).innerText = "00";
+
+            document.getElementById(
+                "minutes"
+            ).innerText = "00";
+
+            document.getElementById(
+                "seconds"
+            ).innerText = "00";
+
             return;
+
         }
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const days =
+            Math.floor(
+                distance /
+                (1000 * 60 * 60 * 24)
+            );
 
-        document.getElementById("days").innerText = days < 10 ? "0" + days : days;
-        document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
-        document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
-        document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+        const hours =
+            Math.floor(
+                (
+                    distance %
+                    (1000 * 60 * 60 * 24)
+                ) /
+                (1000 * 60 * 60)
+            );
+
+        const minutes =
+            Math.floor(
+                (
+                    distance %
+                    (1000 * 60 * 60)
+                ) /
+                (1000 * 60)
+            );
+
+        const seconds =
+            Math.floor(
+                (
+                    distance %
+                    (1000 * 60)
+                ) /
+                1000
+            );
+
+        document.getElementById(
+            "days"
+        ).innerText =
+            days < 10
+                ? "0" + days
+                : days;
+
+        document.getElementById(
+            "hours"
+        ).innerText =
+            hours < 10
+                ? "0" + hours
+                : hours;
+
+        document.getElementById(
+            "minutes"
+        ).innerText =
+            minutes < 10
+                ? "0" + minutes
+                : minutes;
+
+        document.getElementById(
+            "seconds"
+        ).innerText =
+            seconds < 10
+                ? "0" + seconds
+                : seconds;
+
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000);
+
+    setInterval(
+        updateCountdown,
+        1000
+    );
 
     /* ================================
        زر العودة للأعلى
     ================================= */
 
-    const backToTopBtn = document.getElementById("backToTop");
+    const backToTopBtn =
+        document.getElementById(
+            "backToTop"
+        );
 
     if(backToTopBtn){
-        window.addEventListener("scroll", function(){
-            if(window.scrollY > 300){
-                backToTopBtn.style.display = "flex";
-            }else{
-                backToTopBtn.style.display = "none";
-            }
-        });
 
-        backToTopBtn.addEventListener("click", function(){
-            window.scrollTo({ top:0, behavior:"smooth" });
-        });
+        window.addEventListener(
+            "scroll",
+            function(){
+
+                if(window.scrollY > 300){
+
+                    backToTopBtn.style.display =
+                        "flex";
+
+                }else{
+
+                    backToTopBtn.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
+        backToTopBtn.addEventListener(
+            "click",
+            function(){
+
+                window.scrollTo({
+
+                    top:0,
+                    behavior:"smooth"
+
+                });
+
+            }
+        );
+
     }
 
 });
