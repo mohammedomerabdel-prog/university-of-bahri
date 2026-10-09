@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الأمانات الأكاديمية | منصة المَعين - جامعة بحري</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+    background:#f8fafc;
+    color:#1e293b;
+    line-height:1.8;
+    transition:background .3s ease,color .3s ease;
+}
+
+:root{
+    --primary:#0f172a;
+    --primary2:#1e293b;
+    --accent:#2563eb;
+    --accent-hover:#1d4ed8;
+    --white:#ffffff;
+    --muted:#64748b;
+    --border:#e2e8f0;
+    --shadow:0 10px 25px -5px rgba(15,23,42,.08),
+             0 8px 10px -6px rgba(15,23,42,.04);
+}
+
+body.dark-mode{
+    background:#0f172a;
+    color:#f1f5f9;
+    --primary:#3b82f6;
+    --primary2:#60a5fa;
+    --white:#1e293b;
+    --muted:#94a3b8;
+    --border:#334155;
+    --shadow:0 10px 25px -5px rgba(0,0,0,.5);
+}
+
+body.dark-mode nav{background:rgba(30,41,59,.95);}
+body.dark-mode .nav-container a{color:#e2e8f0;}
+body.dark-mode .nav-container a:hover,
+body.dark-mode .nav-container a.active{
+    background:#2563eb;
+    color:#fff;
+}
+body.dark-mode .vault-card{
+    background:#1e293b;
+    border-color:#334155;
+}
+
+header{
+    background:linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #3b82f6 100%);
+    color:#fff;
+    padding:40px 20px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.logo{
+    font-size:42px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.university-title{
+    color:#93c5fd;
+    font-size:18px;
+    font-weight:700;
+}
+
+.header-btns{
+    position:absolute;
+    top:20px;
+    left:20px;
+    z-index:10;
+}
+
+.theme-toggle-btn{
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.3);
+    color:#fff;
+    padding:8px 14px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:bold;
+    backdrop-filter:blur(5px);
+    transition:.2s;
+}
+
+.theme-toggle-btn:hover{
+    background:rgba(255,255,255,.3);
+}
+
+nav{
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(10px);
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 4px 20px rgba(15,23,42,.05);
+    border-bottom:1px solid var(--border);
+}
+
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    gap:10px;
+    padding:12px 15px;
+    overflow-x:auto;
+}
+
+.nav-container a{
+    text-decoration:none;
+    color:var(--primary);
+    padding:8px 16px;
+    border-radius:12px;
+    white-space:nowrap;
+    font-weight:600;
+    font-size:14px;
+    transition:all .3s ease;
+}
+
+.nav-container a:hover,
+.nav-container a.active{
+    background:linear-gradient(135deg, #0f172a, #2563eb);
+    color:#fff;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:35px 20px;
+}
+
+.page-intro{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.page-intro h2{
+    font-size:30px;
+    color:var(--primary);
+    margin-bottom:8px;
+    font-weight:800;
+}
+
+.page-intro p{
+    color:var(--muted);
+    font-size:16px;
+    max-width:650px;
+    margin:auto;
+}
+
+/* فلترة الفئات */
+.filter-tabs{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+}
+
+.tab-btn{
+    background:var(--white);
+    border:1px solid var(--border);
+    padding:10px 20px;
+    border-radius:12px;
+    font-weight:bold;
+    font-size:14px;
+    color:var(--primary);
+    cursor:pointer;
+    transition:.2s;
+}
+
+.tab-btn:hover, .tab-btn.active{
+    background:#2563eb;
+    color:#fff;
+    border-color:#2563eb;
+}
+
+/* شبكة الأمانات */
+.vault-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+    gap:25px;
+}
+
+.vault-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:25px;
+    box-shadow:var(--shadow);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    transition:transform .2s ease;
+}
+
+.vault-card:hover{
+    transform:translateY(-4px);
+}
+
+.card-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:15px;
+}
+
+.card-icon{
+    font-size:32px;
+    background:#f1f5f9;
+    width:55px;
+    height:55px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+}
+
+body.dark-mode .card-icon{
+    background:#0f172a;
+}
+
+.badge-tag{
+    background:#dbeafe;
+    color:#1e40af;
+    font-size:12px;
+    font-weight:bold;
+    padding:4px 12px;
+    border-radius:20px;
+}
+
+.vault-card h3{
+    font-size:18px;
+    color:var(--primary);
+    margin-bottom:8px;
+}
+
+.vault-card p{
+    font-size:14px;
+    color:var(--muted);
+    margin-bottom:20px;
+}
+
+.vault-meta{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    color:var(--muted);
+    margin-bottom:15px;
+    border-top:1px dashed var(--border);
+    padding-top:10px;
+}
+
+.download-btn{
+    display:block;
+    text-align:center;
+    background:linear-gradient(135deg, #0f172a, #2563eb);
+    color:#fff;
+    text-decoration:none;
+    padding:12px;
+    border-radius:12px;
+    font-weight:bold;
+    font-size:14px;
+    transition:.2s;
+}
+
+.download-btn:hover{
+    background:#1d4ed8;
+}
+
+footer{
+    background:#0f172a;
+    color:#fff;
+    text-align:center;
+    padding:35px 20px;
+    margin-top:60px;
+    border-top:3px solid #2563eb;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-btns">
+        <button class="theme-toggle-btn" id="themeToggleBtn" type="button">
+            🌙 الوضع الليلي
+        </button>
+    </div>
+    <div class="logo">🗄️ الأمانات الأكاديمية</div>
+    <div class="university-title">جامعة بحري — كلية العلوم الإدارية (دفعة 023 / 024)</div>
+</header>
+
+<nav>
+    <div class="nav-container">
+        <a href="index.html">الرئيسية</a>
+        <a href="subjects.html">المواد</a>
+        <a href="academic-vault.html" class="active">الأمانات الأكاديمية</a>
+        <a href="about.html">عن الكلية</a>
+        <a href="results.html">النتيجة</a>
+        <a href="exams.html">الاختبارات</a>
+        <a href="study-tools.html">الوسائل التعليمية</a>
+    </div>
+</nav>
+
+<main class="container">
+
+    <div class="page-intro">
+        <h2>أرشيف الأمانات والمستندات الرسمية</h2>
+        <p>المستودع الموحد لتجميع وحفظ جميع التكاليف، الحلول المعتمدة، ملخصات الدفعة، وأوراق الأبحاث الأكاديمية.</p>
+    </div>
+
+    <!-- أزرار التصنيف والتصفية -->
+    <div class="filter-tabs">
+        <button class="tab-btn active" onclick="filterVault('all')">الكل</button>
+        <button class="tab-btn" onclick="filterVault('assignments')">التكاليف والشيتات</button>
+        <button class="tab-btn" onclick="filterVault('summaries')">ملخصات الدفعة</button>
+        <button class="tab-btn" onclick="filterVault('past-exams')">أرشيف الامتحانات</button>
+    </div>
+
+    <!-- شبكة الأمانات -->
+    <div class="vault-grid">
+
+        <!-- بطاقة نموذجية 1 -->
+        <div class="vault-card" data-category="assignments">
+            <div>
+                <div class="card-header">
+                    <div class="card-icon">📝</div>
+                    <span class="badge-tag">تكاليف وشيتات</span>
+                </div>
+                <h3>حل شيت المحاسبة المالية (1)</h3>
+                <p>الحل النموذجي والتفصيلي لتمارين القوائم المالية وتسوية الحسابات.</p>
+            </div>
+            <div>
+                <div class="vault-meta">
+                    <span>📁 الصيغة: PDF</span>
+                    <span>🗓️ الفصل الأول 2026</span>
+                </div>
+                <a href="#" class="download-btn">تحميل المستند 📥</a>
+            </div>
+        </div>
+
+        <!-- بطاقة نموذجية 2 -->
+        <div class="vault-card" data-category="summaries">
+            <div>
+                <div class="card-header">
+                    <div class="card-icon">📚</div>
+                    <span class="badge-tag">ملخصات معتمدة</span>
+                </div>
+                <h3>ملخص السلوك التنظيمي الشامل</h3>
+                <p>تجميع أهم المبادئ والنظريات الإدارية الخاصة ببرنامج الفصل الدراسي.</p>
+            </div>
+            <div>
+                <div class="vault-meta">
+                    <span>📁 الصيغة: PDF</span>
+                    <span>🗓️ الفصل الأول 2026</span>
+                </div>
+                <a href="#" class="download-btn">تحميل المستند 📥</a>
+            </div>
+        </div>
+
+        <!-- بطاقة نموذجية 3 -->
+        <div class="vault-card" data-category="past-exams">
+            <div>
+                <div class="card-header">
+                    <div class="card-icon">🎓</div>
+                    <span class="badge-tag">أرشيف امتحانات</span>
+                </div>
+                <h3>تجميع اختبارات القانون التجاري</h3>
+                <p>أسئلة ونماذج امتحانات الأعوام السابقة مع الإجابات النموذجية.</p>
+            </div>
+            <div>
+                <div class="vault-meta">
+                    <span>📁 الصيغة: ZIP / PDF</span>
+                    <span>🗓️ سنوات سابقة</span>
+                </div>
+                <a href="#" class="download-btn">تحميل المستند 📥</a>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+    <p>جميع الحقوق محفوظة لـ <strong>منصة المَعين — جامعة بحري - كلية العلوم الإدارية (دفعة 023 / 024)</strong></p>
+</footer>
+
+<script>
+// تفعيل الوضع الليلي
+const themeBtn = document.getElementById("themeToggleBtn");
+if(localStorage.getItem("theme") === "dark"){
+    document.body.classList.add("dark-mode");
+    themeBtn.innerText = "☀️ الوضع الصباحي";
+}
+themeBtn.addEventListener("click", function(){
+    document.body.classList.toggle("dark-mode");
+    if(document.body.classList.contains("dark-mode")){
+        localStorage.setItem("theme", "dark");
+        themeBtn.innerText = "☀️ الوضع الصباحي";
+    }else{
+        localStorage.setItem("theme", "light");
+        themeBtn.innerText = "🌙 الوضع الليلي";
+    }
+});
+
+// تصفية العناصر حسب الفئة
+function filterVault(category){
+    const cards = document.querySelectorAll(".vault-card");
+    const buttons = document.querySelectorAll(".tab-btn");
+
+    buttons.forEach(btn => btn.classList.remove("active"));
+    event.target.classList.add("active");
+
+    cards.forEach(card => {
+        if(category === "all" || card.getAttribute("data-category") === category){
+            card.style.display = "flex";
+        }else{
+            card.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>
