@@ -474,7 +474,7 @@ section{
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
     gap:22px;
 }
 
@@ -522,6 +522,10 @@ section{
 
 .card .icon.icon-news{
     background:linear-gradient(135deg,#1e293b,#0284c7);
+}
+
+.card .icon.icon-vault{
+    background:linear-gradient(135deg,#0f172a,#2563eb);
 }
 
 .card h3{
@@ -794,13 +798,13 @@ footer{
 }
 
 @media(max-width:850px){
-    .cards,.links-grid,.stats,.quick-actions{
+    .links-grid,.stats,.quick-actions{
         grid-template-columns:repeat(2,1fr);
     }
 }
 
 @media(max-width:600px){
-    .cards,.links-grid,.stats,.quick-actions{
+    .links-grid,.stats,.quick-actions{
         grid-template-columns:1fr;
     }
 }
@@ -873,7 +877,7 @@ footer{
             type="text"
             id="siteSearchInput"
             class="search-input"
-            placeholder="ابحث عن مواد، اختبارات، نتيجة، جدول، أو روابط تواصل..."
+            placeholder="ابحث عن مواد، اختبارات، نتيجة، جدول، أمانات، أو روابط تواصل..."
             autocomplete="off"
         >
 
@@ -898,6 +902,10 @@ footer{
 
         <a href="subjects.html">
             المواد
+        </a>
+
+        <a href="academic-vault.html">
+            الأمانات الأكاديمية
         </a>
 
         <a href="about.html">
@@ -942,7 +950,7 @@ footer{
 
     <p>
         جرب البحث بكلمات أخرى مثل:
-        "مواد"، "نتيجة"، "جدول"، "واتساب"، "ليدر".
+        "مواد"، "نتيجة"، "جدول"، "أمانات"، "واتساب"، "ليدر".
     </p>
 
 </div>
@@ -1081,6 +1089,26 @@ footer{
     </div>
 
     <div class="cards">
+
+        <div class="card searchable-item">
+
+            <div class="icon icon-vault">
+                🗄️
+            </div>
+
+            <h3>
+                الأمانات الأكاديمية
+            </h3>
+
+            <p>
+                المستودع الشامل للأرشيف الأكاديمي، التكاليف المحلولة، والمستندات الخاصة بالدفعة.
+            </p>
+
+            <a class="btn" href="academic-vault.html">
+                دخول الأمانات
+            </a>
+
+        </div>
 
         <div class="card searchable-item">
 
