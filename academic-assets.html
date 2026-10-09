@@ -397,8 +397,6 @@ footer{
         <a href="results.html">النتيجة</a>
         <a href="exams.html">الاختبارات</a>
         <a href="study-tools.html">الوسائل التعليمية</a>
-        <a href="index.html#schedule">الجدول</a>
-        <a href="index.html#community">التواصل</a>
     </div>
 </nav>
 
@@ -737,41 +735,57 @@ footer{
 <button id="backToTop" title="العودة للأعلى">⬆</button>
 
 <script>
-// تفعيل الوضع الليلي
-const themeBtn = document.getElementById("themeToggleBtn");
-if(localStorage.getItem("theme") === "dark"){
-    document.body.classList.add("dark-mode");
-    themeBtn.innerText = "☀️ الوضع الصباحي";
-}
-themeBtn.addEventListener("click", function(){
-    document.body.classList.toggle("dark-mode");
-    if(document.body.classList.contains("dark-mode")){
-        localStorage.setItem("theme", "dark");
-        themeBtn.innerText = "☀️ الوضع الصباحي";
-    }else{
-        localStorage.setItem("theme", "light");
-        themeBtn.innerText = "🌙 الوضع الليلي";
+document.addEventListener("DOMContentLoaded", function() {
+    // تفعيل الوضع الليلي
+    const themeBtn = document.getElementById("themeToggleBtn");
+    if(localStorage.getItem("theme") === "dark"){
+        document.body.classList.add("dark-mode");
+        if(themeBtn) themeBtn.innerText = "☀️ الوضع الصباحي";
     }
-});
+    
+    if(themeBtn){
+        themeBtn.addEventListener("click", function(){
+            document.body.classList.toggle("dark-mode");
+            if(document.body.classList.contains("dark-mode")){
+                localStorage.setItem("theme", "dark");
+                themeBtn.innerText = "☀️ الوضع الصباحي";
+            }else{
+                localStorage.setItem("theme", "light");
+                themeBtn.innerText = "🌙 الوضع الليلي";
+            }
+        });
+    }
 
-// زر العودة للأعلى
-const backToTopBtn = document.getElementById("backToTop");
-if(backToTopBtn){
-    window.addEventListener("scroll", function(){
-        if(window.scrollY > 300){
-            backToTopBtn.style.display = "flex";
-        }else{
-            backToTopBtn.style.display = "none";
-        }
-    });
+    // زر العودة للأعلى
+    const backToTopBtn = document.getElementById("backToTop");
+    if(backToTopBtn){
+        window.addEventListener("scroll", function(){
+            if(window.scrollY > 300){
+                backToTopBtn.style.display = "flex";
+            }else{
+                backToTopBtn.style.display = "none";
+            }
+        });
 
-    backToTopBtn.addEventListener("click", function(){
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+        backToTopBtn.addEventListener("click", function(){
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    }
+
+    // إصلاح التعليق وضمان الانتقال المباشر عند النقر على أي رابط في السايد بار أو النافبار
+    const navLinks = document.querySelectorAll(".nav-container a");
+    navLinks.forEach(link => {
+        link.addEventListener("click", function(e) {
+            const destination = this.getAttribute("href");
+            if(destination && !destination.startsWith("#")) {
+                window.location.href = destination;
+            }
         });
     });
-}
+});
 </script>
 
 </body>
