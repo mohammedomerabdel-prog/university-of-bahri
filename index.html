@@ -11,33 +11,32 @@
 html{scroll-behavior:smooth;}
 body{
     font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-    background:#fdf2f8;
+    background:#f8fafc;
     color:#1e293b;
     line-height:1.8;
     transition:background .3s ease,color .3s ease;
 }
 
 :root{
-    --primary:#831843;
-    --primary2:#be185d;
-    --accent:#ec4899;
-    --gold:#f43f5e;
-    --pink-light:#fbcfe8;
-    --pink-soft:#fdf2f8;
-    --white:#fff;
-    --muted:#854d0e;
-    --border:#fbcfe8;
-    --shadow:0 10px 25px -5px rgba(190,24,93,.1),
-             0 8px 10px -6px rgba(190,24,93,.1);
+    --primary:#0f172a;
+    --primary2:#1e293b;
+    --accent:#2563eb;
+    --accent-hover:#1d4ed8;
+    --blue-light:#dbeafe;
+    --white:#ffffff;
+    --muted:#64748b;
+    --border:#e2e8f0;
+    --shadow:0 10px 25px -5px rgba(15,23,42,.08),
+             0 8px 10px -6px rgba(15,23,42,.04);
 }
 
 body.dark-mode{
     background:#0f172a;
     color:#f1f5f9;
-    --primary:#f472b6;
-    --primary2:#ec4899;
+    --primary:#3b82f6;
+    --primary2:#60a5fa;
     --white:#1e293b;
-    --muted:#cbd5e1;
+    --muted:#94a3b8;
     --border:#334155;
     --shadow:0 10px 25px -5px rgba(0,0,0,.5);
 }
@@ -46,10 +45,10 @@ body.dark-mode nav{background:rgba(30,41,59,.95);}
 body.dark-mode .nav-container a{color:#e2e8f0;}
 body.dark-mode .nav-container a:hover,
 body.dark-mode .nav-container a.active{
-    background:#ec4899;
+    background:#2563eb;
     color:#fff;
 }
-body.dark-mode .stat strong{color:#f472b6;}
+body.dark-mode .stat strong{color:#60a5fa;}
 body.dark-mode table th{background:#334155;}
 body.dark-mode .creators-box{background:#1e293b;}
 body.dark-mode .search-box-wrapper{background:#1e293b;}
@@ -60,22 +59,12 @@ body.dark-mode .search-input{
 }
 
 header{
-    background:linear-gradient(135deg, #831843 0%, #be185d 50%, #db2777 100%);
+    background:linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #3b82f6 100%);
     color:#fff;
     padding:40px 20px;
     text-align:center;
     position:relative;
     overflow:hidden;
-}
-
-header::after{
-    content: "🎗️";
-    position: absolute;
-    right: 5%;
-    bottom: -20px;
-    font-size: 140px;
-    opacity: 0.15;
-    pointer-events: none;
 }
 
 .logo{
@@ -86,14 +75,14 @@ header::after{
 }
 
 .university-title{
-    color:#fbcfe8;
+    color:#93c5fd;
     font-size:20px;
     font-weight:700;
     margin-top:2px;
 }
 
 .subtitle{
-    color:#ffe4e6;
+    color:#e0f2fe;
     margin-top:4px;
     font-size:16px;
     font-weight:500;
@@ -102,26 +91,13 @@ header::after{
 .badge{
     display:inline-block;
     margin-top:14px;
-    background:linear-gradient(135deg, #f43f5e, #be185d);
+    background:linear-gradient(135deg, #2563eb, #1d4ed8);
     color:#fff;
     padding:6px 22px;
     border-radius:30px;
     font-weight:bold;
     font-size:14px;
-    box-shadow:0 4px 12px rgba(244,63,94,.3);
-}
-
-.pink-october-tag {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
-    color: #fff;
-    padding: 4px 15px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow:0 4px 12px rgba(37,99,235,.3);
 }
 
 .header-btns{
@@ -135,8 +111,8 @@ header::after{
 
 .theme-toggle-btn,
 .admin-login-btn{
-    background:rgba(255,255,255,.2);
-    border:1px solid rgba(255,255,255,.4);
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.3);
     color:#fff;
     padding:8px 14px;
     border-radius:12px;
@@ -149,23 +125,23 @@ header::after{
 
 .theme-toggle-btn:hover,
 .admin-login-btn:hover{
-    background:rgba(255,255,255,.35);
+    background:rgba(255,255,255,.3);
 }
 
 .ticker-container{
-    background:#831843;
-    color:#fdf2f8;
+    background:#0f172a;
+    color:#f8fafc;
     padding:10px 20px;
     font-size:14px;
     overflow:hidden;
     white-space:nowrap;
-    border-bottom:3px solid #f43f5e;
+    border-bottom:3px solid #2563eb;
     display:flex;
     align-items:center;
 }
 
 .ticker-title{
-    background:#f43f5e;
+    background:#2563eb;
     color:#fff;
     padding:3px 12px;
     border-radius:6px;
@@ -173,13 +149,13 @@ header::after{
     margin-left:15px;
     font-size:13px;
     flex-shrink:0;
-    box-shadow: 0 2px 8px rgba(244,63,94,0.4);
+    box-shadow:0 2px 8px rgba(37,99,235,0.4);
 }
 
 .ticker-text{
     display:inline-block;
     animation:tickerAnim 25s linear infinite;
-    font-weight: 500;
+    font-weight:500;
 }
 
 @keyframes tickerAnim{
@@ -191,7 +167,7 @@ header::after{
     background:var(--white);
     padding:15px 20px;
     border-bottom:1px solid var(--border);
-    box-shadow:0 4px 10px rgba(190,24,93,.05);
+    box-shadow:0 4px 10px rgba(15,23,42,.03);
     transition:background .3s ease;
 }
 
@@ -212,14 +188,14 @@ header::after{
     font-family:inherit;
     outline:none;
     transition:all .3s ease;
-    background:#fff5f8;
+    background:#f1f5f9;
     color:var(--primary);
 }
 
 .search-input:focus{
     border-color:var(--accent);
     background:var(--white);
-    box-shadow:0 0 0 4px rgba(236,72,153,.2);
+    box-shadow:0 0 0 4px rgba(37,99,235,.15);
 }
 
 .search-icon-inside{
@@ -227,7 +203,7 @@ header::after{
     right:15px;
     font-size:18px;
     pointer-events:none;
-    color:#be185d;
+    color:#2563eb;
 }
 
 .clear-search-btn{
@@ -236,7 +212,7 @@ header::after{
     background:none;
     border:none;
     font-size:18px;
-    color:#be185d;
+    color:#2563eb;
     cursor:pointer;
     display:none;
     padding:2px 6px;
@@ -271,7 +247,7 @@ nav{
     position:sticky;
     top:0;
     z-index:100;
-    box-shadow:0 4px 20px rgba(190,24,93,.08);
+    box-shadow:0 4px 20px rgba(15,23,42,.05);
     border-bottom:1px solid var(--border);
     transition:background .3s ease;
 }
@@ -302,7 +278,7 @@ nav{
 
 .nav-container a:hover,
 .nav-container a.active{
-    background:linear-gradient(135deg, #be185d, #ec4899);
+    background:linear-gradient(135deg, #0f172a, #2563eb);
     color:#fff;
 }
 
@@ -330,24 +306,25 @@ section{
 }
 
 .section-title p{
-    color:#9d174d;
+    color:#475569;
     font-size:15px;
 }
 
 .group-title{
-    background:linear-gradient(135deg, #be185d, #db2777);
+    background:linear-gradient(135deg, #0f172a, #1e293b);
     color:#fff;
     padding:12px 20px;
     border-radius:12px;
     margin-bottom:15px;
     font-size:18px;
     font-weight:bold;
-    box-shadow:0 4px 12px rgba(190,24,93,.2);
+    box-shadow:0 4px 12px rgba(15,23,42,.15);
+    border-right:4px solid #2563eb;
 }
 
 .schedule-cell-subject{
     font-weight:bold;
-    color:var(--primary2);
+    color:#0f172a;
     display:block;
 }
 
@@ -359,13 +336,13 @@ section{
 
 .schedule-cell-hall{
     font-size:12px;
-    color:var(--gold);
+    color:#2563eb;
     font-weight:bold;
     display:block;
 }
 
 .countdown-box{
-    background:linear-gradient(135deg, #831843, #be185d);
+    background:linear-gradient(135deg, #0f172a, #1e293b);
     color:#fff;
     border-radius:24px;
     padding:30px;
@@ -374,12 +351,13 @@ section{
     max-width:750px;
     margin-left:auto;
     margin-right:auto;
-    box-shadow:0 15px 35px rgba(131,24,67,.2);
+    box-shadow:0 15px 35px rgba(15,23,42,.15);
+    border:1px solid #334155;
 }
 
 .countdown-box h3{
     font-size:22px;
-    color:#fbcfe8;
+    color:#93c5fd;
     margin-bottom:20px;
     font-weight:700;
 }
@@ -392,8 +370,8 @@ section{
 }
 
 .time-card{
-    background:rgba(255,255,255,.1);
-    border:1px solid rgba(255,255,255,.2);
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
     padding:12px 18px;
     border-radius:14px;
     min-width:80px;
@@ -408,7 +386,7 @@ section{
 
 .time-card label{
     font-size:13px;
-    color:#fbcfe8;
+    color:#93c5fd;
 }
 
 .hero{
@@ -429,7 +407,7 @@ section{
 }
 
 .hero p{
-    color:#831843;
+    color:#475569;
     max-width:750px;
     margin:0 auto 30px;
     font-size:16px;
@@ -448,18 +426,18 @@ section{
     align-items:center;
     justify-content:center;
     text-decoration:none;
-    background:linear-gradient(135deg, #be185d, #ec4899);
+    background:linear-gradient(135deg, #1e293b, #2563eb);
     color:#fff;
     padding:22px 15px;
     border-radius:18px;
     font-weight:bold;
     transition:.3s;
-    box-shadow:0 6px 15px rgba(190,24,93,.2);
+    box-shadow:0 6px 15px rgba(37,99,235,.2);
 }
 
 .quick-action:hover{
     transform:translateY(-5px);
-    background:linear-gradient(135deg, #831843, #be185d);
+    background:linear-gradient(135deg, #0f172a, #1d4ed8);
 }
 
 .quick-action span{
@@ -487,12 +465,12 @@ section{
 .stat strong{
     display:block;
     font-size:26px;
-    color:var(--primary2);
+    color:#2563eb;
     font-weight:900;
 }
 
 .stat span{
-    color:#9d174d;
+    color:#64748b;
     font-size:13px;
 }
 
@@ -529,23 +507,23 @@ section{
     margin-left:auto;
     margin-right:auto;
     color:#fff;
-    box-shadow:0 8px 20px rgba(190,24,93,.2);
+    box-shadow:0 8px 20px rgba(15,23,42,.15);
 }
 
 .card .icon.icon-amber{
-    background:linear-gradient(135deg,#f43f5e,#be185d);
+    background:linear-gradient(135deg,#1e293b,#2563eb);
 }
 
 .card .icon.icon-purple{
-    background:linear-gradient(135deg,#ec4899,#831843);
+    background:linear-gradient(135deg,#0f172a,#3b82f6);
 }
 
 .card .icon.icon-teal{
-    background:linear-gradient(135deg,#db2777,#9d174d);
+    background:linear-gradient(135deg,#334155,#1d4ed8);
 }
 
 .card .icon.icon-news{
-    background:linear-gradient(135deg,#e11d48,#9f1239);
+    background:linear-gradient(135deg,#1e293b,#0284c7);
 }
 
 .card h3{
@@ -555,7 +533,7 @@ section{
 }
 
 .card p{
-    color:#831843;
+    color:#64748b;
     font-size:14px;
     margin-bottom:20px;
     flex-grow:1;
@@ -563,7 +541,7 @@ section{
 
 .btn{
     display:inline-block;
-    background:linear-gradient(135deg, #be185d, #ec4899);
+    background:linear-gradient(135deg, #1e293b, #2563eb);
     color:#fff;
     text-decoration:none;
     padding:10px 18px;
@@ -572,7 +550,7 @@ section{
     font-weight:bold;
     transition:.2s;
     margin-top:8px;
-    box-shadow:0 4px 12px rgba(190,24,93,.2);
+    box-shadow:0 4px 12px rgba(37,99,235,.2);
 }
 
 .btn:hover{
@@ -581,12 +559,12 @@ section{
 }
 
 .btn-highlight{
-    background:linear-gradient(135deg,#f43f5e,#be185d)!important;
-    box-shadow:0 4px 15px rgba(244,63,94,.4);
+    background:linear-gradient(135deg,#2563eb,#1d4ed8)!important;
+    box-shadow:0 4px 15px rgba(37,99,235,.3);
 }
 
 .btn-highlight:hover{
-    background:linear-gradient(135deg,#be185d,#831843)!important;
+    background:linear-gradient(135deg,#1d4ed8,#0f172a)!important;
 }
 
 .table-box{
@@ -618,23 +596,29 @@ th{
 }
 
 .library{
-    background:linear-gradient(135deg, #831843, #be185d);
+    background:linear-gradient(135deg, #0f172a, #1e293b);
     color:#fff;
     border-radius:24px;
     padding:45px 30px;
     text-align:center;
+    border:1px solid #334155;
 }
 
 .library-btn{
     display:inline-block;
     text-decoration:none;
-    background:#fff;
-    color:#be185d;
+    background:#2563eb;
+    color:#fff;
     padding:14px 30px;
     border-radius:14px;
     font-weight:800;
     margin-top:15px;
-    box-shadow:0 6px 20px rgba(255,255,255,.3);
+    box-shadow:0 6px 20px rgba(37,99,235,.3);
+    transition:.2s;
+}
+
+.library-btn:hover{
+    background:#1d4ed8;
 }
 
 .uploaded-files-list{
@@ -648,16 +632,17 @@ th{
 }
 
 .uploaded-file-item{
-    background:rgba(255,255,255,.15);
+    background:rgba(255,255,255,.08);
     padding:12px 20px;
     border-radius:12px;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    border:1px solid rgba(255,255,255,.1);
 }
 
 .uploaded-file-item a{
-    color:#fbcfe8;
+    color:#93c5fd;
     font-weight:bold;
     text-decoration:none;
 }
@@ -690,18 +675,18 @@ th{
 }
 
 .link-card p{
-    color:#831843;
+    color:#64748b;
     font-size:14px;
     margin:8px 0 15px;
 }
 
 footer{
-    background:#831843;
+    background:#0f172a;
     color:#fff;
     text-align:center;
     padding:45px 20px;
     margin-top:50px;
-    border-top:3px solid #f43f5e;
+    border-top:3px solid #2563eb;
     transition:background .3s ease;
 }
 
@@ -714,7 +699,7 @@ footer{
 }
 
 .footer-btn{
-    background:#f43f5e;
+    background:#2563eb;
     color:#fff;
     border:none;
     padding:10px 24px;
@@ -723,28 +708,29 @@ footer{
     font-size:15px;
     cursor:pointer;
     transition:.2s;
-    box-shadow:0 4px 15px rgba(244,63,94,.4);
+    box-shadow:0 4px 15px rgba(37,99,235,.3);
 }
 
 .footer-btn:hover{
-    background:#be185d;
+    background:#1d4ed8;
     transform:translateY(-2px);
 }
 
 .share-btn{
-    background:#ec4899;
+    background:#1e293b;
+    border:1px solid #334155;
     color:#fff;
 }
 
 .share-btn:hover{
-    background:#db2777;
+    background:#334155;
 }
 
 #backToTop{
     position:fixed;
     bottom:25px;
     right:25px;
-    background:var(--primary2);
+    background:#2563eb;
     color:#fff;
     border:none;
     width:45px;
@@ -761,7 +747,7 @@ footer{
 }
 
 #backToTop:hover{
-    background:var(--primary);
+    background:#1d4ed8;
     transform:translateY(-3px);
 }
 
@@ -773,7 +759,7 @@ footer{
     top:0;
     width:100%;
     height:100%;
-    background:rgba(131,24,67,.6);
+    background:rgba(15,23,42,.7);
     backdrop-filter:blur(6px);
     justify-content:center;
     align-items:center;
@@ -789,9 +775,9 @@ footer{
     width:100%;
     text-align:center;
     position:relative;
-    box-shadow:0 25px 50px -12px rgba(131,24,67,.3);
+    box-shadow:0 25px 50px -12px rgba(15,23,42,.25);
     animation:modalPop .3s ease;
-    border: 2px solid var(--border);
+    border: 1px solid var(--border);
 }
 
 @keyframes modalPop{
@@ -805,7 +791,7 @@ footer{
     left:20px;
     font-size:24px;
     cursor:pointer;
-    color:#be185d;
+    color:#64748b;
     font-weight:bold;
 }
 
@@ -814,13 +800,13 @@ footer{
 }
 
 .modal-content h3{
-    color:var(--primary2);
+    color:#0f172a;
     font-size:24px;
     margin-bottom:15px;
 }
 
 .modal-content p{
-    color:#831843;
+    color:#475569;
     font-size:15px;
     line-height:1.7;
     margin-bottom:15px;
@@ -841,7 +827,7 @@ footer{
 }
 
 .creators-box{
-    background:#fff0f6;
+    background:#f1f5f9;
     border:1px solid var(--border);
     padding:15px;
     border-radius:14px;
@@ -856,7 +842,7 @@ footer{
 }
 
 .btn-alert-confirm{
-    background:linear-gradient(135deg,#be185d,#ec4899);
+    background:linear-gradient(135deg,#1e293b,#2563eb);
     color:#fff;
     border:none;
     padding:12px 28px;
@@ -864,7 +850,7 @@ footer{
     font-weight:bold;
     font-size:16px;
     cursor:pointer;
-    box-shadow:0 4px 15px rgba(190,24,93,.3);
+    box-shadow:0 4px 15px rgba(37,99,235,.2);
     margin-top:15px;
     width:100%;
     transition:.2s;
@@ -872,7 +858,7 @@ footer{
 
 .btn-alert-confirm:hover{
     transform:translateY(-2px);
-    background:linear-gradient(135deg,#831843,#be185d);
+    background:linear-gradient(135deg,#0f172a,#1d4ed8);
 }
 
 @media(max-width:850px){
@@ -893,11 +879,11 @@ footer{
 
 <div class="modal" id="noticeModal" style="display:flex;">
     <div class="modal-content">
-        <div style="font-size:45px;margin-bottom:10px;">🎗️</div>
+        <div style="font-size:45px;margin-bottom:10px;">🎓</div>
         <h3>تنويه هام</h3>
         <p>
             مرحباً بكم! نود إحاطتكم بأنه جارٍ العمل على تطوير وتحديث
-            منصة المَعين باستمرار لخدمتكم بشكل أفضل، بالتزامن مع فعاليات شهر التوعية (أكتوبر الوردي 🎗️).
+            منصة المَعين باستمرار لخدمتكم وتوفير كافة المراجع والمستجدات الأكاديمية.
         </p>
         <button class="btn-alert-confirm" id="confirmNoticeBtn" type="button">
             حسناً، الدخول للموقع 👍
@@ -937,7 +923,7 @@ footer{
 
             <hr style="margin:15px 0;">
 
-            <h4 style="margin-bottom:10px;color:var(--primary2);">
+            <h4 style="margin-bottom:10px;color:#2563eb;">
                 📢 تعديل الشريط الإخباري:
             </h4>
 
@@ -958,7 +944,7 @@ footer{
 
             <hr style="margin:20px 0;">
 
-            <h4 style="margin-bottom:10px;color:var(--primary2);">
+            <h4 style="margin-bottom:10px;color:#2563eb;">
                 📁 إضافة رابط محاضرة أو ملف:
             </h4>
 
@@ -980,7 +966,7 @@ footer{
                 class="btn-alert-confirm"
                 id="saveFileBtn"
                 type="button"
-                style="margin-top:5px;background:linear-gradient(135deg,#be185d,#ec4899);">
+                style="margin-top:5px;">
                 رفع / إضافة الملف 📤
             </button>
 
@@ -1002,10 +988,6 @@ footer{
             🔐 دخول المشرفين
         </button>
 
-    </div>
-
-    <div class="pink-october-tag">
-        🎗️ أكتوبر الوردي - شهر التوعية بسرطان الثدي
     </div>
 
     <div class="logo">المَعين</div>
@@ -1031,7 +1013,7 @@ footer{
     </span>
 
     <div class="ticker-text" id="mainTickerText">
-        🎗️ مرحباً بكم في منصة المَعين — بوابتكم الأكاديمية الشاملة للمراجع، الملخصات، والجداول الدراسية بكلية العلوم الإدارية - جامعة بحري.
+        مرحباً بكم في منصة المَعين — بوابتكم الأكاديمية الشاملة للمراجع، الملخصات، والجداول الدراسية بكلية العلوم الإدارية - جامعة بحري.
     </div>
 
 </div>
@@ -1362,7 +1344,7 @@ footer{
     </div>
 
     <!-- ================================================= -->
-    <!-- المجموعة الأولى - التصحيح من الجدول الرسمي -->
+    <!-- المجموعة الأولى -->
     <!-- ================================================= -->
 
     <div class="group-title searchable-item">
@@ -1570,7 +1552,7 @@ footer{
     </div>
 
     <!-- ================================================= -->
-    <!-- المجموعة الثانية - التصحيح من الجدول الرسمي -->
+    <!-- المجموعة الثانية -->
     <!-- ================================================= -->
 
     <div class="group-title searchable-item">
@@ -1898,7 +1880,7 @@ footer{
 
         <div
             class="link-card searchable-item"
-            style="border:2px solid #be185d;">
+            style="border:2px solid #2563eb;">
 
             <div class="big-icon">
                 📞
@@ -2007,7 +1989,7 @@ footer{
     </p>
 
     <p style="margin-top:6px;">
-        صُنِع بشغف لخدمة طلاب الدفعة 🎀
+        صُنِع بشغف لخدمة طلاب الدفعة 🎓
     </p>
 
 </footer>
@@ -2051,7 +2033,7 @@ footer{
 
             <p>
                 ✨ <strong>الزميلة المشاركة:</strong>
-                Rayan Abdul Mutalib El Bashir ❤️
+                Rayan Abdul Mutalib El Bashir
             </p>
 
         </div>
