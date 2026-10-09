@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الأمانات الأكاديمية | منصة المَعين - جامعة بحري</title>
+<title>الهيكل الإداري والأمانات الأكاديمية | منصة المَعين</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -47,8 +47,18 @@ body.dark-mode .nav-container a.active{
     background:#2563eb;
     color:#fff;
 }
-body.dark-mode .vault-card{
+body.dark-mode .vault-card,
+body.dark-mode .intro-box{
     background:#1e293b;
+    border-color:#334155;
+}
+body.dark-mode .img-placeholder{
+    background:#0f172a;
+    border-color:#334155;
+    color:#60a5fa;
+}
+body.dark-mode .info-block{
+    background:#0f172a;
     border-color:#334155;
 }
 
@@ -139,80 +149,63 @@ nav{
     padding:35px 20px;
 }
 
-.page-intro{
-    text-align:center;
-    margin-bottom:40px;
-}
-
-.page-intro h2{
-    font-size:30px;
-    color:var(--primary);
-    margin-bottom:8px;
-    font-weight:800;
-}
-
-.page-intro p{
-    color:var(--muted);
-    font-size:16px;
-    max-width:650px;
-    margin:auto;
-}
-
-/* فلترة الفئات */
-.filter-tabs{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    margin-bottom:30px;
-    flex-wrap:wrap;
-}
-
-.tab-btn{
+/* النبذة التعريفية الشاملة */
+.intro-box{
     background:var(--white);
     border:1px solid var(--border);
-    padding:10px 20px;
-    border-radius:12px;
-    font-weight:bold;
-    font-size:14px;
-    color:var(--primary);
-    cursor:pointer;
-    transition:.2s;
+    border-radius:24px;
+    padding:35px;
+    box-shadow:var(--shadow);
+    margin-bottom:40px;
+    border-right:6px solid #2563eb;
 }
 
-.tab-btn:hover, .tab-btn.active{
-    background:#2563eb;
-    color:#fff;
-    border-color:#2563eb;
+.intro-box h2{
+    font-size:26px;
+    color:var(--primary);
+    margin-bottom:12px;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.intro-box p{
+    color:var(--muted);
+    font-size:15px;
+    line-height:1.9;
+    margin-bottom:12px;
 }
 
 /* شبكة الأمانات */
 .vault-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
-    gap:25px;
+    display:flex;
+    flex-direction:column;
+    gap:30px;
 }
 
 .vault-card{
     background:var(--white);
     border:1px solid var(--border);
-    border-radius:20px;
-    padding:25px;
+    border-radius:22px;
+    padding:30px;
     box-shadow:var(--shadow);
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
     transition:transform .2s ease;
-}
-
-.vault-card:hover{
-    transform:translateY(-4px);
 }
 
 .card-header{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    margin-bottom:15px;
+    margin-bottom:20px;
+    border-bottom:1px solid var(--border);
+    padding-bottom:15px;
+}
+
+.card-header-left{
+    display:flex;
+    align-items:center;
+    gap:15px;
 }
 
 .card-icon{
@@ -233,49 +226,118 @@ body.dark-mode .card-icon{
 .badge-tag{
     background:#dbeafe;
     color:#1e40af;
-    font-size:12px;
+    font-size:13px;
     font-weight:bold;
-    padding:4px 12px;
+    padding:6px 16px;
     border-radius:20px;
 }
 
 .vault-card h3{
-    font-size:18px;
+    font-size:22px;
     color:var(--primary);
-    margin-bottom:8px;
 }
 
-.vault-card p{
-    font-size:14px;
-    color:var(--muted);
-    margin-bottom:20px;
+/* أزرار وكروت الشخصيات (الأمين والنائب) */
+.officers-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:20px;
+    margin:20px 0;
 }
 
-.vault-meta{
-    display:flex;
-    justify-content:space-between;
-    font-size:13px;
-    color:var(--muted);
-    margin-bottom:15px;
-    border-top:1px dashed var(--border);
-    padding-top:10px;
+.officers-grid.single-officer{
+    grid-template-columns:minmax(280px, 400px);
 }
 
-.download-btn{
-    display:block;
+.officer-card{
+    background:#f8fafc;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:20px;
     text-align:center;
-    background:linear-gradient(135deg, #0f172a, #2563eb);
-    color:#fff;
-    text-decoration:none;
-    padding:12px;
-    border-radius:12px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+body.dark-mode .officer-card{
+    background:#0f172a;
+}
+
+.officer-role-title{
+    font-size:16px;
     font-weight:bold;
-    font-size:14px;
+    color:#2563eb;
+    margin-bottom:12px;
+}
+
+.img-placeholder{
+    background:var(--white);
+    border:2px dashed var(--border);
+    border-radius:16px;
+    width:100%;
+    height:180px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:#2563eb;
+    font-weight:bold;
+    font-size:15px;
+    margin-bottom:10px;
     transition:.2s;
 }
 
-.download-btn:hover{
-    background:#1d4ed8;
+.img-placeholder span{
+    font-size:32px;
+    margin-bottom:6px;
+}
+
+/* أقسام التفاصيل والمهام والصفات */
+.info-blocks-wrapper{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
+.info-block{
+    background:#f1f5f9;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:20px;
+}
+
+.info-block h4{
+    font-size:16px;
+    color:var(--primary);
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.info-block ul{
+    list-style-type:none;
+    padding-right:0;
+}
+
+.info-block ul li{
+    font-size:14px;
+    color:var(--muted);
+    margin-bottom:8px;
+    position:relative;
+    padding-right:18px;
+}
+
+.info-block ul li::before{
+    content:"•";
+    color:#2563eb;
+    font-weight:bold;
+    font-size:18px;
+    position:absolute;
+    right:0;
+    top:-2px;
 }
 
 footer{
@@ -285,6 +347,31 @@ footer{
     padding:35px 20px;
     margin-top:60px;
     border-top:3px solid #2563eb;
+}
+
+#backToTop{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    font-size:20px;
+    cursor:pointer;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 4px 15px rgba(0,0,0,.3);
+    z-index:999;
+    transition:.3s;
+}
+
+#backToTop:hover{
+    background:#1d4ed8;
+    transform:translateY(-3px);
 }
 </style>
 </head>
@@ -297,7 +384,7 @@ footer{
             🌙 الوضع الليلي
         </button>
     </div>
-    <div class="logo">🗄️ الأمانات الأكاديمية</div>
+    <div class="logo">🏛️ الأمانات التنفيذية والقيادية</div>
     <div class="university-title">جامعة بحري — كلية العلوم الإدارية (دفعة 023 / 024)</div>
 </header>
 
@@ -305,86 +392,337 @@ footer{
     <div class="nav-container">
         <a href="index.html">الرئيسية</a>
         <a href="subjects.html">المواد</a>
-        <a href="academic-vault.html" class="active">الأمانات الأكاديمية</a>
+        <a href="academic-assets.html" class="active">الأمانات الأكاديمية</a>
         <a href="about.html">عن الكلية</a>
         <a href="results.html">النتيجة</a>
         <a href="exams.html">الاختبارات</a>
         <a href="study-tools.html">الوسائل التعليمية</a>
+        <a href="index.html#schedule">الجدول</a>
+        <a href="index.html#community">التواصل</a>
     </div>
 </nav>
 
 <main class="container">
 
-    <div class="page-intro">
-        <h2>أرشيف الأمانات والمستندات الرسمية</h2>
-        <p>المستودع الموحد لتجميع وحفظ جميع التكاليف، الحلول المعتمدة، ملخصات الدفعة، وأوراق الأبحاث الأكاديمية.</p>
+    <!-- النبذة التعريفية الشاملة -->
+    <div class="intro-box">
+        <h2>📌 نبذة عن نظام الأمانات والقيادة الطلابية</h2>
+        <p>
+            يمثل نظام الأمانات العمود الفقري للتنظيم الطلابي والأكاديمي للدفعة بكلية العلوم الإدارية بجامعة بحري. تهدف الأمانات إلى توزيع المسؤوليات، إدارة أنشطة الدفعة المختلفة، وضمان وصول كافة الخدمات الأكاديمية، الاجتماعية، والثقافية للطلاب بكفاءة وسلاسة.
+        </p>
+        <p>
+            تتكون الهيكلية التنظيمية من <strong>3 أمانات قيادية وسكرتارية</strong> تتميز بالمسؤولية الإدارية المباشرة، بالإضافة إلى <strong>4 أمانات تنفيذية تخصصية</strong> تضم كل منها أميناً ونائباً لضمان استمرارية العمل وتغطية كافة المتطلبات الطلابية.
+        </p>
     </div>
 
-    <!-- أزرار التصنيف والتصفية -->
-    <div class="filter-tabs">
-        <button class="tab-btn active" onclick="filterVault('all')">الكل</button>
-        <button class="tab-btn" onclick="filterVault('assignments')">التكاليف والشيتات</button>
-        <button class="tab-btn" onclick="filterVault('summaries')">ملخصات الدفعة</button>
-        <button class="tab-btn" onclick="filterVault('past-exams')">أرشيف الامتحانات</button>
-    </div>
-
-    <!-- شبكة الأمانات -->
+    <!-- شبكة الأمانات الـ 7 -->
     <div class="vault-grid">
 
-        <!-- بطاقة نموذجية 1 -->
-        <div class="vault-card" data-category="assignments">
-            <div>
-                <div class="card-header">
-                    <div class="card-icon">📝</div>
-                    <span class="badge-tag">تكاليف وشيتات</span>
+        <!-- 1. رئيس الأمانات -->
+        <div class="vault-card">
+            <div class="card-header">
+                <div class="card-header-left">
+                    <div class="card-icon">👑</div>
+                    <h3>1. رئيس الأمانات</h3>
                 </div>
-                <h3>حل شيت المحاسبة المالية (1)</h3>
-                <p>الحل النموذجي والتفصيلي لتمارين القوائم المالية وتسوية الحسابات.</p>
+                <span class="badge-tag">قيادة عليا</span>
             </div>
-            <div>
-                <div class="vault-meta">
-                    <span>📁 الصيغة: PDF</span>
-                    <span>🗓️ الفصل الأول 2026</span>
+
+            <div class="officers-grid single-officer">
+                <div class="officer-card">
+                    <div class="officer-role-title">رئيس الأمانات</div>
+                    <div class="img-placeholder">
+                        <span>👤</span>
+                        قريباً
+                    </div>
                 </div>
-                <a href="#" class="download-btn">تحميل المستند 📥</a>
+            </div>
+
+            <div class="info-blocks-wrapper">
+                <div class="info-block">
+                    <h4>🎯 المهام المطلوبة من الأمانة</h4>
+                    <ul>
+                        <li>الإشراف العام على سير عمل كافة الأمانات التنفيذية والتخصصية.</li>
+                        <li>التنسيق المباشر مع ليدر الدفعة وإدارة الكلية في كافة القرارات الهامة.</li>
+                        <li>اعتماد الخطط والبرامج التشغيلية للدفعة ومتابعة تنفيذها.</li>
+                    </ul>
+                </div>
+                <div class="info-block">
+                    <h4>⭐ شخصية ومواصفات الرئيس</h4>
+                    <ul>
+                        <li>شخصية قيادية متزنة، حازمة، وذات قدرة عالية على اتخاذ القرار.</li>
+                        <li>مهارات ارتباط وتواصل ممتازة مع جميع طلاب الدفعة وإدارة الجامعة.</li>
+                        <li>قدرة عالية على حل المشكلات وإدارة الأزمات بروح رياضية وأكاديمية.</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <!-- بطاقة نموذجية 2 -->
-        <div class="vault-card" data-category="summaries">
-            <div>
-                <div class="card-header">
-                    <div class="card-icon">📚</div>
-                    <span class="badge-tag">ملخصات معتمدة</span>
+        <!-- 2. مساعد رئيس الأمانات -->
+        <div class="vault-card">
+            <div class="card-header">
+                <div class="card-header-left">
+                    <div class="card-icon">🤝</div>
+                    <h3>2. مساعد رئيس الأمانات</h3>
                 </div>
-                <h3>ملخص السلوك التنظيمي الشامل</h3>
-                <p>تجميع أهم المبادئ والنظريات الإدارية الخاصة ببرنامج الفصل الدراسي.</p>
+                <span class="badge-tag">قيادة عليا</span>
             </div>
-            <div>
-                <div class="vault-meta">
-                    <span>📁 الصيغة: PDF</span>
-                    <span>🗓️ الفصل الأول 2026</span>
+
+            <div class="officers-grid single-officer">
+                <div class="officer-card">
+                    <div class="officer-role-title">مساعد رئيس الأمانات</div>
+                    <div class="img-placeholder">
+                        <span>👤</span>
+                        قريباً
+                    </div>
                 </div>
-                <a href="#" class="download-btn">تحميل المستند 📥</a>
+            </div>
+
+            <div class="info-blocks-wrapper">
+                <div class="info-block">
+                    <h4>🎯 المهام المطلوبة من الأمانة</h4>
+                    <ul>
+                        <li>متابعة تنفيذ التكليفات اليومية الصادرة من رئيس الأمانات.</li>
+                        <li>النيابة عن رئيس الأمانات في حال غيابه أو تمثيله في الاجتماعات الرسمية.</li>
+                        <li>تقديم التقارير الدورية حول أداء الأمانات والحلول المقترحة للتطوير.</li>
+                    </ul>
+                </div>
+                <div class="info-block">
+                    <h4>⭐ شخصية ومواصفات المساعد</h4>
+                    <ul>
+                        <li>دقة عالية في المتابعة والتنظيم وقدرة على إدارة الوقت بشكل مرن.</li>
+                        <li>روح التعاون والدعم المستمر مع باقي أعضاء المكتب التنفيذي.</li>
+                        <li>الانضباط وحسن الاستماع والقدرة على التعامل مع الضغوطات الأكاديمية.</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <!-- بطاقة نموذجية 3 -->
-        <div class="vault-card" data-category="past-exams">
-            <div>
-                <div class="card-header">
+        <!-- 3. سكرتارية الأمانة -->
+        <div class="vault-card">
+            <div class="card-header">
+                <div class="card-header-left">
+                    <div class="card-icon">📂</div>
+                    <h3>3. سكرتارية الأمانة</h3>
+                </div>
+                <span class="badge-tag">إدارة وتوثيق</span>
+            </div>
+
+            <div class="officers-grid single-officer">
+                <div class="officer-card">
+                    <div class="officer-role-title">أمين السكرتارية</div>
+                    <div class="img-placeholder">
+                        <span>👤</span>
+                        قريباً
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-blocks-wrapper">
+                <div class="info-block">
+                    <h4>🎯 المهام المطلوبة من الأمانة</h4>
+                    <ul>
+                        <li>توثيق اجتماعات ومحاضر الدفعة وحفظ الأرشيف الإداري والطلابي.</li>
+                        <li>إعداد جداول الأعمال والتنسيق المالي والإداري للفعاليات.</li>
+                        <li>تنظيم وإدارة السجلات الخاصة بطلاب الدفعة ومتابعة المراسلات.</li>
+                    </ul>
+                </div>
+                <div class="info-block">
+                    <h4>⭐ شخصية ومواصفات السكرتير</h4>
+                    <ul>
+                        <li>الأمانة والسرية التامة في التعامل مع بيانات ومستندات الدفعة.</li>
+                        <li>إتقان المهارات المكتبيّة والتنظيمية واستخدام البرامج الحاسوبية.</li>
+                        <li>دقة متناهية في صياغة الخطابات والتقارير الرسمية.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. الأمين الثقافي (أمناء ونواب) -->
+        <div class="vault-card">
+            <div class="card-header">
+                <div class="card-header-left">
+                    <div class="card-icon">🎭</div>
+                    <h3>4. الأمانة الثقافية</h3>
+                </div>
+                <span class="badge-tag">أمين + نائب</span>
+            </div>
+
+            <div class="officers-grid">
+                <div class="officer-card">
+                    <div class="officer-role-title">الأمين الثقافي</div>
+                    <div class="img-placeholder">
+                        <span>👤</span>
+                        قريباً
+                    </div>
+                </div>
+                <div class="officer-card">
+                    <div class="officer-role-title">نائب الأمين الثقافي</div>
+                    <div class="img-placeholder">
+                        <span>👤</span>
+                        قريباً
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-blocks-wrapper">
+                <div class="info-block">
+                    <h4>🎯 المهام المطلوبة من الأمانة</h4>
+                    <ul>
+                        <li>تنظيم المسابقات والمهرجانات الثقافية والمعارض الفنية للدفعة.</li>
+                        <li>إعداد المنتديات الفكرية واللقاءات التعارفية والأمسيات الشعرية والندوات.</li>
+                        <li>تشجيع الموهوبين والمبدعين في كافة المجالات الأدبية والفنية.</li>
+                    </ul>
+                </div>
+                <div class="info-block">
+                    <h4>⭐ شخصية الأمين والنائب</h4>
+                    <ul>
+                        <li>اهتمام وثقافة واسعة وشغف بالأنشطة الفكرية والأدبية.</li>
+                        <li>مهارات إبداعية في الابتكار والتخطيط للفعاليات الجماهيرية.</li>
+                        <li>القدرة على تحفيز الطلاب وإشراك أكبر عدد ممكن في النشاط.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. الأمين الرياضي (أمناء ونواب) -->
+        <div class="vault-card">
+            <div class="card-header">
+                <div class="card-header-left">
+                    <div class="card-icon">⚽</div>
+                    <h3>5. الأمانة الرياضية</h3>
+                </div>
+                <span class="badge-tag">أمين + نائب</span>
+            </div>
+
+            <div class="officers-grid">
+                <div class="officer-card">
+                    <div class="officer-role-title">الأمين الرياضي</div>
+                    <div class="img-placeholder">
+                        <span>👤</span>
+                        قريباً
+                    </div>
+                </div>
+                <div class="officer-card">
+                    <div class="officer-role-title">نائب الأمين الرياضي</div>
+                    <div class="img-placeholder">
+                        <span>👤</span>
+                        قريباً
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-blocks-wrapper">
+                <div class="info-block">
+                    <h4>🎯 المهام المطلوبة من الأمانة</h4>
+                    <ul>
+                        <li>تنظيم الدوريات الرياضية في كرة القدم والمنافسات الطلابية المختلفة.</li>
+                        <li>تكوين وإدارة فرق الدفعة الرياضية وتدريبها للمشاركة ضد الدفعات الأخرى.</li>
+                        <li>توفير الأجهزة والمعدات الرياضية وحجز الملاعب بالتنسيق مع الكلية.</li>
+                    </ul>
+                </div>
+                <div class="info-block">
+                    <h4>⭐ شخصية الأمين والنائب</h4>
+                    <ul>
+                        <li>روح رياضية عالية وتنافسية إيجابية تزرع الإخاء بين الطلاب.</li>
+                        <li>لياقة وطاقة عالية في التنظيم والميدان والتواجد الدائم.</li>
+                        <li>العدالة والموضوعية والقدرة على إدارة المباريات والدوريات بنجاح.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. الأمين الإعلامي (أمناء ونواب) -->
+        <div class="vault-card">
+            <div class="card-header">
+                <div class="card-header-left">
+                    <div class="card-icon">📢</div>
+                    <h3>6. الأمانة الإعلامية</h3>
+                </div>
+                <span class="badge-tag">أمين + نائب</span>
+            </div>
+
+            <div class="officers-grid">
+                <div class="officer-card">
+                    <div class="officer-role-title">الأمين الإعلامي</div>
+                    <div class="img-placeholder">
+                        <span>👤</span>
+                        قريباً
+                    </div>
+                </div>
+                <div class="officer-card">
+                    <div class="officer-role-title">نائب الأمين الإعلامي</div>
+                    <div class="img-placeholder">
+                        <span>👤</span>
+                        قريباً
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-blocks-wrapper">
+                <div class="info-block">
+                    <h4>🎯 المهام المطلوبة من الأمانة</h4>
+                    <ul>
+                        <li>إدارة منصات التواصل الاجتماعي الرسمية الخاصة بالدفعة والموقع.</li>
+                        <li>تصميم البوستات، التغطيات المصورة، والإعلانات الأكاديمية والأنشطة.</li>
+                        <li>توثيق كافة أحداث وفعاليات الدفعة ونشر الأخبار بدقة وسرعة.</li>
+                    </ul>
+                </div>
+                <div class="info-block">
+                    <h4>⭐ شخصية الأمين والنائب</h4>
+                    <ul>
+                        <li>حس فني وإبداعي في التصميم والتصوير وصياغة المحتوى.</li>
+                        <li>التواجد والمتابعة المستمرة لردود أفعال واستفسارات الطلاب عبر المنصات.</li>
+                        <li>الأمانة والسرعة في نقل المعلومة الصحيحة والحد من الشائعات.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. الأمين الأكاديمي (أمناء ونواب) -->
+        <div class="vault-card">
+            <div class="card-header">
+                <div class="card-header-left">
                     <div class="card-icon">🎓</div>
-                    <span class="badge-tag">أرشيف امتحانات</span>
+                    <h3>7. الأمانة الأكاديمية</h3>
                 </div>
-                <h3>تجميع اختبارات القانون التجاري</h3>
-                <p>أسئلة ونماذج امتحانات الأعوام السابقة مع الإجابات النموذجية.</p>
+                <span class="badge-tag">أمين + نائب</span>
             </div>
-            <div>
-                <div class="vault-meta">
-                    <span>📁 الصيغة: ZIP / PDF</span>
-                    <span>🗓️ سنوات سابقة</span>
+
+            <div class="officers-grid">
+                <div class="officer-card">
+                    <div class="officer-role-title">الأمين الأكاديمي</div>
+                    <div class="img-placeholder">
+                        <span>👤</span>
+                        قريباً
+                    </div>
                 </div>
-                <a href="#" class="download-btn">تحميل المستند 📥</a>
+                <div class="officer-card">
+                    <div class="officer-role-title">نائب الأمين الأكاديمي</div>
+                    <div class="img-placeholder">
+                        <span>👤</span>
+                        قريباً
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-blocks-wrapper">
+                <div class="info-block">
+                    <h4>🎯 المهام المطلوبة من الأمانة</h4>
+                    <ul>
+                        <li>جمع وتنظيم وتدقيق المراجع، المحاضرات، الشيتات، والامتحانات السابقة.</li>
+                        <li>متابعة الجداول الدراسية والتغييرات الأكاديمية والتواصل مع الأساتذة.</li>
+                        <li>مساعدة الطلاب في التحصيل العلمي وإعداد مذكرات وملخصات مراجعة شاملة.</li>
+                    </ul>
+                </div>
+                <div class="info-block">
+                    <h4>⭐ شخصية الأمين والنائب</h4>
+                    <ul>
+                        <li>التفوق والتفرغ الأكاديمي والحرص على مساعدة الجميع بدون استثناء.</li>
+                        <li>التنظيم العالي والقدرة على فرز وتبويب المراجع العلمية بسرعة.</li>
+                        <li>مهارات شرح وتواصل ممتازة لتسهيل المفاهيم والمعلومات للزملاء.</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -395,6 +733,8 @@ footer{
 <footer>
     <p>جميع الحقوق محفوظة لـ <strong>منصة المَعين — جامعة بحري - كلية العلوم الإدارية (دفعة 023 / 024)</strong></p>
 </footer>
+
+<button id="backToTop" title="العودة للأعلى">⬆</button>
 
 <script>
 // تفعيل الوضع الليلي
@@ -414,20 +754,22 @@ themeBtn.addEventListener("click", function(){
     }
 });
 
-// تصفية العناصر حسب الفئة
-function filterVault(category){
-    const cards = document.querySelectorAll(".vault-card");
-    const buttons = document.querySelectorAll(".tab-btn");
-
-    buttons.forEach(btn => btn.classList.remove("active"));
-    event.target.classList.add("active");
-
-    cards.forEach(card => {
-        if(category === "all" || card.getAttribute("data-category") === category){
-            card.style.display = "flex";
+// زر العودة للأعلى
+const backToTopBtn = document.getElementById("backToTop");
+if(backToTopBtn){
+    window.addEventListener("scroll", function(){
+        if(window.scrollY > 300){
+            backToTopBtn.style.display = "flex";
         }else{
-            card.style.display = "none";
+            backToTopBtn.style.display = "none";
         }
+    });
+
+    backToTopBtn.addEventListener("click", function(){
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     });
 }
 </script>
