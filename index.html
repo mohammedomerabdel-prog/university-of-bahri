@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الأمانات الأكاديمية | منصة المَعين - جامعة بحري</title>
+<title>المَعين | جامعة بحري - المنصة الطلابية</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -22,6 +22,7 @@ body{
     --primary2:#1e293b;
     --accent:#2563eb;
     --accent-hover:#1d4ed8;
+    --blue-light:#dbeafe;
     --white:#ffffff;
     --muted:#64748b;
     --border:#e2e8f0;
@@ -47,14 +48,14 @@ body.dark-mode .nav-container a.active{
     background:#2563eb;
     color:#fff;
 }
-body.dark-mode .vault-card{
-    background:#1e293b;
-    border-color:#334155;
-}
-body.dark-mode .img-placeholder{
+body.dark-mode .stat strong{color:#60a5fa;}
+body.dark-mode table th{background:#334155;}
+body.dark-mode .creators-box{background:#1e293b;}
+body.dark-mode .search-box-wrapper{background:#1e293b;}
+body.dark-mode .search-input{
     background:#0f172a;
+    color:#f8fafc;
     border-color:#334155;
-    color:#60a5fa;
 }
 
 header{
@@ -67,21 +68,44 @@ header{
 }
 
 .logo{
-    font-size:42px;
+    font-size:48px;
     font-weight:900;
     letter-spacing:1px;
+    text-shadow:0 2px 10px rgba(0,0,0,.3);
 }
 
 .university-title{
     color:#93c5fd;
-    font-size:18px;
+    font-size:20px;
     font-weight:700;
+    margin-top:2px;
+}
+
+.subtitle{
+    color:#e0f2fe;
+    margin-top:4px;
+    font-size:16px;
+    font-weight:500;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:14px;
+    background:linear-gradient(135deg, #2563eb, #1d4ed8);
+    color:#fff;
+    padding:6px 22px;
+    border-radius:30px;
+    font-weight:bold;
+    font-size:14px;
+    box-shadow:0 4px 12px rgba(37,99,235,.3);
 }
 
 .header-btns{
     position:absolute;
     top:20px;
     left:20px;
+    display:flex;
+    gap:10px;
     z-index:10;
 }
 
@@ -102,6 +126,119 @@ header{
     background:rgba(255,255,255,.3);
 }
 
+.ticker-container{
+    background:#0f172a;
+    color:#f8fafc;
+    padding:10px 20px;
+    font-size:14px;
+    overflow:hidden;
+    white-space:nowrap;
+    border-bottom:3px solid #2563eb;
+    display:flex;
+    align-items:center;
+}
+
+.ticker-title{
+    background:#2563eb;
+    color:#fff;
+    padding:3px 12px;
+    border-radius:6px;
+    font-weight:bold;
+    margin-left:15px;
+    font-size:13px;
+    flex-shrink:0;
+    box-shadow:0 2px 8px rgba(37,99,235,0.4);
+}
+
+.ticker-text{
+    display:inline-block;
+    animation:tickerAnim 25s linear infinite;
+    font-weight:500;
+}
+
+@keyframes tickerAnim{
+    0%{transform:translateX(100%);}
+    100%{transform:translateX(-100%);}
+}
+
+.search-box-wrapper{
+    background:var(--white);
+    padding:15px 20px;
+    border-bottom:1px solid var(--border);
+    box-shadow:0 4px 10px rgba(15,23,42,.03);
+    transition:background .3s ease;
+}
+
+.search-box-container{
+    max-width:800px;
+    margin:0 auto;
+    position:relative;
+    display:flex;
+    align-items:center;
+}
+
+.search-input{
+    width:100%;
+    padding:12px 45px 12px 40px;
+    border:2px solid var(--border);
+    border-radius:14px;
+    font-size:15px;
+    font-family:inherit;
+    outline:none;
+    transition:all .3s ease;
+    background:#f1f5f9;
+    color:var(--primary);
+}
+
+.search-input:focus{
+    border-color:var(--accent);
+    background:var(--white);
+    box-shadow:0 0 0 4px rgba(37,99,235,.15);
+}
+
+.search-icon-inside{
+    position:absolute;
+    right:15px;
+    font-size:18px;
+    pointer-events:none;
+    color:#2563eb;
+}
+
+.clear-search-btn{
+    position:absolute;
+    left:12px;
+    background:none;
+    border:none;
+    font-size:18px;
+    color:#2563eb;
+    cursor:pointer;
+    display:none;
+    padding:2px 6px;
+    border-radius:50%;
+}
+
+.clear-search-btn:hover{
+    color:#ef4444;
+    background:rgba(239,68,68,.1);
+}
+
+.no-results-msg{
+    display:none;
+    text-align:center;
+    padding:40px 20px;
+    background:var(--white);
+    border-radius:20px;
+    border:1px dashed var(--border);
+    margin:20px 0;
+    color:var(--muted);
+}
+
+.no-results-msg h4{
+    color:var(--primary);
+    font-size:20px;
+    margin-bottom:8px;
+}
+
 nav{
     background:rgba(255,255,255,.95);
     backdrop-filter:blur(10px);
@@ -110,6 +247,7 @@ nav{
     z-index:100;
     box-shadow:0 4px 20px rgba(15,23,42,.05);
     border-bottom:1px solid var(--border);
+    transition:background .3s ease;
 }
 
 .nav-container{
@@ -119,6 +257,10 @@ nav{
     gap:10px;
     padding:12px 15px;
     overflow-x:auto;
+}
+
+.nav-container::-webkit-scrollbar{
+    height:4px;
 }
 
 .nav-container a{
@@ -144,181 +286,394 @@ nav{
     padding:35px 20px;
 }
 
-.page-intro{
+section{
+    margin-bottom:45px;
+    transition:opacity .3s ease;
+}
+
+.section-title{
     text-align:center;
-    margin-bottom:40px;
+    margin-bottom:25px;
 }
 
-.page-intro h2{
-    font-size:30px;
+.section-title h2{
     color:var(--primary);
-    margin-bottom:8px;
+    font-size:28px;
     font-weight:800;
+    margin-bottom:5px;
 }
 
-.page-intro p{
-    color:var(--muted);
-    font-size:16px;
-    max-width:650px;
-    margin:auto;
+.section-title p{
+    color:#475569;
+    font-size:15px;
 }
 
-/* فلترة الفئات */
-.filter-tabs{
+.group-title{
+    background:linear-gradient(135deg, #0f172a, #1e293b);
+    color:#fff;
+    padding:12px 20px;
+    border-radius:12px;
+    margin-bottom:15px;
+    font-size:18px;
+    font-weight:bold;
+    box-shadow:0 4px 12px rgba(15,23,42,.15);
+    border-right:4px solid #2563eb;
+}
+
+.schedule-cell-subject{
+    font-weight:bold;
+    color:#0f172a;
+    display:block;
+}
+
+.schedule-cell-prof{
+    font-size:13px;
+    color:#64748b;
+    display:block;
+}
+
+.schedule-cell-hall{
+    font-size:12px;
+    color:#2563eb;
+    font-weight:bold;
+    display:block;
+}
+
+.countdown-box{
+    background:linear-gradient(135deg, #0f172a, #1e293b);
+    color:#fff;
+    border-radius:24px;
+    padding:30px;
+    text-align:center;
+    margin-bottom:35px;
+    max-width:750px;
+    margin-left:auto;
+    margin-right:auto;
+    box-shadow:0 15px 35px rgba(15,23,42,.15);
+    border:1px solid #334155;
+}
+
+.countdown-box h3{
+    font-size:22px;
+    color:#93c5fd;
+    margin-bottom:20px;
+    font-weight:700;
+}
+
+.countdown-timers{
     display:flex;
     justify-content:center;
-    gap:10px;
-    margin-bottom:30px;
+    gap:15px;
     flex-wrap:wrap;
 }
 
-.tab-btn{
+.time-card{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    padding:12px 18px;
+    border-radius:14px;
+    min-width:80px;
+}
+
+.time-card span{
+    display:block;
+    font-size:26px;
+    font-weight:800;
+    color:#fff;
+}
+
+.time-card label{
+    font-size:13px;
+    color:#93c5fd;
+}
+
+.hero{
+    background:var(--white);
+    border-radius:24px;
+    padding:45px 30px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    border:1px solid var(--border);
+    transition:background .3s ease;
+}
+
+.hero h2{
+    color:var(--primary);
+    font-size:32px;
+    margin-bottom:12px;
+    font-weight:800;
+}
+
+.hero p{
+    color:#475569;
+    max-width:750px;
+    margin:0 auto 30px;
+    font-size:16px;
+}
+
+.quick-actions{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-top:25px;
+}
+
+.quick-action{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    background:linear-gradient(135deg, #1e293b, #2563eb);
+    color:#fff;
+    padding:22px 15px;
+    border-radius:18px;
+    font-weight:bold;
+    transition:.3s;
+    box-shadow:0 6px 15px rgba(37,99,235,.2);
+}
+
+.quick-action:hover{
+    transform:translateY(-5px);
+    background:linear-gradient(135deg, #0f172a, #1d4ed8);
+}
+
+.quick-action span{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:25px;
+}
+
+.stat{
     background:var(--white);
     border:1px solid var(--border);
-    padding:10px 20px;
-    border-radius:12px;
-    font-weight:bold;
-    font-size:14px;
-    color:var(--primary);
-    cursor:pointer;
-    transition:.2s;
+    border-radius:20px;
+    padding:20px 15px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    transition:background .3s ease;
 }
 
-.tab-btn:hover, .tab-btn.active{
-    background:#2563eb;
-    color:#fff;
-    border-color:#2563eb;
+.stat strong{
+    display:block;
+    font-size:26px;
+    color:#2563eb;
+    font-weight:900;
 }
 
-/* شبكة الأمانات */
-.vault-grid{
+.stat span{
+    color:#64748b;
+    font-size:13px;
+}
+
+.cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
-    gap:25px;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:22px;
 }
 
-.vault-card{
+.card{
     background:var(--white);
     border:1px solid var(--border);
     border-radius:22px;
-    padding:25px;
+    padding:30px 25px;
+    text-align:center;
     box-shadow:var(--shadow);
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-    transition:transform .2s ease;
+    transition:.3s;
 }
 
-.vault-card:hover{
-    transform:translateY(-4px);
+.card:hover{
+    transform:translateY(-5px);
 }
 
-.card-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+.card .icon{
+    font-size:40px;
     margin-bottom:15px;
+    width:80px;
+    height:80px;
+    line-height:80px;
+    border-radius:50%;
+    margin-left:auto;
+    margin-right:auto;
+    color:#fff;
+    box-shadow:0 8px 20px rgba(15,23,42,.15);
 }
 
-.card-icon{
-    font-size:32px;
-    background:#f1f5f9;
-    width:55px;
-    height:55px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:14px;
+.card .icon.icon-amber{
+    background:linear-gradient(135deg,#1e293b,#2563eb);
 }
 
-body.dark-mode .card-icon{
-    background:#0f172a;
+.card .icon.icon-purple{
+    background:linear-gradient(135deg,#0f172a,#3b82f6);
 }
 
-.badge-tag{
-    background:#dbeafe;
-    color:#1e40af;
-    font-size:12px;
-    font-weight:bold;
-    padding:4px 12px;
-    border-radius:20px;
+.card .icon.icon-teal{
+    background:linear-gradient(135deg,#334155,#1d4ed8);
 }
 
-.vault-card h3{
-    font-size:18px;
+.card .icon.icon-news{
+    background:linear-gradient(135deg,#1e293b,#0284c7);
+}
+
+.card .icon.icon-vault{
+    background:linear-gradient(135deg,#0f172a,#2563eb);
+}
+
+.card h3{
     color:var(--primary);
-    margin-bottom:8px;
+    margin-bottom:10px;
+    font-size:20px;
 }
 
-.vault-card p{
+.card p{
+    color:#64748b;
     font-size:14px;
-    color:var(--muted);
-    margin-bottom:15px;
+    margin-bottom:20px;
+    flex-grow:1;
 }
 
-.vault-meta{
-    display:flex;
-    justify-content:space-between;
-    font-size:13px;
-    color:var(--muted);
-    margin-bottom:15px;
-    border-top:1px dashed var(--border);
-    padding-top:10px;
-}
-
-/* تنسيق مكان الصور الفرعية (قريباً) */
-.images-preview-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    margin-top:15px;
-    margin-bottom:15px;
-}
-
-.img-placeholder{
-    background:#f1f5f9;
-    border:2px dashed var(--border);
-    border-radius:12px;
-    height:110px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    color:#2563eb;
-    font-weight:bold;
-    font-size:13px;
-    transition:.2s;
-}
-
-.img-placeholder span{
-    font-size:22px;
-    margin-bottom:4px;
-}
-
-.download-btn{
-    display:block;
-    text-align:center;
-    background:linear-gradient(135deg, #0f172a, #2563eb);
+.btn{
+    display:inline-block;
+    background:linear-gradient(135deg, #1e293b, #2563eb);
     color:#fff;
     text-decoration:none;
-    padding:12px;
+    padding:10px 18px;
     border-radius:12px;
-    font-weight:bold;
     font-size:14px;
+    font-weight:bold;
     transition:.2s;
+    margin-top:8px;
+    box-shadow:0 4px 12px rgba(37,99,235,.2);
 }
 
-.download-btn:hover{
-    background:#1d4ed8;
+.btn:hover{
+    background:var(--primary);
+    transform:translateY(-1px);
+}
+
+.btn-highlight{
+    background:linear-gradient(135deg,#2563eb,#1d4ed8)!important;
+    box-shadow:0 4px 15px rgba(37,99,235,.3);
+}
+
+.btn-highlight:hover{
+    background:linear-gradient(135deg,#1d4ed8,#0f172a)!important;
+}
+
+.table-box{
+    overflow-x:auto;
+    background:var(--white);
+    border-radius:22px;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    transition:background .3s ease;
+    margin-bottom:30px;
+}
+
+table{
+    width:100%;
+    min-width:750px;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid var(--border);
+    font-size:14px;
+}
+
+th{
+    background:var(--primary);
+    color:#fff;
+}
+
+.links-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.link-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:30px 25px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    transition:background .3s ease;
+}
+
+.link-card .big-icon{
+    font-size:45px;
+    margin-bottom:12px;
+}
+
+.link-card h3{
+    color:var(--primary);
+    margin-bottom:10px;
+    font-size:20px;
+}
+
+.link-card p{
+    color:#64748b;
+    font-size:14px;
+    margin:8px 0 15px;
 }
 
 footer{
     background:#0f172a;
     color:#fff;
     text-align:center;
-    padding:35px 20px;
-    margin-top:60px;
+    padding:45px 20px;
+    margin-top:50px;
     border-top:3px solid #2563eb;
+    transition:background .3s ease;
+}
+
+.footer-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.footer-btn{
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    padding:10px 24px;
+    border-radius:12px;
+    font-weight:bold;
+    font-size:15px;
+    cursor:pointer;
+    transition:.2s;
+    box-shadow:0 4px 15px rgba(37,99,235,.3);
+}
+
+.footer-btn:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+.share-btn{
+    background:#1e293b;
+    border:1px solid #334155;
+    color:#fff;
+}
+
+.share-btn:hover{
+    background:#334155;
 }
 
 #backToTop{
@@ -345,215 +700,1769 @@ footer{
     background:#1d4ed8;
     transform:translateY(-3px);
 }
+
+.modal{
+    display:none;
+    position:fixed;
+    z-index:1000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(15,23,42,.7);
+    backdrop-filter:blur(6px);
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.modal-content{
+    background:#fff;
+    color:var(--primary);
+    padding:35px 30px;
+    border-radius:24px;
+    max-width:480px;
+    width:100%;
+    text-align:center;
+    position:relative;
+    box-shadow:0 25px 50px -12px rgba(15,23,42,.25);
+    animation:modalPop .3s ease;
+    border: 1px solid var(--border);
+}
+
+@keyframes modalPop{
+    0%{transform:scale(.9);opacity:0;}
+    100%{transform:scale(1);opacity:1;}
+}
+
+.close-modal{
+    position:absolute;
+    top:15px;
+    left:20px;
+    font-size:24px;
+    cursor:pointer;
+    color:#64748b;
+    font-weight:bold;
+}
+
+.close-modal:hover{
+    color:var(--primary);
+}
+
+.modal-content h3{
+    color:#0f172a;
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.modal-content p{
+    color:#475569;
+    font-size:15px;
+    line-height:1.7;
+    margin-bottom:15px;
+}
+
+.creators-box{
+    background:#f1f5f9;
+    border:1px solid var(--border);
+    padding:15px;
+    border-radius:14px;
+    margin-top:15px;
+    text-align:right;
+}
+
+.creators-box p{
+    margin:6px 0;
+    color:var(--primary);
+    font-weight:600;
+}
+
+.btn-alert-confirm{
+    background:linear-gradient(135deg,#1e293b,#2563eb);
+    color:#fff;
+    border:none;
+    padding:12px 28px;
+    border-radius:12px;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+    box-shadow:0 4px 15px rgba(37,99,235,.2);
+    margin-top:15px;
+    width:100%;
+    transition:.2s;
+}
+
+.btn-alert-confirm:hover{
+    transform:translateY(-2px);
+    background:linear-gradient(135deg,#0f172a,#1d4ed8);
+}
+
+@media(max-width:850px){
+    .links-grid,.stats,.quick-actions{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .links-grid,.stats,.quick-actions{
+        grid-template-columns:1fr;
+    }
+}
 </style>
 </head>
 
 <body>
 
+<div class="modal" id="noticeModal" style="display:flex;">
+    <div class="modal-content">
+        <div style="font-size:45px;margin-bottom:10px;">🎓</div>
+        <h3>تنويه هام</h3>
+        <p>
+            مرحباً بكم! نود إحاطتكم بأنه جارٍ العمل على تطوير وتحديث
+            منصة المَعين باستمرار لخدمتكم وتوفير كافة المراجع والمستجدات الأكاديمية.
+        </p>
+        <button class="btn-alert-confirm" id="confirmNoticeBtn" type="button">
+            حسناً، الدخول للموقع 👍
+        </button>
+    </div>
+</div>
+
 <header>
+
     <div class="header-btns">
+
         <button class="theme-toggle-btn" id="themeToggleBtn" type="button">
             🌙 الوضع الليلي
         </button>
+
     </div>
-    <div class="logo">🗄️ الأمانات الأكاديمية</div>
-    <div class="university-title">جامعة بحري — كلية العلوم الإدارية (دفعة 023 / 024)</div>
+
+    <div class="logo">المَعين</div>
+
+    <div class="university-title">
+        جامعة بحري
+    </div>
+
+    <div class="subtitle">
+        المَعين — مصدر للمعرفة والمراجع والمساعدة
+    </div>
+
+    <div class="badge">
+        دفعة 023 / 024
+    </div>
+
 </header>
 
-<nav>
-    <div class="nav-container">
-        <a href="index.html">الرئيسية</a>
-        <a href="subjects.html">المواد</a>
-        <a href="academic-assets.html" class="active">الأمانات الأكاديمية</a>
-        <a href="about.html">عن الكلية</a>
-        <a href="results.html">النتيجة</a>
-        <a href="exams.html">الاختبارات</a>
-        <a href="study-tools.html">الوسائل التعليمية</a>
-        <a href="index.html#schedule">الجدول</a>
-        <a href="index.html#community">التواصل</a>
+<div class="ticker-container">
+
+    <span class="ticker-title">
+        عاجل 📢
+    </span>
+
+    <div class="ticker-text" id="mainTickerText">
+        مرحباً بكم في منصة المَعين — بوابتكم الأكاديمية الشاملة للمراجع، الملخصات، والجداول الدراسية بكلية العلوم الإدارية - جامعة بحري.
     </div>
+
+</div>
+
+<div class="search-box-wrapper">
+
+    <div class="search-box-container">
+
+        <span class="search-icon-inside">
+            🔍
+        </span>
+
+        <input
+            type="text"
+            id="siteSearchInput"
+            class="search-input"
+            placeholder="ابحث عن مواد، اختبارات، نتيجة، جدول، أمانات، أو روابط تواصل..."
+            autocomplete="off"
+        >
+
+        <button
+            id="clearSearchBtn"
+            class="clear-search-btn"
+            title="مسح البحث">
+            ✕
+        </button>
+
+    </div>
+
+</div>
+
+<nav>
+
+    <div class="nav-container">
+
+        <a href="index.html" class="active">
+            الرئيسية
+        </a>
+
+        <a href="subjects.html">
+            المواد
+        </a>
+
+        <a href="academic-vault.html">
+            الأمانات الأكاديمية
+        </a>
+
+        <a href="about.html">
+            عن الكلية
+        </a>
+
+        <a href="results.html">
+            النتيجة
+        </a>
+
+        <a href="exams.html">
+            الاختبارات
+        </a>
+
+        <a href="study-tools.html">
+            الوسائل التعليمية
+        </a>
+
+        <a href="#schedule">
+            الجدول
+        </a>
+
+        <a href="#community">
+            التواصل
+        </a>
+
+    </div>
+
 </nav>
 
 <main class="container">
 
-    <div class="page-intro">
-        <h2>أرشيف الأمانات والمستندات الرسمية</h2>
-        <p>المستودع الموحد لتجميع وحفظ جميع التكاليف، الحلول المعتمدة، ملخصات الدفعة، وأوراق الأبحاث الأكاديمية.</p>
+<div id="noResultsMsg" class="no-results-msg">
+
+    <div style="font-size:40px;margin-bottom:10px;">
+        🔍❌
     </div>
 
-    <!-- أزرار التصنيف والتصفية -->
-    <div class="filter-tabs">
-        <button class="tab-btn active" onclick="filterVault('all')">الكل</button>
-        <button class="tab-btn" onclick="filterVault('assignments')">التكاليف والشيتات</button>
-        <button class="tab-btn" onclick="filterVault('summaries')">ملخصات الدفعة</button>
-        <button class="tab-btn" onclick="filterVault('past-exams')">أرشيف الامتحانات</button>
-    </div>
+    <h4>
+        عفواً، لم نجد أي نتائج تطابق بحثك!
+    </h4>
 
-    <!-- شبكة الأمانات -->
-    <div class="vault-grid">
+    <p>
+        جرب البحث بكلمات أخرى مثل:
+        "مواد"، "نتيجة"، "جدول"، "أمانات"، "واتساب"، "ليدر".
+    </p>
 
-        <!-- بطاقة أمانة 1 -->
-        <div class="vault-card" data-category="assignments">
-            <div>
-                <div class="card-header">
-                    <div class="card-icon">📝</div>
-                    <span class="badge-tag">تكاليف وشيتات</span>
-                </div>
-                <h3>أمانة التكاليف والشيتات المحلولة</h3>
-                <p>تجميع لجميع الحلول النموذجية للتكاليف الفردية والجماعية والشيتات الخاصة بجميع المواد الدراسية.</p>
-                
-                <div class="vault-meta">
-                    <span>📁 الأرشيف: مستندات محلولة</span>
-                    <span>🗓️ الفصل الأول 2026</span>
-                </div>
+</div>
 
-                <!-- شبكة الصورتين الفارغتين (قريباً) -->
-                <div class="images-preview-grid">
-                    <div class="img-placeholder">
-                        <span>🖼️</span>
-                        قريباً
-                    </div>
-                    <div class="img-placeholder">
-                        <span>🖼️</span>
-                        قريباً
-                    </div>
-                </div>
+<section class="searchable-section">
+
+    <div class="countdown-box searchable-item">
+
+        <h3>
+            ⏳ العداد التنازلي لبداية الامتحانات (9 يناير 2027)
+        </h3>
+
+        <div class="countdown-timers">
+
+            <div class="time-card">
+                <span id="days">00</span>
+                <label>يوم</label>
             </div>
 
-            <div>
-                <a href="#" class="download-btn">استعراض المراجع 📥</a>
-            </div>
-        </div>
-
-        <!-- بطاقة أمانة 2 -->
-        <div class="vault-card" data-category="summaries">
-            <div>
-                <div class="card-header">
-                    <div class="card-icon">📚</div>
-                    <span class="badge-tag">ملخصات معتمدة</span>
-                </div>
-                <h3>أمانة الملخصات والمذكرات</h3>
-                <p>مكتبة الشروحات المبسطة والملخصات المعتمدة المقرة من الزملاء والأساتذة لتسهيل المراجعة.</p>
-                
-                <div class="vault-meta">
-                    <span>📁 الأرشيف: ملخصات شاملة</span>
-                    <span>🗓️ الفصل الأول 2026</span>
-                </div>
-
-                <!-- شبكة الصورتين الفارغتين (قريباً) -->
-                <div class="images-preview-grid">
-                    <div class="img-placeholder">
-                        <span>🖼️</span>
-                        قريباً
-                    </div>
-                    <div class="img-placeholder">
-                        <span>🖼️</span>
-                        قريباً
-                    </div>
-                </div>
+            <div class="time-card">
+                <span id="hours">00</span>
+                <label>ساعة</label>
             </div>
 
-            <div>
-                <a href="#" class="download-btn">استعراض الملخصات 📥</a>
-            </div>
-        </div>
-
-        <!-- بطاقة أمانة 3 -->
-        <div class="vault-card" data-category="past-exams">
-            <div>
-                <div class="card-header">
-                    <div class="card-icon">🎓</div>
-                    <span class="badge-tag">أرشيف امتحانات</span>
-                </div>
-                <h3>أمانة الامتحانات والأسئلة السابقة</h3>
-                <p>تجميع وتوثيق اختبارات السنوات السابقة وتطبيق الامتحانات التجريبية المرفقة بإجابات رسمية.</p>
-                
-                <div class="vault-meta">
-                    <span>📁 الأرشيف: امتحانات سابقة</span>
-                    <span>🗓️ سنوات متعددة</span>
-                </div>
-
-                <!-- شبكة الصورتين الفارغتين (قريباً) -->
-                <div class="images-preview-grid">
-                    <div class="img-placeholder">
-                        <span>🖼️</span>
-                        قريباً
-                    </div>
-                    <div class="img-placeholder">
-                        <span>🖼️</span>
-                        قريباً
-                    </div>
-                </div>
+            <div class="time-card">
+                <span id="minutes">00</span>
+                <label>دقيقة</label>
             </div>
 
-            <div>
-                <a href="#" class="download-btn">تحميل الأرشيف 📥</a>
+            <div class="time-card">
+                <span id="seconds">00</span>
+                <label>ثانية</label>
             </div>
+
         </div>
 
     </div>
+
+</section>
+
+<section id="home" class="searchable-section">
+
+    <div class="hero">
+
+        <h2>
+            مرحباً بكم في منصة المَعين 🎓
+        </h2>
+
+        <p>
+            المَعين — مصدر للمعرفة والمراجع والمساعدة لطلاب
+            <strong>جامعة بحري</strong>
+            يجمع المواد الدراسية، الملفات، الملخصات، والنتائج الخاصة بدفعة
+            023 / 024 في مكان واحد.
+        </p>
+
+        <div class="quick-actions">
+
+            <a class="quick-action searchable-item"
+               href="subjects.html">
+
+                <span>📚</span>
+                المواد الدراسية
+
+            </a>
+
+            <a class="quick-action searchable-item"
+               href="exams.html">
+
+                <span>📝</span>
+                الاختبارات وبنك الأسئلة
+
+            </a>
+
+            <a class="quick-action searchable-item"
+               href="results.html">
+
+                <span>📊</span>
+                النتيجة الأكاديمية
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="stats searchable-item">
+
+        <div class="stat">
+
+            <strong>8</strong>
+
+            <span>
+                مواد دراسية
+            </span>
+
+        </div>
+
+        <div class="stat">
+
+            <strong>397</strong>
+
+            <span>
+                طالب وطالبة
+            </span>
+
+        </div>
+
+        <div class="stat">
+
+            <strong id="platformAge">
+                0 يوم
+            </strong>
+
+            <span>
+                عمر المنصة
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="searchable-section">
+
+    <div class="section-title">
+
+        <h2>
+            ⚡ أقسام المنصة السريعة
+        </h2>
+
+        <p>
+            تصفح كافة خدمات المنصة بضغطة زر واحدة
+        </p>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card searchable-item">
+
+            <div class="icon icon-vault">
+                🗄️
+            </div>
+
+            <h3>
+                الأمانات الأكاديمية
+            </h3>
+
+            <p>
+                المستودع الشامل للأرشيف الأكاديمي، التكاليف المحلولة، والمستندات الخاصة بالدفعة.
+            </p>
+
+            <a class="btn" href="academic-vault.html">
+                دخول الأمانات
+            </a>
+
+        </div>
+
+        <div class="card searchable-item">
+
+            <div class="icon icon-amber">
+                🏛
+            </div>
+
+            <h3>
+                عن الكلية
+            </h3>
+
+            <p>
+                تعرف على نبذة تفصيلية عن كلية العلوم الإدارية وأهدافها الأكاديمية.
+            </p>
+
+            <a class="btn" href="about.html">
+                استعراض النبذة
+            </a>
+
+        </div>
+
+        <div class="card searchable-item">
+
+            <div class="icon icon-purple">
+                🧠
+            </div>
+
+            <h3>
+                اختبارات معرفة القدرات
+            </h3>
+
+            <p>
+                اختبر معلوماتك وقدراتك الذهنية عبر تمرينات واختبارات تفاعلية مشوقة.
+            </p>
+
+            <a class="btn" href="fun.html">
+                ابدأ الاختبار
+            </a>
+
+        </div>
+
+        <div class="card searchable-item">
+
+            <div class="icon icon-teal">
+                🛠️
+            </div>
+
+            <h3>
+                الوسائل التعليمية
+            </h3>
+
+            <p>
+                أدوات ومصادر ومراجع تعليمية مساعدة لتحسين التحصيل الدراسي.
+            </p>
+
+            <a class="btn" href="study-tools.html">
+                فتح الوسائل
+            </a>
+
+        </div>
+
+        <div class="card searchable-item">
+
+            <div class="icon icon-news">
+                📰
+            </div>
+
+            <h3>
+                السبق الصحفي
+            </h3>
+
+            <p>
+                تابع الأخبار والتغطيات والموضوعات الصحفية المميزة
+                وكل ما يستحق النشر داخل مجتمع الطلاب.
+            </p>
+
+            <a class="btn" href="media.html">
+                فتح السبق الصحفي
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- جدول المحاضرات -->
+<!-- ========================= -->
+
+<section id="schedule" class="searchable-section">
+
+    <div class="section-title">
+
+        <h2>
+            📅 جدول المحاضرات الأسبوعي
+            (الفصل الدراسي الأول 2026-2027)
+        </h2>
+
+        <p>
+            السنة الثانية - الدفعة 2023 و 2024 - كلية العلوم الإدارية
+        </p>
+
+    </div>
+
+    <!-- ================================================= -->
+    <!-- المجموعة الأولى -->
+    <!-- ================================================= -->
+
+    <div class="group-title searchable-item">
+
+        📌 المجموعة الأولى
+        (المحاسبة والتمويل + التكاليف والمحاسبة الإدارية + الدراسات المصرفية والمالية)
+
+    </div>
+
+    <div class="table-box searchable-item">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        اليوم
+                    </th>
+
+                    <th>
+                        8:00 - 10:00
+                    </th>
+
+                    <th>
+                        10:30 - 12:30
+                    </th>
+
+                    <th>
+                        1:00 - 3:00
+                    </th>
+
+                    <th>
+                        3:00 - 5:00
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+                        <strong>الثلاثاء</strong>
+                    </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            السلوك التنظيمي
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. محمد تاج الدين
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            قاعة G8
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            مهارات الحاسوب
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            أ. حفصة حسن
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            قاعة G8
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            الاقتصاد الجزئي
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. عاطف حسن
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            قاعة G8
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            الإحصاء في الأعمال (1)
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. أحمد العربي
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            قاعة G8
+                        </span>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        <strong>الأربعاء</strong>
+                    </td>
+
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        <strong>الخميس</strong>
+                    </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            المحاسبة المالية (1)
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. الضيف زكريا
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            قاعة G8
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            مهارات اللغة الإنجليزية (4)
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. معتصم إبراهيم
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            قاعة G8
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            القانون التجاري
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            أ. محمود حسن
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            قاعة G8
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            مبادئ العمليات المصرفية
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            أ. صدام نورين
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            قاعة G8
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- ================================================= -->
+    <!-- المجموعة الثانية -->
+    <!-- ================================================= -->
+
+    <div class="group-title searchable-item">
+
+        📌 المجموعة الثانية
+        (إدارة أعمال + إدارة التسويق + إدارة الموارد البشرية + إدارة عامة + السكرتارية التنفيذية)
+
+    </div>
+
+    <div class="table-box searchable-item">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        اليوم
+                    </th>
+
+                    <th>
+                        8:00 - 10:00
+                    </th>
+
+                    <th>
+                        10:30 - 12:30
+                    </th>
+
+                    <th>
+                        1:00 - 3:00
+                    </th>
+
+                    <th>
+                        3:00 - 5:00
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+                        <strong>الثلاثاء</strong>
+                    </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            مهارات الحاسوب
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            أ. حفصة حسن
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            القاعة الكبرى FH
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            السلوك التنظيمي
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. محمد تاج الدين
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            القاعة الكبرى FH
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            الإحصاء في الأعمال (1)
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. أحمد العربي
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            القاعة الكبرى FH
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            الاقتصاد الجزئي
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. عاطف حسن
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            القاعة الكبرى FH
+                        </span>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        <strong>الأربعاء</strong>
+                    </td>
+
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        <strong>الخميس</strong>
+                    </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            مهارات اللغة الإنجليزية (4)
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. معتصم إبراهيم
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            القاعة الكبرى FH
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            المحاسبة المالية (1)
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            د. الضيف زكريا
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            القاعة الكبرى FH
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            مبادئ العمليات المصرفية
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            أ. صدام نورين
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            القاعة الكبرى FH
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span class="schedule-cell-subject">
+                            القانون التجاري
+                        </span>
+
+                        <span class="schedule-cell-prof">
+                            أ. محمود حسن
+                        </span>
+
+                        <span class="schedule-cell-hall">
+                            القاعة الكبرى FH
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<section id="community" class="searchable-section">
+
+    <div class="section-title">
+
+        <h2>
+            🔗 روابط التواصل والاتصال
+        </h2>
+
+        <p>
+            قنوات التواصل الرسمية الخاصة بالدفعة والكلية
+        </p>
+
+    </div>
+
+    <div class="links-grid">
+
+        <div class="link-card searchable-item">
+
+            <div class="big-icon">
+                💬
+            </div>
+
+            <h3>
+                مجموعة الواتساب
+            </h3>
+
+            <p>
+                مجموعة الدفعة الرسمية للاستفسارات والأخبار السريعة.
+            </p>
+
+            <a
+                class="btn"
+                href="https://chat.whatsapp.com/FmtkIp9Y0YMBGaBZfgo0ZW"
+                target="_blank">
+
+                انضم للمجموعة
+
+            </a>
+
+        </div>
+
+        <div class="link-card searchable-item">
+
+            <div class="big-icon">
+                👥
+            </div>
+
+            <h3>
+                صفحة الفيسبوك
+            </h3>
+
+            <p>
+                تابعنا على صفحتنا الرسمية على الفيسبوك لأحدث مستجدات الدفعة.
+            </p>
+
+            <a
+                class="btn"
+                href="https://www.facebook.com/share/1M81DYnAxV/"
+                target="_blank">
+
+                زوروا صفحتنا
+
+            </a>
+
+        </div>
+
+        <div class="link-card searchable-item">
+
+            <div class="big-icon">
+                📢
+            </div>
+
+            <h3>
+                أخبار الجامعة
+            </h3>
+
+            <p>
+                تابع آخر الأخبار والتعاميم الرسمية الصادرة من إدارة الجامعة.
+            </p>
+
+            <a
+                class="btn"
+                href="https://www.facebook.com/share/19i7UZ4Cne/"
+                target="_blank">
+
+                صفحة الأخبار
+
+            </a>
+
+        </div>
+
+        <div
+            class="link-card searchable-item"
+            style="border:2px solid #2563eb;">
+
+            <div class="big-icon">
+                📞
+            </div>
+
+            <h3>
+                أرقام القيادة
+            </h3>
+
+            <p>
+                <strong>ليدر الدفعة:</strong><br>
+                249116314682
+            </p>
+
+            <a
+                class="btn btn-highlight"
+                href="https://wa.me/249116314682"
+                target="_blank">
+
+                💬 مراسلة ليدر الدفعة
+
+            </a>
+
+            <p style="margin-top:15px;">
+
+                <strong>مسجل الدفعة:</strong><br>
+                249111744435
+
+            </p>
+
+            <a
+                class="btn btn-highlight"
+                href="https://wa.me/249111744435"
+                target="_blank">
+
+                💬 مراسلة مسجل الدفعة
+
+            </a>
+
+        </div>
+
+        <div class="link-card searchable-item">
+
+            <div class="big-icon">
+                💡
+            </div>
+
+            <h3>
+                الآراء والاقتراحات
+            </h3>
+
+            <p>
+                شاركنا برأيك لتطوير المنصة وتحسينها مباشرة عبر رقمي الخاص.
+            </p>
+
+            <a
+                class="btn"
+                href="https://wa.me/249995040725?text=مرحباً، لدي اقتراح بخصوص منصة المَعين:"
+                target="_blank">
+
+                أرسل اقتراحك
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
 </main>
 
 <footer>
-    <p>جميع الحقوق محفوظة لـ <strong>منصة المَعين — جامعة بحري - كلية العلوم الإدارية (دفعة 023 / 024)</strong></p>
+
+    <div class="footer-buttons">
+
+        <button
+            class="footer-btn"
+            id="aboutUsBtn"
+            type="button">
+
+            من نحن 👥
+
+        </button>
+
+        <button
+            class="footer-btn share-btn"
+            id="shareSiteBtn"
+            type="button">
+
+            🔗 مشاركة المنصة
+
+        </button>
+
+    </div>
+
+    <p>
+
+        جميع الحقوق محفوظة لـ
+
+        <strong>
+            منصة المَعين — مصدر للمعرفة والمراجع والمساعدة - جامعة بحري - كلية العلوم الإدارية
+            (دفعة 023 / 024)
+        </strong>
+
+    </p>
+
+    <p style="margin-top:6px;">
+        صُنِع بشغف لخدمة طلاب الدفعة 🎓
+    </p>
+
 </footer>
 
-<button id="backToTop" title="العودة للأعلى">⬆</button>
+<button
+    id="backToTop"
+    title="العودة للأعلى">
+
+    ⬆
+
+</button>
+
+<div class="modal" id="aboutModal">
+
+    <div class="modal-content">
+
+        <span
+            class="close-modal"
+            id="closeModalBtn">
+
+            &times;
+
+        </span>
+
+        <h3>
+            من نحن 🎓
+        </h3>
+
+        <p>
+            منصة المَعين هي منصة طلابية تعليمية متكاملة (مصدر للمعرفة والمراجع والمساعدة)
+            تهدف إلى تسهيل الوصول للملفات والمراجع وخدمة
+            طلاب دفعة 023 / 024 بكلية العلوم الإدارية بجامعة بحري.
+        </p>
+
+        <div class="creators-box">
+
+            <p>
+                ✨ <strong>المؤسس:</strong>
+                Omer Abd El Moniem Mohammed
+            </p>
+
+            <p>
+                ✨ <strong>الزميلة المشاركة:</strong>
+                Rayan Abdul Mutalib El Bashir
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
 
 <script>
-// تفعيل الوضع الليلي
-const themeBtn = document.getElementById("themeToggleBtn");
-if(localStorage.getItem("theme") === "dark"){
-    document.body.classList.add("dark-mode");
-    themeBtn.innerText = "☀️ الوضع الصباحي";
-}
-themeBtn.addEventListener("click", function(){
-    document.body.classList.toggle("dark-mode");
-    if(document.body.classList.contains("dark-mode")){
-        localStorage.setItem("theme", "dark");
-        themeBtn.innerText = "☀️ الوضع الصباحي";
-    }else{
-        localStorage.setItem("theme", "light");
-        themeBtn.innerText = "🌙 الوضع الليلي";
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    /* ================================
+       عمر المنصة
+    ================================= */
+
+    function updatePlatformAge(){
+
+        const launchDate =
+            new Date(
+                "October 1, 2026 00:00:00"
+            ).getTime();
+
+        const now =
+            new Date().getTime();
+
+        const diff =
+            now - launchDate;
+
+        const ageEl =
+            document.getElementById(
+                "platformAge"
+            );
+
+        if(ageEl){
+
+            if(diff < 0){
+
+                ageEl.innerText =
+                    "قريباً";
+
+            }else{
+
+                const days =
+                    Math.floor(
+                        diff /
+                        (1000 * 60 * 60 * 24)
+                    );
+
+                if(days === 0){
+
+                    ageEl.innerText =
+                        "اليوم الأول";
+
+                }else{
+
+                    ageEl.innerText =
+                        days + " يوم";
+
+                }
+
+            }
+
+        }
+
     }
+
+    updatePlatformAge();
+
+    /* ================================
+       نافذة التنبيه
+    ================================= */
+
+    const noticeModal =
+        document.getElementById(
+            "noticeModal"
+        );
+
+    const confirmNoticeBtn =
+        document.getElementById(
+            "confirmNoticeBtn"
+        );
+
+    if(confirmNoticeBtn && noticeModal){
+
+        confirmNoticeBtn.addEventListener(
+            "click",
+            function(){
+
+                noticeModal.style.display =
+                    "none";
+
+            }
+        );
+
+    }
+
+    /* ================================
+       الوضع الليلي
+    ================================= */
+
+    const themeBtn =
+        document.getElementById(
+            "themeToggleBtn"
+        );
+
+    if(themeBtn){
+
+        const currentTheme =
+            localStorage.getItem("theme");
+
+        if(currentTheme === "dark"){
+
+            document.body.classList.add(
+                "dark-mode"
+            );
+
+            themeBtn.innerText =
+                "☀️ الوضع الصباحي";
+
+        }
+
+        themeBtn.addEventListener(
+            "click",
+            function(){
+
+                document.body.classList.toggle(
+                    "dark-mode"
+                );
+
+                if(
+                    document.body.classList.contains(
+                        "dark-mode"
+                    )
+                ){
+
+                    localStorage.setItem(
+                        "theme",
+                        "dark"
+                    );
+
+                    themeBtn.innerText =
+                        "☀️ الوضع الصباحي";
+
+                }else{
+
+                    localStorage.setItem(
+                        "theme",
+                        "light"
+                    );
+
+                    themeBtn.innerText =
+                        "🌙 الوضع الليلي";
+
+                }
+
+            }
+        );
+
+    }
+
+    /* ================================
+       محرك البحث
+    ================================= */
+
+    const searchInput =
+        document.getElementById(
+            "siteSearchInput"
+        );
+
+    const clearBtn =
+        document.getElementById(
+            "clearSearchBtn"
+        );
+
+    const noResults =
+        document.getElementById(
+            "noResultsMsg"
+        );
+
+    if(searchInput){
+
+        searchInput.addEventListener(
+            "input",
+            function(){
+
+                const query =
+                    this.value
+                        .trim()
+                        .toLowerCase();
+
+                if(query.length > 0){
+
+                    clearBtn.style.display =
+                        "block";
+
+                }else{
+
+                    clearBtn.style.display =
+                        "none";
+
+                }
+
+                let totalMatches = 0;
+
+                const sections =
+                    document.querySelectorAll(
+                        ".searchable-section"
+                    );
+
+                sections.forEach(
+                    function(section){
+
+                        const items =
+                            section.querySelectorAll(
+                                ".searchable-item"
+                            );
+
+                        let visibleItemsInSection =
+                            0;
+
+                        items.forEach(
+                            function(item){
+
+                                const text =
+                                    item.textContent
+                                        .toLowerCase();
+
+                                if(
+                                    query === "" ||
+                                    text.includes(query)
+                                ){
+
+                                    item.style.display =
+                                        "";
+
+                                    visibleItemsInSection++;
+                                    totalMatches++;
+
+                                }else{
+
+                                    item.style.display =
+                                        "none";
+
+                                }
+
+                            }
+                        );
+
+                        if(
+                            query === "" ||
+                            visibleItemsInSection > 0
+                        ){
+
+                            section.style.display =
+                                "";
+
+                        }else{
+
+                            section.style.display =
+                                "none";
+
+                        }
+
+                    }
+                );
+
+                if(
+                    totalMatches === 0 &&
+                    query !== ""
+                ){
+
+                    noResults.style.display =
+                        "block";
+
+                }else{
+
+                    noResults.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
+        clearBtn.addEventListener(
+            "click",
+            function(){
+
+                searchInput.value = "";
+
+                searchInput.dispatchEvent(
+                    new Event("input")
+                );
+
+                searchInput.focus();
+
+            }
+        );
+
+    }
+
+    /* ================================
+       نافذة من نحن
+    ================================= */
+
+    const aboutBtn =
+        document.getElementById(
+            "aboutUsBtn"
+        );
+
+    const aboutModal =
+        document.getElementById(
+            "aboutModal"
+        );
+
+    const closeModal =
+        document.getElementById(
+            "closeModalBtn"
+        );
+
+    if(
+        aboutBtn &&
+        aboutModal &&
+        closeModal
+    ){
+
+        aboutBtn.addEventListener(
+            "click",
+            function(){
+
+                aboutModal.style.display =
+                    "flex";
+
+            }
+        );
+
+        closeModal.addEventListener(
+            "click",
+            function(){
+
+                aboutModal.style.display =
+                    "none";
+
+            }
+        );
+
+        window.addEventListener(
+            "click",
+            function(e){
+
+                if(e.target === aboutModal){
+
+                    aboutModal.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
+    }
+
+    /* ================================
+       مشاركة المنصة
+    ================================= */
+
+    const shareBtn =
+        document.getElementById(
+            "shareSiteBtn"
+        );
+
+    if(shareBtn){
+
+        shareBtn.addEventListener(
+            "click",
+            function(){
+
+                const shareData = {
+
+                    title:
+                        "منصة المَعين الطلابية - جامعة بحري",
+
+                    text:
+                        "منصة المَعين — مصدر للمعرفة والمراجع والمساعدة لطلاب دفعة 023 / 024 - كلية العلوم الإدارية بجامعة بحري",
+
+                    url:
+                        window.location.href
+
+                };
+
+                if(navigator.share){
+
+                    navigator
+                        .share(shareData)
+                        .catch(function(){});
+
+                }else{
+
+                    navigator
+                        .clipboard
+                        .writeText(
+                            window.location.href
+                        )
+                        .then(function(){
+
+                            alert(
+                                "تم نسخ رابط المنصة بنجاح!"
+                            );
+
+                        })
+                        .catch(function(){
+
+                            alert(
+                                "الرابط: " +
+                                window.location.href
+                            );
+
+                        });
+
+                }
+
+            }
+        );
+
+    }
+
+    /* ================================
+       العداد التنازلي
+    ================================= */
+
+    const examDate =
+        new Date(
+            "January 9, 2027 00:00:00"
+        ).getTime();
+
+    function updateCountdown(){
+
+        const now =
+            new Date().getTime();
+
+        const distance =
+            examDate - now;
+
+        if(distance < 0){
+
+            document.getElementById(
+                "days"
+            ).innerText = "00";
+
+            document.getElementById(
+                "hours"
+            ).innerText = "00";
+
+            document.getElementById(
+                "minutes"
+            ).innerText = "00";
+
+            document.getElementById(
+                "seconds"
+            ).innerText = "00";
+
+            return;
+
+        }
+
+        const days =
+            Math.floor(
+                distance /
+                (1000 * 60 * 60 * 24)
+            );
+
+        const hours =
+            Math.floor(
+                (
+                    distance %
+                    (1000 * 60 * 60 * 24)
+                ) /
+                (1000 * 60 * 60)
+            );
+
+        const minutes =
+            Math.floor(
+                (
+                    distance %
+                    (1000 * 60 * 60)
+                ) /
+                (1000 * 60)
+            );
+
+        const seconds =
+            Math.floor(
+                (
+                    distance %
+                    (1000 * 60)
+                ) /
+                1000
+            );
+
+        document.getElementById(
+            "days"
+        ).innerText =
+            days < 10
+                ? "0" + days
+                : days;
+
+        document.getElementById(
+            "hours"
+        ).innerText =
+            hours < 10
+                ? "0" + hours
+                : hours;
+
+        document.getElementById(
+            "minutes"
+        ).innerText =
+            minutes < 10
+                ? "0" + minutes
+                : minutes;
+
+        document.getElementById(
+            "seconds"
+        ).innerText =
+            seconds < 10
+                ? "0" + seconds
+                : seconds;
+
+    }
+
+    updateCountdown();
+
+    setInterval(
+        updateCountdown,
+        1000
+    );
+
+    /* ================================
+       زر العودة للأعلى
+    ================================= */
+
+    const backToTopBtn =
+        document.getElementById(
+            "backToTop"
+        );
+
+    if(backToTopBtn){
+
+        window.addEventListener(
+            "scroll",
+            function(){
+
+                if(window.scrollY > 300){
+
+                    backToTopBtn.style.display =
+                        "flex";
+
+                }else{
+
+                    backToTopBtn.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
+        backToTopBtn.addEventListener(
+            "click",
+            function(){
+
+                window.scrollTo({
+
+                    top:0,
+                    behavior:"smooth"
+
+                });
+
+            }
+        );
+
+    }
+
 });
 
-// تصفية العناصر حسب الفئة
-function filterVault(category){
-    const cards = document.querySelectorAll(".vault-card");
-    const buttons = document.querySelectorAll(".tab-btn");
-
-    buttons.forEach(btn => btn.classList.remove("active"));
-    event.target.classList.add("active");
-
-    cards.forEach(card => {
-        if(category === "all" || card.getAttribute("data-category") === category){
-            card.style.display = "flex";
-        }else{
-            card.style.display = "none";
-        }
-    });
-}
-
-// زر العودة للأعلى
-const backToTopBtn = document.getElementById("backToTop");
-if(backToTopBtn){
-    window.addEventListener("scroll", function(){
-        if(window.scrollY > 300){
-            backToTopBtn.style.display = "flex";
-        }else{
-            backToTopBtn.style.display = "none";
-        }
-    });
-
-    backToTopBtn.addEventListener("click", function(){
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    });
-}
 </script>
 
 </body>
